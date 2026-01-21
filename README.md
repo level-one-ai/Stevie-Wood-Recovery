@@ -6,10 +6,16 @@ A modern, responsive landing page for Stevie Wood Recovery, a 24/7 vehicle recov
 
 ```
 stevie-wood-recovery/
-├── index.html      # Main HTML file
-├── styles.css      # All CSS styles
-├── logo.svg        # SVG logo with monogram
-└── README.md       # This file
+├── index.html          # Main HTML file
+├── css/
+│   ├── base.css        # Variables, reset, common styles
+│   ├── header.css      # Header and navigation
+│   ├── hero.css        # Hero section
+│   ├── sections.css    # Services, About, Reviews
+│   ├── contact-footer.css  # Contact form and footer
+│   └── responsive.css  # Media queries
+├── logo.svg            # SVG logo
+└── README.md           # This file
 ```
 
 ## 🎨 Features
@@ -18,6 +24,7 @@ stevie-wood-recovery/
 - **Responsive**: Fully responsive across all devices
 - **Animated Logo**: Pulsing ring animation effect
 - **Clean Dividers**: Elegant curved section dividers
+- **Review Carousel**: Auto-fading testimonials
 - **Contact Form**: Full quote request form
 
 ## 🚀 Getting Started
@@ -32,7 +39,7 @@ stevie-wood-recovery/
 ## 🎨 Customisation
 
 ### Colours
-Edit the CSS variables in `styles.css`:
+Edit the CSS variables in `css/base.css`:
 
 ```css
 :root {
@@ -47,16 +54,13 @@ Edit the CSS variables in `styles.css`:
 ### Contact Information
 Update phone numbers, email, and address in `index.html`.
 
-### Reviews Section
-The reviews section is ready for your custom formatting. Find the `.reviews-placeholder` div and replace with your preferred layout.
-
 ## 📱 Sections
 
 1. **Header** - Fixed navigation with animated logo
 2. **Hero** - Main headline with stats and CTA buttons
 3. **Services** - 8 service cards in a grid
 4. **About** - Company information and coverage area
-5. **Reviews** - Customer testimonials (placeholder)
+5. **Reviews** - Auto-fading customer testimonials
 6. **Contact** - Contact details and quote form
 7. **Footer** - Links and social media
 
