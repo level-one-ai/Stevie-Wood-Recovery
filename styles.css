@@ -136,22 +136,29 @@ header {
     box-shadow: 0 0 10px rgba(34, 211, 238, 0.6);
 }
 
-/* Monogram SVG */
-.monogram {
-    width: 32px;
-    height: 32px;
+/* SW Text Logo */
+.header-logo-shape .letters {
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -1px;
     z-index: 1;
 }
 
-.monogram-large {
-    width: 140px;
-    height: 140px;
+.hero-logo-shape .letters {
+    font-size: 110px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -4px;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     z-index: 1;
 }
 
-.monogram-footer {
-    width: 28px;
-    height: 28px;
+.footer-letters {
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -1px;
 }
 
 .logo-text {
@@ -638,59 +645,85 @@ nav a:hover {
     margin: 0 auto;
 }
 
-.reviews-placeholder {
-    text-align: center;
-    padding: 60px;
-    background: var(--dark);
-    border-radius: 24px;
-    margin: 40px 0;
-    border: 1px dashed rgba(99, 102, 241, 0.3);
-}
-
-.reviews-placeholder p {
-    color: var(--gray);
-    font-style: italic;
-}
-
-.google-rating {
+/* Review Carousel */
+.review-carousel {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 20px;
-    margin-top: 50px;
-    padding: 30px;
-    background: var(--dark);
-    border-radius: 20px;
-    max-width: 500px;
+    gap: 40px;
+    margin-top: 60px;
+    min-height: 200px;
+}
+
+.carousel-arrow {
+    background: none;
+    border: none;
+    color: var(--gray);
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px;
+    transition: color 0.3s;
+    flex-shrink: 0;
+}
+
+.carousel-arrow:hover {
+    color: var(--light);
+}
+
+.review-display {
+    position: relative;
+    text-align: center;
+    max-width: 900px;
+    min-height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.review-item {
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    width: 100%;
+}
+
+.review-item.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.review-item.fade-out {
+    opacity: 0;
+}
+
+.review-item .review-stars {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 24px;
+}
+
+.review-item .review-stars i {
+    color: #fbbf24;
+    font-size: 22px;
+}
+
+.review-item .review-text {
+    font-size: 18px;
+    color: var(--light);
+    line-height: 1.8;
+    margin-bottom: 24px;
+    font-style: italic;
+    max-width: 800px;
     margin-left: auto;
     margin-right: auto;
 }
 
-.google-logo {
-    font-size: 40px;
-    color: var(--white);
-}
-
-.google-logo i {
-    background: linear-gradient(135deg, #4285f4, #34a853, #fbbc05, #ea4335);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.google-rating-info {
-    text-align: left;
-}
-
-.google-rating-info .rating {
-    font-size: 32px;
-    font-weight: 800;
-    color: var(--white);
-}
-
-.google-rating-info .rating-text {
-    font-size: 14px;
-    color: var(--gray);
+.review-item .review-author {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--light);
 }
 
 /* =============================================
@@ -1039,9 +1072,8 @@ footer {
         height: 200px;
     }
 
-    .monogram-large {
-        width: 100px;
-        height: 100px;
+    .hero-logo-shape .letters {
+        font-size: 80px;
     }
 
     .footer-top,
@@ -1053,5 +1085,23 @@ footer {
 
     .section-divider {
         height: 80px;
+    }
+
+    /* Review carousel responsive */
+    .review-carousel {
+        gap: 20px;
+    }
+
+    .carousel-arrow {
+        font-size: 18px;
+        padding: 5px;
+    }
+
+    .review-item .review-text {
+        font-size: 16px;
+    }
+
+    .review-item .review-stars i {
+        font-size: 18px;
     }
 }
