@@ -113,7 +113,6 @@
         height: 80px;
     }
 
-    /* Review carousel responsive */
     .review-carousel {
         gap: 20px;
     }
@@ -131,7 +130,6 @@
         font-size: 18px;
     }
 
-    /* About section responsive */
     .about-map-wrapper {
         padding: 40px 30px;
     }
@@ -142,7 +140,6 @@
         font-size: 32px;
     }
 
-    /* Contact form responsive */
     .contact-form-wrapper {
         padding: 30px 20px;
     }
