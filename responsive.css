@@ -1,0 +1,187 @@
+/* =============================================
+   Stevie Wood Recovery - Responsive Styles
+   ============================================= */
+
+/* Large Tablets & Small Desktops */
+@media (max-width: 1200px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Tablets */
+@media (max-width: 992px) {
+    .hero-container,
+    .about-container,
+    .contact-container {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+
+    .hero-content {
+        text-align: center;
+    }
+
+    .hero-content p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .hero-stats {
+        justify-content: center;
+    }
+
+    .hero-logo-wrapper {
+        order: -1;
+    }
+
+    nav {
+        display: none;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+    }
+}
+
+/* Mobile Devices */
+@media (max-width: 768px) {
+    .header-container {
+        padding: 0 20px;
+    }
+
+    .hero {
+        padding: 100px 20px 60px;
+    }
+
+    .hero-content h1 {
+        font-size: 36px;
+    }
+
+    .services,
+    .about,
+    .reviews,
+    .contact {
+        padding: 60px 20px;
+    }
+
+    .section-header h2,
+    .about-content h2,
+    .contact-info h2 {
+        font-size: 32px;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-logo-container {
+        width: 200px;
+        height: 200px;
+    }
+
+    .hero-accent-ring {
+        width: 220px;
+        height: 220px;
+    }
+
+    .hero-logo-shape {
+        width: 200px;
+        height: 200px;
+    }
+
+    .hero-logo-shape .letters {
+        font-size: 80px;
+    }
+
+    .footer-top,
+    .footer-bottom {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+
+    .section-divider {
+        height: 80px;
+    }
+
+    /* Review carousel responsive */
+    .review-carousel {
+        gap: 20px;
+    }
+
+    .carousel-arrow {
+        font-size: 18px;
+        padding: 5px;
+    }
+
+    .review-item .review-text {
+        font-size: 16px;
+    }
+
+    .review-item .review-stars i {
+        font-size: 18px;
+    }
+
+    /* About section responsive */
+    .about-map-wrapper {
+        padding: 40px 30px;
+    }
+
+    .map-pin {
+        width: 80px;
+        height: 80px;
+        font-size: 32px;
+    }
+
+    /* Contact form responsive */
+    .contact-form-wrapper {
+        padding: 30px 20px;
+    }
+}
+
+/* Small Mobile Devices */
+@media (max-width: 480px) {
+    .hero-stats {
+        flex-direction: column;
+        gap: 30px;
+        align-items: center;
+    }
+
+    .stat {
+        text-align: center;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .cta-phone {
+        display: none;
+    }
+
+    .feature-item {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .contact-item {
+        flex-direction: column;
+        text-align: center;
+    }
+}
