@@ -55,6 +55,10 @@ body {
     display: block;
 }
 
+.section-divider.first-divider {
+    background: var(--dark);
+}
+
 .section-divider.dark-to-light {
     background: var(--dark);
 }
@@ -63,13 +67,9 @@ body {
     background: var(--dark-light);
 }
 
-.section-divider.first-divider {
-    background: var(--dark);
-}
-
 .section-header {
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 40px;
 }
 
 .section-tag {
