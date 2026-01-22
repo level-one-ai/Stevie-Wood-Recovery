@@ -1,6 +1,4 @@
-/* =============================================
-   Stevie Wood Recovery - Header Styles
-   ============================================= */
+/* Stevie Wood Recovery - Header Styles */
 
 header {
     position: fixed;
@@ -29,7 +27,6 @@ header {
     gap: 16px;
 }
 
-/* Header Logo */
 .header-logo-container {
     position: relative;
     width: 50px;
@@ -89,7 +86,6 @@ header {
     box-shadow: 0 0 10px rgba(34, 211, 238, 0.6);
 }
 
-/* SW Text Logo */
 .header-logo-shape .letters {
     font-size: 20px;
     font-weight: 700;
@@ -119,7 +115,6 @@ header {
     text-transform: uppercase;
 }
 
-/* Navigation */
 nav {
     display: flex;
     align-items: center;
