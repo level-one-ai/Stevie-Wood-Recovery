@@ -1,6 +1,5 @@
 /* Stevie Wood Recovery - Section Styles */
 
-/* Services Section */
 .services {
     padding: 100px 40px;
     background: #1e293b;
@@ -55,7 +54,6 @@
     line-height: 1.7;
 }
 
-/* About Section */
 .about {
     padding: 100px 40px;
     background: #0f172a;
@@ -159,7 +157,6 @@
     line-height: 1.8;
 }
 
-/* Reviews Section */
 .reviews {
     padding: 100px 40px;
     background: #1e293b;
