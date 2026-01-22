@@ -1,11 +1,6 @@
-/* =============================================
-   Stevie Wood Recovery - Section Styles
-   (Services, About, Reviews)
-   ============================================= */
+/* Stevie Wood Recovery - Section Styles */
 
-/* =============================================
-   Services Section
-   ============================================= */
+/* Services Section */
 .services {
     padding: 100px 40px;
     background: var(--dark-light);
@@ -60,9 +55,7 @@
     line-height: 1.7;
 }
 
-/* =============================================
-   About Section
-   ============================================= */
+/* About Section */
 .about {
     padding: 100px 40px;
     background: var(--dark);
@@ -133,7 +126,6 @@
     margin: 0;
 }
 
-/* About Map/Coverage Area */
 .about-map-wrapper {
     background: var(--dark-light);
     border-radius: 30px;
@@ -167,9 +159,7 @@
     line-height: 1.8;
 }
 
-/* =============================================
-   Reviews Section
-   ============================================= */
+/* Reviews Section */
 .reviews {
     padding: 100px 40px;
     background: var(--dark-light);
@@ -190,7 +180,6 @@
     line-height: 1.8;
 }
 
-/* Review Carousel */
 .review-carousel {
     display: flex;
     align-items: center;
