@@ -1,10 +1,6 @@
-/* =============================================
-   Stevie Wood Recovery - Contact & Footer Styles
-   ============================================= */
+/* Stevie Wood Recovery - Contact and Footer Styles */
 
-/* =============================================
-   Contact Section
-   ============================================= */
+/* Contact Section */
 .contact {
     padding: 100px 40px;
     background: var(--dark);
@@ -76,7 +72,6 @@
     color: var(--primary);
 }
 
-/* Contact Form */
 .contact-form-wrapper {
     background: var(--dark-light);
     border-radius: 30px;
@@ -152,9 +147,7 @@
     box-shadow: 0 15px 40px rgba(99, 102, 241, 0.4);
 }
 
-/* =============================================
-   Footer
-   ============================================= */
+/* Footer */
 footer {
     background: var(--dark-light);
     padding: 60px 40px 30px;
