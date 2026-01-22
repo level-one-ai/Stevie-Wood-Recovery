@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="header-container">
             <div class="logo-section">
@@ -48,7 +47,6 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-container">
             <div class="hero-content">
@@ -93,7 +91,6 @@
         </div>
     </section>
 
-    <!-- Section Divider: Dark to Light -->
     <div class="section-divider dark-to-light first-divider">
         <svg viewBox="0 0 1440 120" preserveAspectRatio="none" fill="none">
             <path d="M0,0 L0,60 Q360,120 720,60 T1440,60 L1440,0 Z" fill="#0f172a"/>
@@ -101,7 +98,6 @@
         </svg>
     </div>
 
-    <!-- Services Section -->
     <section class="services" id="services">
         <div class="section-header">
             <span class="section-tag">Our Services</span>
@@ -168,14 +164,12 @@
         </div>
     </section>
 
-    <!-- Section Divider: Light to Dark -->
     <div class="section-divider light-to-dark">
         <svg viewBox="0 0 1440 120" preserveAspectRatio="none" fill="none">
             <path d="M0,0 C240,80 480,100 720,60 C960,20 1200,80 1440,40 L1440,120 L0,120 Z" fill="#0f172a"/>
         </svg>
     </div>
 
-    <!-- About Section -->
     <section class="about" id="about">
         <div class="about-container">
             <div class="about-content">
@@ -216,7 +210,7 @@
                         </div>
                         <div class="feature-text">
                             <h4>All Vehicles Welcome</h4>
-                            <p>Cars, vans, 4x4s, classic vehicles & more</p>
+                            <p>Cars, vans, 4x4s, classic vehicles and more</p>
                         </div>
                     </div>
                 </div>
@@ -227,22 +221,20 @@
                         <i class="fas fa-map-marker-alt"></i>
                     </div>
                     <div class="coverage-text">
-                        <h3>Covering Edinburgh & Surrounding Areas</h3>
-                        <p>Gilmerton • Liberton • Morningside • Leith • Portobello • Musselburgh • Dalkeith • and more</p>
+                        <h3>Covering Edinburgh and Surrounding Areas</h3>
+                        <p>Gilmerton, Liberton, Morningside, Leith, Portobello, Musselburgh, Dalkeith, and more</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Section Divider: Dark to Light -->
     <div class="section-divider dark-to-light">
         <svg viewBox="0 0 1440 120" preserveAspectRatio="none" fill="none">
             <path d="M0,120 L0,80 Q240,20 480,60 T960,40 T1440,80 L1440,120 Z" fill="#1e293b"/>
         </svg>
     </div>
 
-    <!-- Reviews Section -->
     <section class="reviews" id="reviews">
         <div class="reviews-container">
             <div class="section-header">
@@ -252,7 +244,6 @@
             
             <p class="reviews-intro">Drivers across Edinburgh rely on us for stress-free breakdown recovery and dependable roadside support. We pride ourselves on clear communication, fair pricing, and delivering a service that removes as much stress as possible from an already difficult situation.</p>
             
-            <!-- Fade Review Carousel -->
             <div class="review-carousel">
                 <button class="carousel-arrow carousel-prev" aria-label="Previous review">
                     <i class="fas fa-chevron-left"></i>
@@ -336,18 +327,15 @@
                     <i class="fas fa-chevron-right"></i>
                 </button>
             </div>
-
         </div>
     </section>
 
-    <!-- Section Divider: Light to Dark -->
     <div class="section-divider light-to-dark">
         <svg viewBox="0 0 1440 120" preserveAspectRatio="none" fill="none">
             <path d="M0,0 Q360,100 720,50 T1440,80 L1440,120 L0,120 Z" fill="#0f172a"/>
         </svg>
     </div>
 
-    <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="contact-container">
             <div class="contact-info">
@@ -420,7 +408,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Vehicle Make & Model</label>
+                        <label>Vehicle Make and Model</label>
                         <input type="text" placeholder="e.g. Ford Focus 2019">
                     </div>
                     <div class="form-group">
@@ -447,7 +435,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-container">
             <div class="footer-top">
@@ -467,7 +454,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Stevie Wood Recovery. All rights reserved.</p>
+                <p>2024 Stevie Wood Recovery. All rights reserved.</p>
                 <div class="footer-links">
                     <a href="#">Privacy Policy</a>
                     <a href="#">Terms of Service</a>
@@ -475,7 +462,7 @@
             </div>
         </div>
     </footer>
-<!-- Review Carousel Script -->
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const reviews = document.querySelectorAll('.review-item');
@@ -485,40 +472,31 @@
             let autoplayInterval;
             
             function showReview(index) {
-                // Remove active class from all
-                reviews.forEach(review => {
+                reviews.forEach(function(review) {
                     review.classList.remove('active');
                     review.classList.remove('fade-out');
                 });
-                
-                // Add active class to current
                 reviews[index].classList.add('active');
             }
             
             function fadeToNext() {
-                // Fade out current
                 reviews[currentIndex].classList.add('fade-out');
-                
-                // After fade out, show next
-                setTimeout(() => {
+                setTimeout(function() {
                     currentIndex = (currentIndex + 1) % reviews.length;
                     showReview(currentIndex);
                 }, 500);
             }
             
             function fadeToPrev() {
-                // Fade out current
                 reviews[currentIndex].classList.add('fade-out');
-                
-                // After fade out, show previous
-                setTimeout(() => {
+                setTimeout(function() {
                     currentIndex = (currentIndex - 1 + reviews.length) % reviews.length;
                     showReview(currentIndex);
                 }, 500);
             }
             
             function startAutoplay() {
-                autoplayInterval = setInterval(fadeToNext, 4000); // 3s display + 0.5s fade out + 0.5s fade in
+                autoplayInterval = setInterval(fadeToNext, 4000);
             }
             
             function resetAutoplay() {
@@ -526,18 +504,16 @@
                 startAutoplay();
             }
             
-            // Arrow click handlers
-            nextBtn.addEventListener('click', () => {
+            nextBtn.addEventListener('click', function() {
                 fadeToNext();
                 resetAutoplay();
             });
             
-            prevBtn.addEventListener('click', () => {
+            prevBtn.addEventListener('click', function() {
                 fadeToPrev();
                 resetAutoplay();
             });
             
-            // Start autoplay
             startAutoplay();
         });
     </script>
