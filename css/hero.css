@@ -1,6 +1,4 @@
-/* =============================================
-   Stevie Wood Recovery - Hero Section Styles
-   ============================================= */
+/* Stevie Wood Recovery - Hero Section Styles */
 
 .hero {
     min-height: 100vh;
@@ -75,7 +73,6 @@
     letter-spacing: 1px;
 }
 
-/* Hero Logo */
 .hero-logo-wrapper {
     display: flex;
     justify-content: center;
