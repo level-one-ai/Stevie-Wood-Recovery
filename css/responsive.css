@@ -42,10 +42,6 @@
     .mobile-menu-btn {
         display: block;
     }
-
-    .reviews-background {
-        background-attachment: scroll;
-    }
 }
 
 @media (max-width: 768px) {
