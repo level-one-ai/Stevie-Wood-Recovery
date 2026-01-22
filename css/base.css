@@ -69,6 +69,10 @@ body {
     background: var(--dark-light);
 }
 
+.section-divider.first-divider {
+    background: transparent;
+}
+
 /* Common Section Styles */
 .section-header {
     text-align: center;
