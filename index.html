@@ -93,7 +93,7 @@
 
     <div class="section-divider first-divider">
         <svg viewBox="0 0 1440 120" preserveAspectRatio="none" fill="none">
-            <path d="M0,0 C240,80 480,100 720,60 C960,20 1200,80 1440,40 L1440,120 L0,120 Z" fill="#1e293b"/>
+            <path d="M0,0 C240,80 480,100 720,60 C960,20 1200,80 1440,40 L1440,120 L0,120 Z" fill="#1e293b"></path>
         </svg>
     </div>
 
@@ -165,7 +165,7 @@
 
     <div class="section-divider light-to-dark">
         <svg viewBox="0 0 1440 120" preserveAspectRatio="none" fill="none">
-            <path d="M0,0 C240,80 480,100 720,60 C960,20 1200,80 1440,40 L1440,120 L0,120 Z" fill="#0f172a"/>
+            <path d="M0,0 C240,80 480,100 720,60 C960,20 1200,80 1440,40 L1440,120 L0,120 Z" fill="#0f172a"></path>
         </svg>
     </div>
 
@@ -230,11 +230,13 @@
 
     <div class="section-divider dark-to-light">
         <svg viewBox="0 0 1440 120" preserveAspectRatio="none" fill="none">
-            <path d="M0,120 L0,80 Q240,20 480,60 T960,40 T1440,80 L1440,120 Z" fill="#1e293b"/>
+            <path d="M0,120 L0,80 Q240,20 480,60 T960,40 T1440,80 L1440,120 Z" fill="#1e293b"></path>
         </svg>
     </div>
 
     <section class="reviews" id="reviews">
+        <div class="reviews-background"></div>
+        <div class="reviews-overlay"></div>
         <div class="reviews-container">
             <div class="section-header">
                 <span class="section-tag">Testimonials</span>
@@ -243,95 +245,85 @@
             
             <p class="reviews-intro">Drivers across Edinburgh rely on us for stress-free breakdown recovery and dependable roadside support. We pride ourselves on clear communication, fair pricing, and delivering a service that removes as much stress as possible from an already difficult situation.</p>
             
-            <div class="review-carousel">
-                <button class="carousel-arrow carousel-prev" aria-label="Previous review">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                
-                <div class="review-display">
-                    <div class="review-item active">
-                        <div class="review-stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <p class="review-text">"Absolutely brilliant service! My car broke down late at night and Stevie was there within 30 minutes. Professional, friendly, and got me home safely. Can't recommend highly enough!"</p>
-                        <p class="review-author">James Mitchell - Google</p>
+            <div class="review-display">
+                <div class="review-item active">
+                    <div class="review-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
                     </div>
-                    
-                    <div class="review-item">
-                        <div class="review-stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <p class="review-text">"Great service, quick help, inexpensive repairs. We had an accident in Edinburgh and were helped immediately. The repair was started immediately, quick and cheap solutions were sought and the next day, incredibly quickly, we were able to continue our road trip!"</p>
-                        <p class="review-author">Sarah Campbell - Google</p>
-                    </div>
-                    
-                    <div class="review-item">
-                        <div class="review-stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <p class="review-text">"Had a flat battery on Christmas Eve and Stevie came out within 40 minutes. Got me going again in no time. Friendly, efficient, and fairly priced. A lifesaver!"</p>
-                        <p class="review-author">David Thomson - Google</p>
-                    </div>
-                    
-                    <div class="review-item">
-                        <div class="review-stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <p class="review-text">"Fantastic recovery service. My van broke down in Gilmerton and they were on scene incredibly fast. Very professional and took great care of my vehicle. Highly recommend!"</p>
-                        <p class="review-author">Robert Wilson - Google</p>
-                    </div>
-                    
-                    <div class="review-item">
-                        <div class="review-stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <p class="review-text">"Used Stevie Wood Recovery twice now and both times the service has been excellent. Fast, reliable, and very friendly. Wouldn't hesitate to recommend to anyone in Edinburgh."</p>
-                        <p class="review-author">Laura Henderson - Google</p>
-                    </div>
-                    
-                    <div class="review-item">
-                        <div class="review-stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <p class="review-text">"Best towing company in Edinburgh! They recovered my classic car with great care. The driver was knowledgeable and took extra precautions. Excellent service all round."</p>
-                        <p class="review-author">Andrew MacLeod - Google</p>
-                    </div>
+                    <p class="review-text">"Absolutely brilliant service! My car broke down late at night and Stevie was there within 30 minutes. Professional, friendly, and got me home safely. Can't recommend highly enough!"</p>
+                    <p class="review-author">James Mitchell - Google</p>
                 </div>
                 
-                <button class="carousel-arrow carousel-next" aria-label="Next review">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
+                <div class="review-item">
+                    <div class="review-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-text">"Great service, quick help, inexpensive repairs. We had an accident in Edinburgh and were helped immediately. The repair was started immediately, quick and cheap solutions were sought and the next day, incredibly quickly, we were able to continue our road trip!"</p>
+                    <p class="review-author">Sarah Campbell - Google</p>
+                </div>
+                
+                <div class="review-item">
+                    <div class="review-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-text">"Had a flat battery on Christmas Eve and Stevie came out within 40 minutes. Got me going again in no time. Friendly, efficient, and fairly priced. A lifesaver!"</p>
+                    <p class="review-author">David Thomson - Google</p>
+                </div>
+                
+                <div class="review-item">
+                    <div class="review-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-text">"Fantastic recovery service. My van broke down in Gilmerton and they were on scene incredibly fast. Very professional and took great care of my vehicle. Highly recommend!"</p>
+                    <p class="review-author">Robert Wilson - Google</p>
+                </div>
+                
+                <div class="review-item">
+                    <div class="review-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-text">"Used Stevie Wood Recovery twice now and both times the service has been excellent. Fast, reliable, and very friendly. Wouldn't hesitate to recommend to anyone in Edinburgh."</p>
+                    <p class="review-author">Laura Henderson - Google</p>
+                </div>
+                
+                <div class="review-item">
+                    <div class="review-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-text">"Best towing company in Edinburgh! They recovered my classic car with great care. The driver was knowledgeable and took extra precautions. Excellent service all round."</p>
+                    <p class="review-author">Andrew MacLeod - Google</p>
+                </div>
             </div>
         </div>
     </section>
 
     <div class="section-divider light-to-dark">
         <svg viewBox="0 0 1440 120" preserveAspectRatio="none" fill="none">
-            <path d="M0,0 Q360,100 720,50 T1440,80 L1440,120 L0,120 Z" fill="#0f172a"/>
+            <path d="M0,0 Q360,100 720,50 T1440,80 L1440,120 L0,120 Z" fill="#0f172a"></path>
         </svg>
     </div>
 
@@ -464,17 +456,15 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const reviews = document.querySelectorAll('.review-item');
-            const prevBtn = document.querySelector('.carousel-prev');
-            const nextBtn = document.querySelector('.carousel-next');
-            let currentIndex = 0;
-            let autoplayInterval;
+            var reviews = document.querySelectorAll('.review-item');
+            var currentIndex = 0;
+            var autoplayInterval;
             
             function showReview(index) {
-                reviews.forEach(function(review) {
-                    review.classList.remove('active');
-                    review.classList.remove('fade-out');
-                });
+                for (var i = 0; i < reviews.length; i++) {
+                    reviews[i].classList.remove('active');
+                    reviews[i].classList.remove('fade-out');
+                }
                 reviews[index].classList.add('active');
             }
             
@@ -486,32 +476,9 @@
                 }, 500);
             }
             
-            function fadeToPrev() {
-                reviews[currentIndex].classList.add('fade-out');
-                setTimeout(function() {
-                    currentIndex = (currentIndex - 1 + reviews.length) % reviews.length;
-                    showReview(currentIndex);
-                }, 500);
-            }
-            
             function startAutoplay() {
                 autoplayInterval = setInterval(fadeToNext, 4000);
             }
-            
-            function resetAutoplay() {
-                clearInterval(autoplayInterval);
-                startAutoplay();
-            }
-            
-            nextBtn.addEventListener('click', function() {
-                fadeToNext();
-                resetAutoplay();
-            });
-            
-            prevBtn.addEventListener('click', function() {
-                fadeToPrev();
-                resetAutoplay();
-            });
             
             startAutoplay();
         });
