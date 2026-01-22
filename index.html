@@ -238,9 +238,7 @@
                 <span class="section-tag">Testimonials</span>
                 <h2>What Our Customers Say</h2>
             </div>
-            
             <p class="reviews-intro">Drivers across Edinburgh rely on us for stress-free breakdown recovery and dependable roadside support. We pride ourselves on clear communication, fair pricing, and delivering a service that removes as much stress as possible from an already difficult situation.</p>
-            
             <div class="review-display">
                 <div class="review-item active">
                     <div class="review-stars">
@@ -253,7 +251,6 @@
                     <p class="review-text">"Absolutely brilliant service! My car broke down late at night and Stevie was there within 30 minutes. Professional, friendly, and got me home safely. Can't recommend highly enough!"</p>
                     <p class="review-author">James Mitchell - Google</p>
                 </div>
-                
                 <div class="review-item">
                     <div class="review-stars">
                         <i class="fas fa-star"></i>
@@ -265,7 +262,6 @@
                     <p class="review-text">"Great service, quick help, inexpensive repairs. We had an accident in Edinburgh and were helped immediately. The repair was started immediately, quick and cheap solutions were sought and the next day, incredibly quickly, we were able to continue our road trip!"</p>
                     <p class="review-author">Sarah Campbell - Google</p>
                 </div>
-                
                 <div class="review-item">
                     <div class="review-stars">
                         <i class="fas fa-star"></i>
@@ -277,7 +273,6 @@
                     <p class="review-text">"Had a flat battery on Christmas Eve and Stevie came out within 40 minutes. Got me going again in no time. Friendly, efficient, and fairly priced. A lifesaver!"</p>
                     <p class="review-author">David Thomson - Google</p>
                 </div>
-                
                 <div class="review-item">
                     <div class="review-stars">
                         <i class="fas fa-star"></i>
@@ -289,7 +284,6 @@
                     <p class="review-text">"Fantastic recovery service. My van broke down in Gilmerton and they were on scene incredibly fast. Very professional and took great care of my vehicle. Highly recommend!"</p>
                     <p class="review-author">Robert Wilson - Google</p>
                 </div>
-                
                 <div class="review-item">
                     <div class="review-stars">
                         <i class="fas fa-star"></i>
@@ -301,7 +295,6 @@
                     <p class="review-text">"Used Stevie Wood Recovery twice now and both times the service has been excellent. Fast, reliable, and very friendly. Wouldn't hesitate to recommend to anyone in Edinburgh."</p>
                     <p class="review-author">Laura Henderson - Google</p>
                 </div>
-                
                 <div class="review-item">
                     <div class="review-stars">
                         <i class="fas fa-star"></i>
@@ -451,21 +444,20 @@
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Review carousel
-            var reviews = document.querySelectorAll('.review-item');
+        document.addEventListener("DOMContentLoaded", function() {
+            var reviews = document.querySelectorAll(".review-item");
             var currentIndex = 0;
             
             function showReview(index) {
                 for (var i = 0; i < reviews.length; i++) {
-                    reviews[i].classList.remove('active');
-                    reviews[i].classList.remove('fade-out');
+                    reviews[i].classList.remove("active");
+                    reviews[i].classList.remove("fade-out");
                 }
-                reviews[index].classList.add('active');
+                reviews[index].classList.add("active");
             }
             
             function fadeToNext() {
-                reviews[currentIndex].classList.add('fade-out');
+                reviews[currentIndex].classList.add("fade-out");
                 setTimeout(function() {
                     currentIndex = (currentIndex + 1) % reviews.length;
                     showReview(currentIndex);
@@ -474,9 +466,8 @@
             
             setInterval(fadeToNext, 4000);
             
-            // Laser divider animation on scroll
-            var laserDivider = document.getElementById('laser-divider');
-            var laserLine = laserDivider.querySelector('.laser-line');
+            var laserDivider = document.getElementById("laser-divider");
+            var laserLine = laserDivider.querySelector(".laser-line");
             var laserAnimated = false;
             
             function checkLaserVisibility() {
@@ -486,12 +477,12 @@
                 var windowHeight = window.innerHeight;
                 
                 if (rect.top < windowHeight && rect.bottom > 0) {
-                    laserLine.classList.add('animate');
+                    laserLine.classList.add("animate");
                     laserAnimated = true;
                 }
             }
             
-            window.addEventListener('scroll', checkLaserVisibility);
+            window.addEventListener("scroll", checkLaserVisibility);
             checkLaserVisibility();
         });
     </script>
