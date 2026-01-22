@@ -1,8 +1,5 @@
-/* =============================================
-   Stevie Wood Recovery - Variables & Base Styles
-   ============================================= */
+/* Stevie Wood Recovery - Variables and Base Styles */
 
-/* CSS Variables */
 :root {
     --primary: #6366f1;
     --primary-dark: #4f46e5;
@@ -16,7 +13,6 @@
     --white: #ffffff;
 }
 
-/* Reset & Base */
 * {
     margin: 0;
     padding: 0;
@@ -35,7 +31,6 @@ body {
     overflow-x: hidden;
 }
 
-/* Animation Keyframes */
 @keyframes ringPulse {
     0% {
         opacity: 0.8;
@@ -47,7 +42,6 @@ body {
     }
 }
 
-/* Section Dividers */
 .section-divider {
     position: relative;
     height: 120px;
@@ -73,7 +67,6 @@ body {
     background: transparent;
 }
 
-/* Common Section Styles */
 .section-header {
     text-align: center;
     margin-bottom: 60px;
@@ -106,7 +99,6 @@ body {
     margin: 0 auto;
 }
 
-/* Buttons */
 .btn-primary {
     display: inline-flex;
     align-items: center;
