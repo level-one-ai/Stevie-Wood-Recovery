@@ -3,7 +3,7 @@
 /* Contact Section */
 .contact {
     padding: 100px 40px;
-    background: var(--dark);
+    background: #0f172a;
 }
 
 .contact-container {
@@ -22,7 +22,7 @@
 
 .contact-info > p {
     font-size: 16px;
-    color: var(--gray-light);
+    color: #94a3b8;
     margin-bottom: 40px;
     line-height: 1.8;
 }
@@ -47,14 +47,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--primary);
+    color: #6366f1;
     font-size: 24px;
     flex-shrink: 0;
 }
 
 .contact-text h4 {
     font-size: 14px;
-    color: var(--gray);
+    color: #64748b;
     text-transform: uppercase;
     letter-spacing: 1px;
     margin-bottom: 4px;
@@ -64,16 +64,16 @@
 .contact-text a {
     font-size: 18px;
     font-weight: 600;
-    color: var(--light);
+    color: #f1f5f9;
     text-decoration: none;
 }
 
 .contact-text a:hover {
-    color: var(--primary);
+    color: #6366f1;
 }
 
 .contact-form-wrapper {
-    background: var(--dark-light);
+    background: #1e293b;
     border-radius: 30px;
     padding: 50px;
     border: 1px solid rgba(99, 102, 241, 0.1);
@@ -93,7 +93,7 @@
     display: block;
     font-size: 14px;
     font-weight: 500;
-    color: var(--gray-light);
+    color: #94a3b8;
     margin-bottom: 8px;
 }
 
@@ -102,10 +102,10 @@
 .form-group select {
     width: 100%;
     padding: 16px 20px;
-    background: var(--dark);
+    background: #0f172a;
     border: 1px solid rgba(99, 102, 241, 0.2);
     border-radius: 12px;
-    color: var(--light);
+    color: #f1f5f9;
     font-size: 16px;
     font-family: inherit;
     transition: border-color 0.3s;
@@ -115,7 +115,7 @@
 .form-group textarea:focus,
 .form-group select:focus {
     outline: none;
-    border-color: var(--primary);
+    border-color: #6366f1;
 }
 
 .form-group textarea {
@@ -132,10 +132,10 @@
 .submit-btn {
     width: 100%;
     padding: 18px;
-    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
     border: none;
     border-radius: 12px;
-    color: var(--white);
+    color: #ffffff;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
@@ -149,7 +149,7 @@
 
 /* Footer */
 footer {
-    background: var(--dark-light);
+    background: #1e293b;
     padding: 60px 40px 30px;
     border-top: 1px solid rgba(99, 102, 241, 0.1);
 }
@@ -177,7 +177,7 @@ footer {
 .footer-logo-icon {
     width: 50px;
     height: 50px;
-    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -194,12 +194,12 @@ footer {
 .footer-logo-text .primary {
     font-size: 18px;
     font-weight: 700;
-    color: var(--light);
+    color: #f1f5f9;
 }
 
 .footer-logo-text .secondary {
     font-size: 12px;
-    color: var(--gray);
+    color: #64748b;
 }
 
 .footer-social {
@@ -210,19 +210,19 @@ footer {
 .footer-social a {
     width: 44px;
     height: 44px;
-    background: var(--dark);
+    background: #0f172a;
     border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--gray-light);
+    color: #94a3b8;
     font-size: 18px;
     transition: all 0.3s;
 }
 
 .footer-social a:hover {
-    background: var(--primary);
-    color: var(--white);
+    background: #6366f1;
+    color: #ffffff;
 }
 
 .footer-bottom {
@@ -233,7 +233,7 @@ footer {
 
 .footer-bottom p {
     font-size: 14px;
-    color: var(--gray);
+    color: #64748b;
 }
 
 .footer-links {
@@ -243,11 +243,11 @@ footer {
 
 .footer-links a {
     font-size: 14px;
-    color: var(--gray);
+    color: #64748b;
     text-decoration: none;
     transition: color 0.3s;
 }
 
 .footer-links a:hover {
-    color: var(--light);
+    color: #f1f5f9;
 }
