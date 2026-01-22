@@ -1,6 +1,5 @@
 /* Stevie Wood Recovery - Contact and Footer Styles */
 
-/* Contact Section */
 .contact {
     padding: 100px 40px;
     background: #0f172a;
@@ -147,7 +146,6 @@
     box-shadow: 0 15px 40px rgba(99, 102, 241, 0.4);
 }
 
-/* Footer */
 footer {
     background: #1e293b;
     padding: 60px 40px 30px;
@@ -187,7 +185,7 @@ footer {
 .footer-letters {
     font-size: 20px;
     font-weight: 700;
-    color: #fff;
+    color: #ffffff;
     letter-spacing: -1px;
 }
 
