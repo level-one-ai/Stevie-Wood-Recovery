@@ -64,7 +64,7 @@ body {
 }
 
 .section-divider.first-divider {
-    background: transparent;
+    background: var(--dark);
 }
 
 .section-header {
