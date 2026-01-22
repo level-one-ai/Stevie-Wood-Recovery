@@ -91,10 +91,8 @@
         </div>
     </section>
 
-    <div class="section-divider first-divider">
-        <svg viewBox="0 0 1440 120" preserveAspectRatio="none" fill="none">
-            <path d="M0,0 C240,80 480,100 720,60 C960,20 1200,80 1440,40 L1440,120 L0,120 Z" fill="#1e293b"></path>
-        </svg>
+    <div class="laser-divider" id="laser-divider">
+        <div class="laser-line"></div>
     </div>
 
     <section class="services" id="services">
@@ -235,8 +233,6 @@
     </div>
 
     <section class="reviews" id="reviews">
-        <div class="reviews-background"></div>
-        <div class="reviews-overlay"></div>
         <div class="reviews-container">
             <div class="section-header">
                 <span class="section-tag">Testimonials</span>
@@ -456,9 +452,9 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Review carousel
             var reviews = document.querySelectorAll('.review-item');
             var currentIndex = 0;
-            var autoplayInterval;
             
             function showReview(index) {
                 for (var i = 0; i < reviews.length; i++) {
@@ -476,11 +472,27 @@
                 }, 500);
             }
             
-            function startAutoplay() {
-                autoplayInterval = setInterval(fadeToNext, 4000);
+            setInterval(fadeToNext, 4000);
+            
+            // Laser divider animation on scroll
+            var laserDivider = document.getElementById('laser-divider');
+            var laserLine = laserDivider.querySelector('.laser-line');
+            var laserAnimated = false;
+            
+            function checkLaserVisibility() {
+                if (laserAnimated) return;
+                
+                var rect = laserDivider.getBoundingClientRect();
+                var windowHeight = window.innerHeight;
+                
+                if (rect.top < windowHeight && rect.bottom > 0) {
+                    laserLine.classList.add('animate');
+                    laserAnimated = true;
+                }
             }
             
-            startAutoplay();
+            window.addEventListener('scroll', checkLaserVisibility);
+            checkLaserVisibility();
         });
     </script>
 </body>
