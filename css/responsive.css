@@ -83,18 +83,9 @@
         height: 200px;
     }
 
-    .hero-accent-ring {
-        width: 220px;
-        height: 220px;
-    }
-
-    .hero-logo-shape {
+    .hero-logo-img {
         width: 200px;
         height: 200px;
-    }
-
-    .hero-logo-shape .letters {
-        font-size: 80px;
     }
 
     .footer-top,
