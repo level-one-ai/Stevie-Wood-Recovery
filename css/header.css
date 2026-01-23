@@ -33,65 +33,12 @@ header {
     height: 50px;
 }
 
-.header-accent-ring {
-    position: absolute;
-    width: 56px;
-    height: 56px;
-    border: 1.5px solid var(--primary);
-    border-radius: 50%;
-    top: -3px;
-    left: -3px;
-    animation: ringPulse 3s ease-in-out infinite;
-}
-
-.header-accent-ring:nth-child(2) {
-    animation-delay: 1s;
-}
-
-.header-accent-ring:nth-child(3) {
-    animation-delay: 2s;
-}
-
-.header-logo-shape {
+.header-logo-img {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background: linear-gradient(145deg, #6366f1 0%, #4f46e5 50%, #4338ca 100%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
-}
-
-.header-logo-shape::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 50%;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, transparent 100%);
-    border-radius: 50%;
-}
-
-.header-accent-dot {
-    position: absolute;
-    width: 6px;
-    height: 6px;
-    background: var(--accent);
-    border-radius: 50%;
-    top: 6px;
-    right: 6px;
-    box-shadow: 0 0 10px rgba(34, 211, 238, 0.6);
-}
-
-.header-logo-shape .letters {
-    font-size: 20px;
-    font-weight: 700;
-    color: #fff;
-    letter-spacing: -1px;
-    z-index: 1;
+    object-fit: cover;
+    object-position: center;
 }
 
 .logo-text {
@@ -102,7 +49,7 @@ header {
 .logo-text .primary {
     font-size: 18px;
     font-weight: 700;
-    color: var(--light);
+    color: #f1f5f9;
     letter-spacing: 2px;
     text-transform: uppercase;
 }
@@ -110,7 +57,7 @@ header {
 .logo-text .secondary {
     font-size: 11px;
     font-weight: 300;
-    color: var(--gray);
+    color: #64748b;
     letter-spacing: 4px;
     text-transform: uppercase;
 }
@@ -122,7 +69,7 @@ nav {
 }
 
 nav a {
-    color: var(--gray-light);
+    color: #94a3b8;
     text-decoration: none;
     font-size: 14px;
     font-weight: 500;
@@ -130,17 +77,17 @@ nav a {
 }
 
 nav a:hover {
-    color: var(--white);
+    color: #ffffff;
 }
 
 .cta-phone {
     display: flex;
     align-items: center;
     gap: 10px;
-    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
     padding: 12px 24px;
     border-radius: 50px;
-    color: var(--white);
+    color: #ffffff;
     text-decoration: none;
     font-weight: 600;
     font-size: 14px;
@@ -156,7 +103,7 @@ nav a:hover {
     display: none;
     background: none;
     border: none;
-    color: var(--light);
+    color: #f1f5f9;
     font-size: 24px;
     cursor: pointer;
 }
