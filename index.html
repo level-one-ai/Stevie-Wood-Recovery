@@ -178,6 +178,64 @@
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
+        
+        /* Checkbox Styles */
+        .checkbox-group {
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+        }
+        .checkbox-label input[type="checkbox"] {
+            display: none;
+        }
+        .checkbox-custom {
+            width: 24px;
+            height: 24px;
+            border: 2px solid rgba(99, 102, 241, 0.4);
+            border-radius: 6px;
+            margin-right: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            flex-shrink: 0;
+        }
+        .checkbox-custom::after {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            font-size: 14px;
+            color: #ffffff;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        .checkbox-label input[type="checkbox"]:checked + .checkbox-custom {
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            border-color: #25d366;
+        }
+        .checkbox-label input[type="checkbox"]:checked + .checkbox-custom::after {
+            opacity: 1;
+        }
+        .checkbox-text {
+            font-size: 15px;
+            color: #f1f5f9;
+            font-weight: 500;
+        }
+        .checkbox-hint {
+            color: #25d366;
+            font-weight: 400;
+            font-size: 13px;
+        }
+        
+        /* WhatsApp Popup Icon */
+        .popup-icon-whatsapp {
+            background: linear-gradient(135deg, #25d366, #128c7e);
+        }
     </style>
 </head>
 <body>
@@ -571,6 +629,13 @@
                             <label for="message">Additional Information</label>
                             <textarea id="message" name="message" placeholder="Tell us more about your situation..."></textarea>
                         </div>
+                        <div class="form-group checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="hasWhatsapp" name="hasWhatsapp">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">Yes, I have WhatsApp <span class="checkbox-hint">(Get a faster response)</span></span>
+                            </label>
+                        </div>
                         <button type="submit" class="submit-btn">
                             <i class="fas fa-paper-plane" aria-hidden="true"></i> Send Request
                         </button>
@@ -611,14 +676,25 @@
         </div>
     </footer>
 
-    <!-- Thank You Popup -->
-    <div class="popup-overlay" id="thankYouPopup">
+    <!-- Thank You Popup - Email Version -->
+    <div class="popup-overlay" id="thankYouPopupEmail">
         <div class="popup-content">
             <div class="popup-icon">
-                <i class="fas fa-check"></i>
+                <i class="fas fa-envelope"></i>
             </div>
             <h3>Thank You!</h3>
             <p>Your quote request has been successfully submitted. You will receive an email confirmation shortly. Our team will review your details and get back to you as soon as possible.</p>
+        </div>
+    </div>
+
+    <!-- Thank You Popup - WhatsApp Version -->
+    <div class="popup-overlay" id="thankYouPopupWhatsApp">
+        <div class="popup-content">
+            <div class="popup-icon popup-icon-whatsapp">
+                <i class="fab fa-whatsapp"></i>
+            </div>
+            <h3>Opening WhatsApp...</h3>
+            <p>Your quote request is ready to send via WhatsApp. Just tap <strong>Send</strong> in WhatsApp to complete your request. We'll respond as quickly as possible!</p>
         </div>
     </div>
 
@@ -764,16 +840,101 @@
             setupAutocomplete(locationInput, locationResults);
             setupAutocomplete(destinationInput, destinationResults);
             
-            // Form submission to Make.com webhook
+            // Form submission to Make.com webhook with WhatsApp integration
             var quoteForm = document.getElementById("quote-form");
             var submitBtn = quoteForm.querySelector(".submit-btn");
-            var thankYouPopup = document.getElementById("thankYouPopup");
+            var thankYouPopupEmail = document.getElementById("thankYouPopupEmail");
+            var thankYouPopupWhatsApp = document.getElementById("thankYouPopupWhatsApp");
+            var hasWhatsappCheckbox = document.getElementById("hasWhatsapp");
             
             // ============================================================
             // IMPORTANT: Replace this URL with your Make.com webhook URL
             // ============================================================
             var MAKE_WEBHOOK_URL = "YOUR_MAKE_WEBHOOK_URL_HERE";
             // ============================================================
+            
+            // Stevie's WhatsApp number (international format without +)
+            var WHATSAPP_NUMBER = "447934015448";
+            
+            // Get service label from value
+            function getServiceLabel(value) {
+                var labels = {
+                    "breakdown": "Breakdown Recovery",
+                    "towing": "Vehicle Towing",
+                    "jumpstart": "Jump Start",
+                    "accident": "Accident Recovery",
+                    "fuel": "Wrong Fuel / Fuel Delivery",
+                    "other": "Other"
+                };
+                return labels[value] || value;
+            }
+            
+            // Build WhatsApp message
+            function buildWhatsAppMessage(data) {
+                var message = "🚗 *NEW QUOTE REQUEST*\n\n";
+                message += "👤 *Name:* " + data.name + "\n";
+                message += "📞 *Phone:* " + data.phone + "\n";
+                message += "📧 *Email:* " + data.email + "\n";
+                message += "📍 *Pickup:* " + data.location + "\n";
+                if (data.destination) {
+                    message += "🏁 *Destination:* " + data.destination + "\n";
+                }
+                if (data.vehicle) {
+                    message += "🚙 *Vehicle:* " + data.vehicle + "\n";
+                }
+                if (data.service) {
+                    message += "🔧 *Service:* " + getServiceLabel(data.service) + "\n";
+                }
+                if (data.message) {
+                    message += "💬 *Message:* " + data.message + "\n";
+                }
+                return message;
+            }
+            
+            // Open WhatsApp with pre-filled message
+            function openWhatsApp(data) {
+                var message = buildWhatsAppMessage(data);
+                var encodedMessage = encodeURIComponent(message);
+                var whatsappUrl = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodedMessage;
+                
+                // Try to open WhatsApp
+                var newWindow = window.open(whatsappUrl, "_blank");
+                
+                // Check if window opened (fallback detection)
+                return new Promise(function(resolve) {
+                    // Give it a moment to open
+                    setTimeout(function() {
+                        // If window is null or was blocked, return false
+                        if (!newWindow || newWindow.closed || typeof newWindow.closed === "undefined") {
+                            resolve(false);
+                        } else {
+                            resolve(true);
+                        }
+                    }, 1000);
+                });
+            }
+            
+            // Show popup for specified duration
+            function showPopup(popup, duration) {
+                popup.classList.add("active");
+                setTimeout(function() {
+                    popup.classList.remove("active");
+                }, duration);
+            }
+            
+            // Send data to Make.com webhook
+            function sendToWebhook(formData) {
+                return fetch(MAKE_WEBHOOK_URL, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(formData)
+                })
+                .then(function(response) {
+                    return response.json();
+                });
+            }
             
             quoteForm.addEventListener("submit", function(e) {
                 e.preventDefault();
@@ -793,45 +954,61 @@
                     vehicle: document.getElementById("vehicle").value,
                     service: document.getElementById("service").value,
                     message: document.getElementById("message").value,
+                    hasWhatsapp: hasWhatsappCheckbox.checked,
                     timestamp: new Date().toISOString()
                 };
                 
-                // Send to Make.com webhook
-                fetch(MAKE_WEBHOOK_URL, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(formData)
-                })
-                .then(function(response) {
-                    return response.json();
-                })
-                .then(function(data) {
-                    if (data.success) {
-                        // Show thank you popup
-                        thankYouPopup.classList.add("active");
-                        
-                        // Reset form
-                        quoteForm.reset();
-                        
-                        // Hide popup after 3 seconds
-                        setTimeout(function() {
-                            thankYouPopup.classList.remove("active");
-                        }, 3000);
-                    } else {
-                        throw new Error("Server did not confirm receipt");
-                    }
-                })
-                .catch(function(error) {
-                    console.log("Form submission error:", error);
-                    alert("There was an error sending your request. Please try calling us directly on 07934 015448.");
-                })
-                .finally(function() {
-                    // Restore button
-                    submitBtn.innerHTML = originalBtnText;
-                    submitBtn.disabled = false;
-                });
+                // Check if user has WhatsApp
+                if (hasWhatsappCheckbox.checked) {
+                    // User has WhatsApp - try to open it and send webhook
+                    openWhatsApp(formData).then(function(whatsappOpened) {
+                        // Always send to webhook regardless of WhatsApp opening
+                        sendToWebhook(formData)
+                            .then(function(data) {
+                                if (whatsappOpened) {
+                                    // WhatsApp opened successfully
+                                    showPopup(thankYouPopupWhatsApp, 3000);
+                                } else {
+                                    // WhatsApp didn't open - fallback to email confirmation
+                                    showPopup(thankYouPopupEmail, 3000);
+                                }
+                                quoteForm.reset();
+                            })
+                            .catch(function(error) {
+                                console.log("Webhook error:", error);
+                                if (whatsappOpened) {
+                                    // WhatsApp opened but webhook failed - still show WhatsApp popup
+                                    showPopup(thankYouPopupWhatsApp, 3000);
+                                    quoteForm.reset();
+                                } else {
+                                    alert("There was an error sending your request. Please try calling us directly on 07934 015448.");
+                                }
+                            })
+                            .finally(function() {
+                                submitBtn.innerHTML = originalBtnText;
+                                submitBtn.disabled = false;
+                            });
+                    });
+                } else {
+                    // User doesn't have WhatsApp - just send webhook for email
+                    sendToWebhook(formData)
+                        .then(function(data) {
+                            if (data.success) {
+                                showPopup(thankYouPopupEmail, 3000);
+                                quoteForm.reset();
+                            } else {
+                                throw new Error("Server did not confirm receipt");
+                            }
+                        })
+                        .catch(function(error) {
+                            console.log("Form submission error:", error);
+                            alert("There was an error sending your request. Please try calling us directly on 07934 015448.");
+                        })
+                        .finally(function() {
+                            submitBtn.innerHTML = originalBtnText;
+                            submitBtn.disabled = false;
+                        });
+                }
             });
         });
     </script>
