@@ -104,6 +104,80 @@
             margin-right: 10px;
             color: #6366f1;
         }
+        
+        /* Thank You Popup Styles */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(15, 23, 42, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .popup-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .popup-content {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 24px;
+            padding: 50px;
+            text-align: center;
+            max-width: 400px;
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+        .popup-overlay.active .popup-content {
+            transform: scale(1);
+        }
+        .popup-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 40px;
+            color: #ffffff;
+        }
+        .popup-content h3 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #f1f5f9;
+            margin-bottom: 12px;
+        }
+        .popup-content p {
+            font-size: 16px;
+            color: #94a3b8;
+            line-height: 1.6;
+        }
+        .submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+        .submit-btn .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #ffffff;
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-right: 10px;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body>
@@ -133,6 +207,21 @@
             </button>
         </div>
     </header>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav" id="mobileNav">
+        <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close menu">
+            <i class="fas fa-times"></i>
+        </button>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact</a>
+        <a href="tel:07934015448" class="mobile-nav-phone">
+            <i class="fas fa-phone"></i>
+            Call 07934 015448
+        </a>
+    </nav>
 
     <main>
         <section class="hero">
@@ -516,11 +605,56 @@
                     <a href="#">Terms of Service</a>
                 </div>
             </div>
+            <div class="footer-watermark">
+                <p>Website designed and built by <a href="#">Level One</a></p>
+            </div>
         </div>
     </footer>
 
+    <!-- Thank You Popup -->
+    <div class="popup-overlay" id="thankYouPopup">
+        <div class="popup-content">
+            <div class="popup-icon">
+                <i class="fas fa-check"></i>
+            </div>
+            <h3>Thank You!</h3>
+            <p>Your quote request has been successfully submitted. You will receive an email confirmation shortly. Our team will review your details and get back to you as soon as possible.</p>
+        </div>
+    </div>
+
     <script>
         document.addEventListener("DOMContentLoaded", function() {
+            // Mobile Menu
+            var mobileMenuBtn = document.querySelector(".mobile-menu-btn");
+            var mobileNav = document.getElementById("mobileNav");
+            var mobileNavClose = document.getElementById("mobileNavClose");
+            var mobileNavLinks = mobileNav.querySelectorAll("a");
+            
+            function openMobileMenu() {
+                mobileNav.classList.add("active");
+                document.body.style.overflow = "hidden";
+            }
+            
+            function closeMobileMenu() {
+                mobileNav.classList.remove("active");
+                document.body.style.overflow = "";
+            }
+            
+            mobileMenuBtn.addEventListener("click", openMobileMenu);
+            mobileNavClose.addEventListener("click", closeMobileMenu);
+            
+            // Close menu when clicking a link
+            mobileNavLinks.forEach(function(link) {
+                link.addEventListener("click", closeMobileMenu);
+            });
+            
+            // Close menu on escape key
+            document.addEventListener("keydown", function(e) {
+                if (e.key === "Escape" && mobileNav.classList.contains("active")) {
+                    closeMobileMenu();
+                }
+            });
+            
             // Review carousel
             var reviews = document.querySelectorAll(".review-item");
             var currentIndex = 0;
@@ -629,6 +763,76 @@
             
             setupAutocomplete(locationInput, locationResults);
             setupAutocomplete(destinationInput, destinationResults);
+            
+            // Form submission to Make.com webhook
+            var quoteForm = document.getElementById("quote-form");
+            var submitBtn = quoteForm.querySelector(".submit-btn");
+            var thankYouPopup = document.getElementById("thankYouPopup");
+            
+            // ============================================================
+            // IMPORTANT: Replace this URL with your Make.com webhook URL
+            // ============================================================
+            var MAKE_WEBHOOK_URL = "YOUR_MAKE_WEBHOOK_URL_HERE";
+            // ============================================================
+            
+            quoteForm.addEventListener("submit", function(e) {
+                e.preventDefault();
+                
+                // Show loading state
+                var originalBtnText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<span class="spinner"></span> Sending...';
+                submitBtn.disabled = true;
+                
+                // Collect form data
+                var formData = {
+                    name: document.getElementById("name").value,
+                    phone: document.getElementById("phone").value,
+                    email: document.getElementById("email").value,
+                    location: document.getElementById("location").value,
+                    destination: document.getElementById("destination").value,
+                    vehicle: document.getElementById("vehicle").value,
+                    service: document.getElementById("service").value,
+                    message: document.getElementById("message").value,
+                    timestamp: new Date().toISOString()
+                };
+                
+                // Send to Make.com webhook
+                fetch(MAKE_WEBHOOK_URL, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(formData)
+                })
+                .then(function(response) {
+                    return response.json();
+                })
+                .then(function(data) {
+                    if (data.success) {
+                        // Show thank you popup
+                        thankYouPopup.classList.add("active");
+                        
+                        // Reset form
+                        quoteForm.reset();
+                        
+                        // Hide popup after 3 seconds
+                        setTimeout(function() {
+                            thankYouPopup.classList.remove("active");
+                        }, 3000);
+                    } else {
+                        throw new Error("Server did not confirm receipt");
+                    }
+                })
+                .catch(function(error) {
+                    console.log("Form submission error:", error);
+                    alert("There was an error sending your request. Please try calling us directly on 07934 015448.");
+                })
+                .finally(function() {
+                    // Restore button
+                    submitBtn.innerHTML = originalBtnText;
+                    submitBtn.disabled = false;
+                });
+            });
         });
     </script>
 </body>
