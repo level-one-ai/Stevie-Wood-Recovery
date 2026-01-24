@@ -3,7 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stevie Wood Recovery | 24/7 Vehicle Recovery Edinburgh</title>
+    <title>24/7 Vehicle Recovery Edinburgh | Breakdown Recovery & Towing | Stevie Wood Recovery</title>
+    <meta name="description" content="Fast 24/7 breakdown recovery in Edinburgh. Local vehicle recovery, towing, jump starts & accident recovery. Average 40-minute response. Call 07934 015448 now.">
+    <meta name="keywords" content="vehicle recovery Edinburgh, breakdown recovery Edinburgh, car recovery Edinburgh, 24 hour recovery Edinburgh, towing service Edinburgh, roadside assistance Edinburgh">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Stevie Wood Recovery">
+    <link rel="canonical" href="https://steviewoodrecovery.co.uk/">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="24/7 Vehicle Recovery Edinburgh | Stevie Wood Recovery">
+    <meta property="og:description" content="Fast 24/7 breakdown recovery in Edinburgh. Local vehicle recovery, towing, jump starts & accident recovery. Average 40-minute response.">
+    <meta property="og:url" content="https://steviewoodrecovery.co.uk/">
+    
+    <!-- Local Business Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Stevie Wood Recovery",
+        "description": "24/7 vehicle recovery and breakdown assistance in Edinburgh",
+        "url": "https://steviewoodrecovery.co.uk",
+        "telephone": "07934015448",
+        "email": "info@steviewoodrecovery.co.uk",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "14 Hyvot Bank Ave",
+            "addressLocality": "Edinburgh",
+            "postalCode": "EH17 8NJ",
+            "addressCountry": "GB"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "55.9074",
+            "longitude": "-3.1355"
+        },
+        "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+            "opens": "00:00",
+            "closes": "23:59"
+        },
+        "areaServed": {
+            "@type": "City",
+            "name": "Edinburgh"
+        },
+        "priceRange": "££",
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "5",
+            "reviewCount": "65"
+        }
+    }
+    </script>
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/base.css">
@@ -12,13 +65,53 @@
     <link rel="stylesheet" href="css/sections.css">
     <link rel="stylesheet" href="css/contact-footer.css">
     <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- Address Autocomplete Styles -->
+    <style>
+        .autocomplete-container {
+            position: relative;
+        }
+        .autocomplete-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: #0f172a;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 8px;
+            max-height: 200px;
+            overflow-y: auto;
+            z-index: 1000;
+            display: none;
+        }
+        .autocomplete-results.active {
+            display: block;
+        }
+        .autocomplete-item {
+            padding: 12px 16px;
+            cursor: pointer;
+            border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+            color: #f1f5f9;
+            font-size: 14px;
+        }
+        .autocomplete-item:hover {
+            background: rgba(99, 102, 241, 0.2);
+        }
+        .autocomplete-item:last-child {
+            border-bottom: none;
+        }
+        .autocomplete-item i {
+            margin-right: 10px;
+            color: #6366f1;
+        }
+    </style>
 </head>
 <body>
     <header>
         <div class="header-container">
             <div class="logo-section">
                 <div class="header-logo-container">
-                    <img src="images/logo.jpg" alt="Stevie Wood Recovery Logo" class="header-logo-img">
+                    <img src="images/logo.jpg" alt="Stevie Wood Recovery - Edinburgh Vehicle Recovery Service" class="header-logo-img">
                 </div>
                 <div class="logo-text">
                     <span class="primary">Stevie Wood</span>
@@ -35,363 +128,368 @@
                 <i class="fas fa-phone"></i>
                 Call Now
             </a>
-            <button class="mobile-menu-btn">
+            <button class="mobile-menu-btn" aria-label="Open mobile menu">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
     </header>
 
-    <section class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1>Edinburgh's <span>Trusted</span> Vehicle Recovery Service</h1>
-                <p>24/7 breakdown recovery and assistance for cars, vans, 4x4s, and light commercial vehicles. Fast response times, professional service, and competitive prices.</p>
-                <div class="hero-buttons">
-                    <a href="tel:07934015448" class="btn-primary">
-                        <i class="fas fa-phone"></i>
-                        Call 07934 015448
-                    </a>
-                    <a href="#contact" class="btn-secondary">
-                        <i class="fas fa-envelope"></i>
-                        Get a Quote
-                    </a>
-                </div>
-                <div class="hero-stats">
-                    <div class="stat">
-                        <div class="stat-number">24/7</div>
-                        <div class="stat-label">Availability</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-number">65+</div>
-                        <div class="stat-label">5-Star Reviews</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-number">40min</div>
-                        <div class="stat-label">Avg Response</div>
-                    </div>
-                </div>
-            </div>
-            <div class="hero-logo-wrapper">
-                <div class="hero-logo-container">
-                    <div class="hero-accent-ring"></div>
-                    <div class="hero-accent-ring"></div>
-                    <div class="hero-accent-ring"></div>
-                    <div class="hero-logo-circle">
-                        <img src="images/logo.jpg" alt="Stevie Wood Recovery Logo" class="hero-logo-img">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="laser-divider" id="laser-divider">
-        <div class="laser-line"></div>
-    </div>
-
-    <section class="services" id="services">
-        <div class="section-header">
-            <span class="section-tag">Our Services</span>
-            <h2>Complete Recovery Solutions</h2>
-            <p>From roadside breakdowns to accident recovery, we provide comprehensive vehicle recovery services across Edinburgh and surrounding areas.</p>
-        </div>
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-car-crash"></i>
-                </div>
-                <h3>Breakdown Recovery</h3>
-                <p>Stranded on the roadside? Our rapid response team will get you and your vehicle to safety quickly and efficiently.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-truck-pickup"></i>
-                </div>
-                <h3>Vehicle Towing</h3>
-                <p>Professional towing service for cars, vans, 4x4s, and light commercial vehicles to your home or garage of choice.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-car-battery"></i>
-                </div>
-                <h3>Jump Starts</h3>
-                <p>Flat battery? We'll get you back on the road with our professional jump start service, available 24/7.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-car-side"></i>
-                </div>
-                <h3>Accident Recovery</h3>
-                <p>Experienced in handling accident repairs and recovery at affordable prices. We'll take care of everything.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-gas-pump"></i>
-                </div>
-                <h3>Fuel Assistance</h3>
-                <p>Run out of fuel or put the wrong fuel in? We can help with fuel delivery and contamination issues.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-clock"></i>
-                </div>
-                <h3>24/7 Emergency</h3>
-                <p>Day or night, weekday or weekend, we're always available when you need us most.</p>
-            </div>
-        </div>
-    </section>
-
-    <div class="section-divider light-to-dark">
-        <svg viewBox="0 0 1440 120" preserveAspectRatio="none" fill="none">
-            <path d="M0,0 C240,80 480,100 720,60 C960,20 1200,80 1440,40 L1440,120 L0,120 Z" fill="#0f172a"></path>
-        </svg>
-    </div>
-
-    <section class="about" id="about">
-        <div class="about-container">
-            <div class="about-content">
-                <h2>Edinburgh Based <span>Recovery Service</span></h2>
-                <p>Stevie Wood Recovery provides the best breakdown assistance in Edinburgh for cars and light commercial vehicles. Our aim is to provide our customers with the best service available 24/7.</p>
-                <p>We aim to give you 100% customer satisfaction with proper friendly and professional service. Our workers are experienced in dealing with accident repairs and recovery at affordable prices.</p>
-                <div class="features-list">
-                    <div class="feature-item">
-                        <div class="feature-icon">
-                            <i class="fas fa-check"></i>
-                        </div>
-                        <div class="feature-text">
-                            <h4>Fast Response Times</h4>
-                            <p>Average 40-minute arrival across Edinburgh</p>
-                        </div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">
-                            <i class="fas fa-check"></i>
-                        </div>
-                        <div class="feature-text">
-                            <h4>Competitive Pricing</h4>
-                            <p>Fair and transparent pricing with no hidden fees</p>
-                        </div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">
-                            <i class="fas fa-check"></i>
-                        </div>
-                        <div class="feature-text">
-                            <h4>Professional Team</h4>
-                            <p>Experienced, friendly, and fully trained staff</p>
-                        </div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">
-                            <i class="fas fa-check"></i>
-                        </div>
-                        <div class="feature-text">
-                            <h4>All Vehicles Welcome</h4>
-                            <p>Cars, vans, 4x4s, classic vehicles and more</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="about-image">
-                <div class="about-map-wrapper">
-                    <div class="map-pin">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <div class="coverage-text">
-                        <h3>Covering Edinburgh and Surrounding Areas</h3>
-                        <p>Gilmerton, Liberton, Morningside, Leith, Portobello, Musselburgh, Dalkeith, and more</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="section-divider dark-to-light">
-        <svg viewBox="0 0 1440 120" preserveAspectRatio="none" fill="none">
-            <path d="M0,120 L0,80 Q240,20 480,60 T960,40 T1440,80 L1440,120 Z" fill="#1e293b"></path>
-        </svg>
-    </div>
-
-    <section class="reviews" id="reviews">
-        <div class="reviews-container">
-            <div class="section-header">
-                <span class="section-tag">Testimonials</span>
-                <h2>What Our Customers Say</h2>
-            </div>
-            <p class="reviews-intro">Drivers across Edinburgh rely on us for stress-free breakdown recovery and dependable roadside support. We pride ourselves on clear communication, fair pricing, and delivering a service that removes as much stress as possible from an already difficult situation.</p>
-            <div class="review-display">
-                <div class="review-item active">
-                    <div class="review-stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="review-text">"Absolutely brilliant service! My car broke down late at night and Stevie was there within 30 minutes. Professional, friendly, and got me home safely. Can't recommend highly enough!"</p>
-                    <p class="review-author">James Mitchell - Google</p>
-                </div>
-                <div class="review-item">
-                    <div class="review-stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="review-text">"Great service, quick help, inexpensive repairs. We had an accident in Edinburgh and were helped immediately. The repair was started immediately, quick and cheap solutions were sought and the next day, incredibly quickly, we were able to continue our road trip!"</p>
-                    <p class="review-author">Sarah Campbell - Google</p>
-                </div>
-                <div class="review-item">
-                    <div class="review-stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="review-text">"Had a flat battery on Christmas Eve and Stevie came out within 40 minutes. Got me going again in no time. Friendly, efficient, and fairly priced. A lifesaver!"</p>
-                    <p class="review-author">David Thomson - Google</p>
-                </div>
-                <div class="review-item">
-                    <div class="review-stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="review-text">"Fantastic recovery service. My van broke down in Gilmerton and they were on scene incredibly fast. Very professional and took great care of my vehicle. Highly recommend!"</p>
-                    <p class="review-author">Robert Wilson - Google</p>
-                </div>
-                <div class="review-item">
-                    <div class="review-stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="review-text">"Used Stevie Wood Recovery twice now and both times the service has been excellent. Fast, reliable, and very friendly. Wouldn't hesitate to recommend to anyone in Edinburgh."</p>
-                    <p class="review-author">Laura Henderson - Google</p>
-                </div>
-                <div class="review-item">
-                    <div class="review-stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="review-text">"Best towing company in Edinburgh! They recovered my classic car with great care. The driver was knowledgeable and took extra precautions. Excellent service all round."</p>
-                    <p class="review-author">Andrew MacLeod - Google</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="section-divider light-to-dark">
-        <svg viewBox="0 0 1440 120" preserveAspectRatio="none" fill="none">
-            <path d="M0,0 Q360,100 720,50 T1440,80 L1440,120 L0,120 Z" fill="#0f172a"></path>
-        </svg>
-    </div>
-
-    <section class="contact" id="contact">
-        <div class="contact-container">
-            <div class="contact-info">
-                <h2>Get In Touch</h2>
-                <p>Breaking down can be frustrating and stressful, but there's no need to panic. Simply call Edinburgh's trusted recovery service. We're here to help 24/7 and always aim to attend within 40 minutes.</p>
-                <div class="contact-details">
-                    <div class="contact-item">
-                        <div class="contact-icon">
+    <main>
+        <section class="hero">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1>24/7 Vehicle Recovery <span>Edinburgh</span></h1>
+                    <p>Stranded in Edinburgh? Our local breakdown recovery team responds fast, typically within 40 minutes. Professional towing and roadside assistance for cars, vans, and 4x4s across Edinburgh and the Lothians.</p>
+                    <div class="hero-buttons">
+                        <a href="tel:07934015448" class="btn-primary">
                             <i class="fas fa-phone"></i>
-                        </div>
-                        <div class="contact-text">
-                            <h4>Phone</h4>
-                            <a href="tel:07934015448">07934 015448</a>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
+                            Call 07934 015448
+                        </a>
+                        <a href="#contact" class="btn-secondary">
                             <i class="fas fa-envelope"></i>
+                            Get a Quote
+                        </a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">Always Available</div>
                         </div>
-                        <div class="contact-text">
-                            <h4>Email</h4>
-                            <a href="mailto:info@steviewoodrecovery.co.uk">info@steviewoodrecovery.co.uk</a>
+                        <div class="stat">
+                            <div class="stat-number">65+</div>
+                            <div class="stat-label">5-Star Reviews</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">40min</div>
+                            <div class="stat-label">Avg Response</div>
                         </div>
                     </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="contact-text">
-                            <h4>Location</h4>
-                            <p>14 Hyvot Bank Ave, Edinburgh EH17 8NJ</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-clock"></i>
-                        </div>
-                        <div class="contact-text">
-                            <h4>Hours</h4>
-                            <p>24 Hours, 7 Days a Week</p>
+                </div>
+                <div class="hero-logo-wrapper">
+                    <div class="hero-logo-container">
+                        <div class="hero-accent-ring"></div>
+                        <div class="hero-accent-ring"></div>
+                        <div class="hero-accent-ring"></div>
+                        <div class="hero-logo-circle">
+                            <img src="images/logo.jpg" alt="Stevie Wood Recovery Logo" class="hero-logo-img">
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="contact-form-wrapper">
-                <form class="contact-form" id="quote-form">
-                    <h3>Request a Quote</h3>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Your Name</label>
-                            <input type="text" name="name" placeholder="John Smith" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Phone Number</label>
-                            <input type="tel" name="phone" placeholder="07XXX XXXXXX" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Email Address</label>
-                        <input type="email" name="email" placeholder="john@example.com" required>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Vehicle Location</label>
-                            <input type="text" name="location" placeholder="Current location" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Vehicle Destination</label>
-                            <input type="text" name="destination" placeholder="Where to take it">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Vehicle Make and Model</label>
-                        <input type="text" name="vehicle" placeholder="e.g. Ford Focus 2019">
-                    </div>
-                    <div class="form-group">
-                        <label>Service Required</label>
-                        <select name="service">
-                            <option value="">Select a service</option>
-                            <option value="breakdown">Breakdown Recovery</option>
-                            <option value="towing">Vehicle Towing</option>
-                            <option value="jumpstart">Jump Start</option>
-                            <option value="accident">Accident Recovery</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Additional Information</label>
-                        <textarea name="message" placeholder="Tell us more about your situation..."></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">
-                        <i class="fas fa-paper-plane"></i> Send Request
-                    </button>
-                </form>
-            </div>
+        </section>
+
+        <div class="laser-divider" id="laser-divider">
+            <div class="laser-line"></div>
         </div>
-    </section>
+
+        <section class="services" id="services">
+            <div class="section-header">
+                <span class="section-tag">Our Services</span>
+                <h2>Edinburgh Breakdown Recovery Services</h2>
+                <p>From emergency roadside assistance to accident recovery, we provide reliable vehicle recovery services throughout Edinburgh, Midlothian, and East Lothian.</p>
+            </div>
+            <div class="services-grid">
+                <article class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-car-crash" aria-hidden="true"></i>
+                    </div>
+                    <h3>Breakdown Recovery</h3>
+                    <p>Vehicle broken down in Edinburgh? Our rapid response team will reach you quickly, recover your car, van, or 4x4, and transport it to your chosen garage or home address.</p>
+                </article>
+                <article class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-truck-pickup" aria-hidden="true"></i>
+                    </div>
+                    <h3>Vehicle Towing Edinburgh</h3>
+                    <p>Professional towing service across Edinburgh and Scotland. We safely transport cars, vans, 4x4s, and light commercial vehicles to any destination you need.</p>
+                </article>
+                <article class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-car-battery" aria-hidden="true"></i>
+                    </div>
+                    <h3>Jump Start Service</h3>
+                    <p>Flat battery in Edinburgh? Our mobile jump start service gets you back on the road fast. Available 24 hours a day, 7 days a week, including bank holidays.</p>
+                </article>
+                <article class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-car-side" aria-hidden="true"></i>
+                    </div>
+                    <h3>Accident Recovery</h3>
+                    <p>Been in an accident? We provide prompt accident recovery throughout Edinburgh. Our experienced team handles your vehicle with care during stressful situations.</p>
+                </article>
+                <article class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-gas-pump" aria-hidden="true"></i>
+                    </div>
+                    <h3>Wrong Fuel Recovery</h3>
+                    <p>Put petrol in your diesel or diesel in your petrol? We offer wrong fuel assistance and emergency fuel delivery across Edinburgh and surrounding areas.</p>
+                </article>
+                <article class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-clock" aria-hidden="true"></i>
+                    </div>
+                    <h3>24 Hour Emergency</h3>
+                    <p>Day or night, weekday or weekend, Christmas or New Year—we answer every call. Edinburgh's reliable 24-hour emergency vehicle recovery service.</p>
+                </article>
+            </div>
+        </section>
+
+        <div class="section-divider light-to-dark">
+            <svg viewBox="0 0 1440 120" preserveAspectRatio="none" fill="none" aria-hidden="true">
+                <path d="M0,0 C240,80 480,100 720,60 C960,20 1200,80 1440,40 L1440,120 L0,120 Z" fill="#0f172a"></path>
+            </svg>
+        </div>
+
+        <section class="about" id="about">
+            <div class="about-container">
+                <div class="about-content">
+                    <h2>Local Edinburgh <span>Recovery Experts</span></h2>
+                    <p>Stevie Wood Recovery has been helping Edinburgh drivers for years. As a local, family-run business based in Gilmerton, we understand how stressful breakdowns can be. That's why we focus on fast response times, fair pricing, and friendly service.</p>
+                    <p>Unlike national breakdown services, we're based right here in Edinburgh. This means we know the local roads, can reach you faster, and offer competitive rates without hidden fees or membership costs.</p>
+                    <div class="features-list">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-check" aria-hidden="true"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Fast Edinburgh Response</h4>
+                                <p>Average 40-minute arrival time across the city</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-check" aria-hidden="true"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>No Hidden Fees</h4>
+                                <p>Transparent pricing quoted before we start</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-check" aria-hidden="true"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Local Family Business</h4>
+                                <p>Edinburgh-based with local knowledge</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-check" aria-hidden="true"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>All Vehicle Types</h4>
+                                <p>Cars, vans, 4x4s, motorcycles, and classics</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="about-map-wrapper">
+                        <div class="map-pin">
+                            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                        </div>
+                        <div class="coverage-text">
+                            <h3>Areas We Cover in Edinburgh</h3>
+                            <p>Gilmerton, Liberton, Morningside, Leith, Portobello, Musselburgh, Dalkeith, Bonnyrigg, Loanhead, Penicuik, and all Edinburgh postcodes</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider dark-to-light">
+            <svg viewBox="0 0 1440 120" preserveAspectRatio="none" fill="none" aria-hidden="true">
+                <path d="M0,120 L0,80 Q240,20 480,60 T960,40 T1440,80 L1440,120 Z" fill="#1e293b"></path>
+            </svg>
+        </div>
+
+        <section class="reviews" id="reviews">
+            <div class="reviews-container">
+                <div class="section-header">
+                    <span class="section-tag">Customer Reviews</span>
+                    <h2>What Edinburgh Drivers Say</h2>
+                </div>
+                <p class="reviews-intro">With over 65 five-star Google reviews, Edinburgh drivers trust Stevie Wood Recovery for reliable breakdown assistance. Read what our customers say about our service.</p>
+                <div class="review-display">
+                    <div class="review-item active">
+                        <div class="review-stars" aria-label="5 out of 5 stars">
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                        </div>
+                        <blockquote class="review-text">"Absolutely brilliant service! My car broke down late at night and Stevie was there within 30 minutes. Professional, friendly, and got me home safely. Can't recommend highly enough!"</blockquote>
+                        <cite class="review-author">James Mitchell - Google Review</cite>
+                    </div>
+                    <div class="review-item">
+                        <div class="review-stars" aria-label="5 out of 5 stars">
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                        </div>
+                        <blockquote class="review-text">"Great service, quick help, inexpensive repairs. We had an accident in Edinburgh and were helped immediately. Quick and cheap solutions were sought and the next day we were able to continue our road trip!"</blockquote>
+                        <cite class="review-author">Sarah Campbell - Google Review</cite>
+                    </div>
+                    <div class="review-item">
+                        <div class="review-stars" aria-label="5 out of 5 stars">
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                        </div>
+                        <blockquote class="review-text">"Had a flat battery on Christmas Eve and Stevie came out within 40 minutes. Got me going again in no time. Friendly, efficient, and fairly priced. A lifesaver!"</blockquote>
+                        <cite class="review-author">David Thomson - Google Review</cite>
+                    </div>
+                    <div class="review-item">
+                        <div class="review-stars" aria-label="5 out of 5 stars">
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                        </div>
+                        <blockquote class="review-text">"Fantastic recovery service in Edinburgh. My van broke down in Gilmerton and they were on scene incredibly fast. Very professional and took great care of my vehicle. Highly recommend!"</blockquote>
+                        <cite class="review-author">Robert Wilson - Google Review</cite>
+                    </div>
+                    <div class="review-item">
+                        <div class="review-stars" aria-label="5 out of 5 stars">
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                        </div>
+                        <blockquote class="review-text">"Used Stevie Wood Recovery twice now and both times the service has been excellent. Fast, reliable, and very friendly. Wouldn't hesitate to recommend to anyone in Edinburgh."</blockquote>
+                        <cite class="review-author">Laura Henderson - Google Review</cite>
+                    </div>
+                    <div class="review-item">
+                        <div class="review-stars" aria-label="5 out of 5 stars">
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                        </div>
+                        <blockquote class="review-text">"Best vehicle recovery company in Edinburgh! They recovered my classic car with great care. The driver was knowledgeable and took extra precautions. Excellent service all round."</blockquote>
+                        <cite class="review-author">Andrew MacLeod - Google Review</cite>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider light-to-dark">
+            <svg viewBox="0 0 1440 120" preserveAspectRatio="none" fill="none" aria-hidden="true">
+                <path d="M0,0 Q360,100 720,50 T1440,80 L1440,120 L0,120 Z" fill="#0f172a"></path>
+            </svg>
+        </div>
+
+        <section class="contact" id="contact">
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h2>Need Vehicle Recovery in Edinburgh?</h2>
+                    <p>Broken down? Don't panic. Call Edinburgh's trusted local recovery service now. We answer 24/7 and aim to reach you within 40 minutes anywhere in Edinburgh or the Lothians.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone" aria-hidden="true"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Phone</h4>
+                                <a href="tel:07934015448">07934 015448</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope" aria-hidden="true"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Email</h4>
+                                <a href="mailto:info@steviewoodrecovery.co.uk">info@steviewoodrecovery.co.uk</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Location</h4>
+                                <p>14 Hyvot Bank Ave, Edinburgh EH17 8NJ</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock" aria-hidden="true"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Hours</h4>
+                                <p>24 Hours, 7 Days a Week</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form-wrapper">
+                    <form class="contact-form" id="quote-form">
+                        <h3>Request a Free Quote</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" name="name" placeholder="John Smith" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" placeholder="07XXX XXXXXX" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group autocomplete-container">
+                                <label for="location">Vehicle Location (Pickup)</label>
+                                <input type="text" id="location" name="location" placeholder="Start typing an address..." autocomplete="off" required>
+                                <div class="autocomplete-results" id="location-results"></div>
+                            </div>
+                            <div class="form-group autocomplete-container">
+                                <label for="destination">Destination (Drop-off)</label>
+                                <input type="text" id="destination" name="destination" placeholder="Start typing an address..." autocomplete="off">
+                                <div class="autocomplete-results" id="destination-results"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="vehicle">Vehicle Make and Model</label>
+                            <input type="text" id="vehicle" name="vehicle" placeholder="e.g. Ford Focus 2019">
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Service Required</label>
+                            <select id="service" name="service">
+                                <option value="">Select a service</option>
+                                <option value="breakdown">Breakdown Recovery</option>
+                                <option value="towing">Vehicle Towing</option>
+                                <option value="jumpstart">Jump Start</option>
+                                <option value="accident">Accident Recovery</option>
+                                <option value="fuel">Wrong Fuel / Fuel Delivery</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Additional Information</label>
+                            <textarea id="message" name="message" placeholder="Tell us more about your situation..."></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane" aria-hidden="true"></i> Send Request
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <footer>
         <div class="footer-container">
@@ -406,13 +504,13 @@
                     </div>
                 </div>
                 <div class="footer-social">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-google"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                    <a href="#" aria-label="Google"><i class="fab fa-google" aria-hidden="true"></i></a>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>2024 Stevie Wood Recovery. All rights reserved.</p>
+                <p>&copy; 2024 Stevie Wood Recovery. All rights reserved. Vehicle Recovery Edinburgh.</p>
                 <div class="footer-links">
                     <a href="#">Privacy Policy</a>
                     <a href="#">Terms of Service</a>
@@ -423,6 +521,7 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
+            // Review carousel
             var reviews = document.querySelectorAll(".review-item");
             var currentIndex = 0;
             
@@ -444,6 +543,7 @@
             
             setInterval(fadeToNext, 4000);
             
+            // Laser animation
             var laserDivider = document.getElementById("laser-divider");
             var laserLine = laserDivider.querySelector(".laser-line");
             var laserStarted = false;
@@ -462,6 +562,73 @@
             
             window.addEventListener("scroll", checkLaserVisibility);
             checkLaserVisibility();
+            
+            // Address Autocomplete using Nominatim (OpenStreetMap) - Free, no API key needed
+            var locationInput = document.getElementById("location");
+            var destinationInput = document.getElementById("destination");
+            var locationResults = document.getElementById("location-results");
+            var destinationResults = document.getElementById("destination-results");
+            
+            var debounceTimer;
+            
+            function setupAutocomplete(input, resultsContainer) {
+                input.addEventListener("input", function() {
+                    clearTimeout(debounceTimer);
+                    var query = input.value.trim();
+                    
+                    if (query.length < 3) {
+                        resultsContainer.classList.remove("active");
+                        return;
+                    }
+                    
+                    debounceTimer = setTimeout(function() {
+                        // Use Nominatim API (OpenStreetMap) - free and no API key required
+                        var url = "https://nominatim.openstreetmap.org/search?format=json&q=" + encodeURIComponent(query + ", Edinburgh, UK") + "&limit=5&addressdetails=1";
+                        
+                        fetch(url, {
+                            headers: {
+                                "Accept": "application/json"
+                            }
+                        })
+                        .then(function(response) {
+                            return response.json();
+                        })
+                        .then(function(data) {
+                            resultsContainer.innerHTML = "";
+                            
+                            if (data.length > 0) {
+                                data.forEach(function(place) {
+                                    var item = document.createElement("div");
+                                    item.className = "autocomplete-item";
+                                    item.innerHTML = '<i class="fas fa-map-marker-alt"></i>' + place.display_name;
+                                    item.addEventListener("click", function() {
+                                        input.value = place.display_name;
+                                        resultsContainer.classList.remove("active");
+                                    });
+                                    resultsContainer.appendChild(item);
+                                });
+                                resultsContainer.classList.add("active");
+                            } else {
+                                resultsContainer.classList.remove("active");
+                            }
+                        })
+                        .catch(function(error) {
+                            console.log("Autocomplete error:", error);
+                            resultsContainer.classList.remove("active");
+                        });
+                    }, 300);
+                });
+                
+                // Close results when clicking outside
+                document.addEventListener("click", function(e) {
+                    if (!input.contains(e.target) && !resultsContainer.contains(e.target)) {
+                        resultsContainer.classList.remove("active");
+                    }
+                });
+            }
+            
+            setupAutocomplete(locationInput, locationResults);
+            setupAutocomplete(destinationInput, destinationResults);
         });
     </script>
 </body>
