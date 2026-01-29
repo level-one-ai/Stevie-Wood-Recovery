@@ -81,7 +81,7 @@
     }
     
     .hero-content-centered h1 {
-        font-size: 56px;
+        font-size: 64px;
     }
 }
 
@@ -118,9 +118,13 @@
     }
     
     .hero-content-centered h1 {
-        font-size: 42px;
-        white-space: normal;
-        letter-spacing: 1px;
+        font-size: 52px;
+        letter-spacing: 2px;
+    }
+    
+    .hero-bubble span {
+        font-size: 12px;
+        letter-spacing: 2px;
     }
 }
 
@@ -130,13 +134,22 @@
     }
 
     .hero {
-        padding: 120px 20px 60px;
+        padding: 100px 20px 60px;
     }
 
     .hero-content-centered h1 {
-        font-size: 32px;
+        font-size: 40px;
         margin-bottom: 30px;
-        letter-spacing: 1px;
+        letter-spacing: 2px;
+    }
+    
+    .hero-bubble {
+        padding: 10px 24px;
+    }
+    
+    .hero-bubble span {
+        font-size: 11px;
+        letter-spacing: 1.5px;
     }
 
     .services,
@@ -284,8 +297,17 @@
     }
 
     .hero-content-centered h1 {
-        font-size: 24px;
-        letter-spacing: 0.5px;
+        font-size: 32px;
+        letter-spacing: 1px;
+    }
+    
+    .hero-bubble {
+        padding: 8px 20px;
+    }
+    
+    .hero-bubble span {
+        font-size: 10px;
+        letter-spacing: 1px;
     }
 
     .section-header h2,
@@ -360,12 +382,25 @@
     }
 
     .hero {
-        padding: 100px 12px 50px;
+        padding: 90px 12px 50px;
     }
 
     .hero-content-centered h1 {
-        font-size: 20px;
-        letter-spacing: 0;
+        font-size: 26px;
+        letter-spacing: 0.5px;
+    }
+    
+    .hero-bubble {
+        padding: 6px 16px;
+    }
+    
+    .hero-bubble span {
+        font-size: 9px;
+        letter-spacing: 0.5px;
+    }
+    
+    .hero-top-bubble {
+        margin-top: 10px;
     }
 
     .services,
@@ -595,7 +630,11 @@
     }
 
     .hero-content-centered h1 {
-        font-size: 16px;
+        font-size: 22px;
+    }
+    
+    .hero-bubble span {
+        font-size: 8px;
     }
 
     .section-header h2,
