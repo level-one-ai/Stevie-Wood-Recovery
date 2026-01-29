@@ -56,7 +56,7 @@
 
 .about {
     padding: 100px 40px;
-    background: #0f172a;
+    background: #1e293b;
 }
 
 .about-container {
@@ -125,7 +125,7 @@
 }
 
 .about-map-wrapper {
-    background: #1e293b;
+    background: #0f172a;
     border-radius: 30px;
     padding: 60px;
     text-align: center;
@@ -159,7 +159,7 @@
 
 .reviews {
     padding: 100px 40px;
-    background: #1e293b;
+    background: #0f172a;
     position: relative;
     overflow: hidden;
     min-height: 500px;
