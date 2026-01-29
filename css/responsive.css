@@ -134,16 +134,16 @@
     }
 
     .hero {
-        padding: 100px 20px 60px;
-        height: 80vh;
-        min-height: 550px;
+        padding: 90px 20px 30px;
+        height: 88vh;
+        min-height: 600px;
         background-attachment: scroll;
     }
 
     .hero-content-centered h1 {
         font-size: 40px;
-        margin-bottom: 30px;
         letter-spacing: 2px;
+        padding: 16px 30px;
     }
     
     .hero-bubble {
@@ -153,6 +153,11 @@
     .hero-bubble span {
         font-size: 11px;
         letter-spacing: 1.5px;
+    }
+    
+    .hero-buttons {
+        bottom: 25px;
+        gap: 15px;
     }
 
     .services,
@@ -302,6 +307,7 @@
     .hero-content-centered h1 {
         font-size: 32px;
         letter-spacing: 1px;
+        padding: 14px 24px;
     }
     
     .hero-bubble {
@@ -311,6 +317,14 @@
     .hero-bubble span {
         font-size: 10px;
         letter-spacing: 1px;
+    }
+    
+    .hero-buttons {
+        bottom: 20px;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        width: calc(100% - 40px);
     }
 
     .section-header h2,
@@ -385,14 +399,15 @@
     }
 
     .hero {
-        padding: 90px 12px 50px;
-        height: 75vh;
-        min-height: 500px;
+        padding: 80px 12px 25px;
+        height: 85vh;
+        min-height: 550px;
     }
 
     .hero-content-centered h1 {
-        font-size: 26px;
+        font-size: 24px;
         letter-spacing: 0.5px;
+        padding: 12px 20px;
     }
     
     .hero-bubble {
@@ -405,7 +420,11 @@
     }
     
     .hero-top-bubble {
-        margin-top: 10px;
+        margin-top: 0;
+    }
+    
+    .hero-buttons {
+        bottom: 15px;
     }
 
     .services,
@@ -635,7 +654,8 @@
     }
 
     .hero-content-centered h1 {
-        font-size: 22px;
+        font-size: 20px;
+        padding: 10px 16px;
     }
     
     .hero-bubble span {
