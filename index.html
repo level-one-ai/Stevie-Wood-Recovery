@@ -66,175 +66,456 @@
     <link rel="stylesheet" href="css/contact-footer.css">
     <link rel="stylesheet" href="css/responsive.css">
     
-    <!-- Address Autocomplete Styles -->
     <style>
-        .autocomplete-container {
-            position: relative;
-        }
-        .autocomplete-results {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: #0f172a;
-            border: 1px solid rgba(99, 102, 241, 0.3);
-            border-radius: 8px;
-            max-height: 200px;
-            overflow-y: auto;
-            z-index: 1000;
-            display: none;
-        }
-        .autocomplete-results.active {
-            display: block;
-        }
-        .autocomplete-item {
-            padding: 12px 16px;
+        /* WhatsApp Widget Styles */
+        .whatsapp-widget-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             cursor: pointer;
-            border-bottom: 1px solid rgba(99, 102, 241, 0.1);
-            color: #f1f5f9;
-            font-size: 14px;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 9998;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            opacity: 0;
+            visibility: hidden;
         }
-        .autocomplete-item:hover {
-            background: rgba(99, 102, 241, 0.2);
+        .whatsapp-widget-btn.visible {
+            opacity: 1;
+            visibility: visible;
         }
-        .autocomplete-item:last-child {
-            border-bottom: none;
+        .whatsapp-widget-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.5);
         }
-        .autocomplete-item i {
-            margin-right: 10px;
-            color: #6366f1;
+        .whatsapp-widget-btn i {
+            font-size: 32px;
+            color: #ffffff;
+        }
+        .whatsapp-widget-btn.active {
+            border-radius: 50% 50% 50% 0;
         }
         
-        /* Thank You Popup Styles */
-        .popup-overlay {
+        /* Widget Panel */
+        .whatsapp-widget-panel {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 380px;
+            max-height: 580px;
+            background: #0f172a;
+            border-radius: 20px 20px 20px 0;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            transform: scale(0);
+            transform-origin: bottom right;
+            opacity: 0;
+            visibility: hidden;
+            transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+            overflow: hidden;
+        }
+        .whatsapp-widget-panel.active {
+            transform: scale(1);
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Widget Header - WhatsApp Style */
+        .widget-header {
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .widget-header-logo {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+        .widget-header-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .widget-header-info h4 {
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 600;
+            margin: 0;
+        }
+        .widget-header-info p {
+            color: rgba(255,255,255,0.8);
+            font-size: 12px;
+            margin: 2px 0 0;
+        }
+        
+        /* Widget Close Button */
+        .widget-close-btn {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            width: 36px;
+            height: 36px;
+            background: #1e293b;
+            border: 2px solid #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: #f1f5f9;
+            font-size: 16px;
+            transition: all 0.3s;
+            z-index: 10000;
+        }
+        .widget-close-btn:hover {
+            background: #25d366;
+            color: #ffffff;
+        }
+        
+        /* Widget Body */
+        .widget-body {
+            padding: 20px;
+            overflow-y: auto;
+            flex: 1;
+            background: #1e293b;
+        }
+        .widget-body::-webkit-scrollbar {
+            width: 6px;
+        }
+        .widget-body::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        .widget-body::-webkit-scrollbar-thumb {
+            background: #25d366;
+            border-radius: 3px;
+        }
+        
+        /* Widget Form */
+        .widget-form-group {
+            margin-bottom: 16px;
+        }
+        .widget-form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 500;
+            color: #94a3b8;
+            margin-bottom: 6px;
+        }
+        .widget-form-group input,
+        .widget-form-group textarea,
+        .widget-form-group select {
+            width: 100%;
+            padding: 12px 14px;
+            background: #0f172a;
+            border: 1px solid rgba(37, 211, 102, 0.2);
+            border-radius: 10px;
+            color: #f1f5f9;
+            font-size: 14px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+        .widget-form-group input:focus,
+        .widget-form-group textarea:focus,
+        .widget-form-group select:focus {
+            outline: none;
+            border-color: #25d366;
+        }
+        .widget-form-group textarea {
+            resize: none;
+            min-height: 70px;
+        }
+        .widget-form-group input::placeholder,
+        .widget-form-group textarea::placeholder {
+            color: #64748b;
+        }
+        
+        /* Widget Submit Button */
+        .widget-submit-btn {
+            width: 100%;
+            padding: 14px;
+            background: #475569;
+            border: none;
+            border-radius: 10px;
+            color: #94a3b8;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: not-allowed;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        .widget-submit-btn.ready {
+            background: #25d366;
+            color: #ffffff;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            animation: glowPulse 2s ease-in-out infinite;
+        }
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); }
+            50% { box-shadow: 0 4px 25px rgba(37, 211, 102, 0.7); }
+        }
+        .widget-submit-btn.ready:hover {
+            transform: translateY(-2px);
+        }
+        
+        /* Widget Speech Bubble Tail */
+        .widget-tail {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-top: 20px solid #1e293b;
+        }
+        
+        /* Body no-scroll when widget open */
+        body.widget-open {
+            overflow: hidden;
+        }
+        
+        /* Widget Overlay */
+        .widget-overlay {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(15, 23, 42, 0.9);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
+            background: rgba(15, 23, 42, 0.7);
+            z-index: 9997;
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
+            transition: opacity 0.3s, visibility 0.3s;
         }
-        .popup-overlay.active {
+        .widget-overlay.active {
             opacity: 1;
             visibility: visible;
         }
-        .popup-content {
-            background: linear-gradient(135deg, #1e293b, #0f172a);
-            border: 1px solid rgba(99, 102, 241, 0.3);
-            border-radius: 24px;
-            padding: 50px;
-            text-align: center;
-            max-width: 400px;
-            transform: scale(0.8);
-            transition: transform 0.3s ease;
-        }
-        .popup-overlay.active .popup-content {
-            transform: scale(1);
-        }
-        .popup-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #22c55e, #16a34a);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 24px;
-            font-size: 40px;
-            color: #ffffff;
-        }
-        .popup-content h3 {
-            font-size: 28px;
-            font-weight: 700;
-            color: #f1f5f9;
-            margin-bottom: 12px;
-        }
-        .popup-content p {
-            font-size: 16px;
-            color: #94a3b8;
-            line-height: 1.6;
-        }
-        .submit-btn:disabled {
-            opacity: 0.7;
-            cursor: not-allowed;
-        }
-        .submit-btn .spinner {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 2px solid #ffffff;
-            border-top-color: transparent;
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-            margin-right: 10px;
-        }
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
         
-        /* Checkbox Styles */
-        .checkbox-group {
-            margin-top: 10px;
-            margin-bottom: 20px;
+        /* Autocomplete in Widget */
+        .widget-autocomplete-container {
+            position: relative;
         }
-        .checkbox-label {
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-            user-select: none;
-        }
-        .checkbox-label input[type="checkbox"] {
+        .widget-autocomplete-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: #0f172a;
+            border: 1px solid rgba(37, 211, 102, 0.3);
+            border-radius: 8px;
+            max-height: 150px;
+            overflow-y: auto;
+            z-index: 10001;
             display: none;
         }
-        .checkbox-custom {
-            width: 24px;
-            height: 24px;
-            border: 2px solid rgba(99, 102, 241, 0.4);
-            border-radius: 6px;
-            margin-right: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-            flex-shrink: 0;
+        .widget-autocomplete-results.active {
+            display: block;
         }
-        .checkbox-custom::after {
-            content: '\f00c';
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            font-size: 14px;
-            color: #ffffff;
-            opacity: 0;
-            transition: opacity 0.2s;
-        }
-        .checkbox-label input[type="checkbox"]:checked + .checkbox-custom {
-            background: linear-gradient(135deg, #25d366, #128c7e);
-            border-color: #25d366;
-        }
-        .checkbox-label input[type="checkbox"]:checked + .checkbox-custom::after {
-            opacity: 1;
-        }
-        .checkbox-text {
-            font-size: 15px;
+        .widget-autocomplete-item {
+            padding: 10px 14px;
+            cursor: pointer;
+            border-bottom: 1px solid rgba(37, 211, 102, 0.1);
             color: #f1f5f9;
-            font-weight: 500;
-        }
-        .checkbox-hint {
-            color: #25d366;
-            font-weight: 400;
             font-size: 13px;
         }
+        .widget-autocomplete-item:hover {
+            background: rgba(37, 211, 102, 0.2);
+        }
+        .widget-autocomplete-item:last-child {
+            border-bottom: none;
+        }
+        .widget-autocomplete-item i {
+            margin-right: 8px;
+            color: #25d366;
+        }
         
-        /* WhatsApp Popup Icon */
-        .popup-icon-whatsapp {
-            background: linear-gradient(135deg, #25d366, #128c7e);
+        /* Image Carousel Styles */
+        .carousel-section {
+            padding: 80px 40px;
+            background: #1e293b;
+        }
+        .carousel-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .carousel-wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+        }
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .carousel-slide {
+            min-width: 100%;
+            position: relative;
+        }
+        .carousel-slide img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            display: block;
+        }
+        .carousel-caption {
+            text-align: center;
+            padding: 30px 20px;
+            background: #0f172a;
+        }
+        .carousel-caption h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #f1f5f9;
+            margin: 0 0 10px;
+        }
+        .carousel-caption p {
+            font-size: 16px;
+            color: #94a3b8;
+            margin: 0;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 24px;
+        }
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #475569;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .carousel-dot.active {
+            background: #6366f1;
+            transform: scale(1.2);
+        }
+        .carousel-dot:hover {
+            background: #6366f1;
+        }
+        
+        /* Stats Section */
+        .stats-section {
+            padding: 100px 40px;
+            background: #0f172a;
+        }
+        .stats-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+        .stats-logo-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .stats-logo-container {
+            position: relative;
+            width: 250px;
+            height: 250px;
+        }
+        .stats-accent-ring {
+            position: absolute;
+            width: 270px;
+            height: 270px;
+            border: 2px solid #6366f1;
+            border-radius: 50%;
+            top: -10px;
+            left: -10px;
+            animation: ringPulse 3s ease-in-out infinite;
+        }
+        .stats-accent-ring:nth-child(2) {
+            animation-delay: 1s;
+        }
+        .stats-accent-ring:nth-child(3) {
+            animation-delay: 2s;
+        }
+        .stats-logo-circle {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 30px 60px rgba(99, 102, 241, 0.3);
+        }
+        .stats-logo-img {
+            width: 330px;
+            height: 330px;
+            object-fit: cover;
+            object-position: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .stats-content {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+        .stats-text h2 {
+            font-size: 36px;
+            font-weight: 800;
+            color: #f1f5f9;
+            margin-bottom: 20px;
+        }
+        .stats-text h2 span {
+            background: linear-gradient(135deg, #6366f1, #22d3ee);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .stats-text p {
+            font-size: 17px;
+            color: #94a3b8;
+            line-height: 1.8;
+        }
+        .stats-numbers {
+            display: flex;
+            gap: 60px;
+        }
+        .stat-item {
+            text-align: center;
+        }
+        .stat-item .number {
+            font-size: 48px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #6366f1, #22d3ee);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .stat-item .label {
+            font-size: 14px;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 5px;
         }
     </style>
 </head>
@@ -254,7 +535,7 @@
                 <a href="#services">Services</a>
                 <a href="#about">About</a>
                 <a href="#reviews">Reviews</a>
-                <a href="#contact">Contact</a>
+                <a href="#gallery">Gallery</a>
             </nav>
             <a href="tel:07934015448" class="cta-phone">
                 <i class="fas fa-phone"></i>
@@ -274,7 +555,7 @@
         <a href="#services">Services</a>
         <a href="#about">About</a>
         <a href="#reviews">Reviews</a>
-        <a href="#contact">Contact</a>
+        <a href="#gallery">Gallery</a>
         <a href="tel:07934015448" class="mobile-nav-phone">
             <i class="fas fa-phone"></i>
             Call 07934 015448
@@ -282,364 +563,313 @@
     </nav>
 
     <main>
-        <section class="hero">
-            <div class="hero-container">
-                <div class="hero-content">
-                    <h1>24/7 Vehicle Recovery <span>Edinburgh</span></h1>
-                    <p>Stranded in Edinburgh? Our local breakdown recovery team responds fast, typically within 40 minutes. Professional towing and roadside assistance for cars, vans, and 4x4s across Edinburgh and the Lothians.</p>
-                    <div class="hero-buttons">
-                        <a href="tel:07934015448" class="btn-primary">
-                            <i class="fas fa-phone"></i>
-                            Call 07934 015448
-                        </a>
-                        <a href="#contact" class="btn-secondary">
-                            <i class="fas fa-envelope"></i>
-                            Get a Quote
-                        </a>
-                    </div>
-                    <div class="hero-stats">
-                        <div class="stat">
-                            <div class="stat-number">24/7</div>
-                            <div class="stat-label">Always Available</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-number">65+</div>
-                            <div class="stat-label">5-Star Reviews</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-number">40min</div>
-                            <div class="stat-label">Avg Response</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="hero-logo-wrapper">
-                    <div class="hero-logo-container">
-                        <div class="hero-accent-ring"></div>
-                        <div class="hero-accent-ring"></div>
-                        <div class="hero-accent-ring"></div>
-                        <div class="hero-logo-circle">
-                            <img src="images/logo.jpg" alt="Stevie Wood Recovery Logo" class="hero-logo-img">
-                        </div>
-                    </div>
+        <!-- Hero Section with Background Image -->
+        <section class="hero" id="hero">
+            <div class="hero-overlay"></div>
+            <div class="hero-content-centered">
+                <h1>24/7 Vehicle Recovery Edinburgh</h1>
+                <div class="hero-buttons">
+                    <a href="tel:07934015448" class="btn-primary">
+                        <i class="fas fa-phone"></i>
+                        Call 07934 015448
+                    </a>
+                    <button class="btn-secondary" id="getQuoteBtn">
+                        <i class="fas fa-comment-dots"></i>
+                        Get a Quote
+                    </button>
                 </div>
             </div>
         </section>
 
+        <!-- Laser Divider -->
         <div class="laser-divider" id="laser-divider">
             <div class="laser-line"></div>
         </div>
 
+        <!-- Services Section - LIGHT -->
         <section class="services" id="services">
             <div class="section-header">
-                <span class="section-tag">Our Services</span>
+                <span class="section-tag">What We Offer</span>
                 <h2>Edinburgh Breakdown Recovery Services</h2>
-                <p>From emergency roadside assistance to accident recovery, we provide reliable vehicle recovery services throughout Edinburgh, Midlothian, and East Lothian.</p>
+                <p>Professional vehicle recovery solutions available around the clock throughout Edinburgh and the Lothians.</p>
             </div>
             <div class="services-grid">
                 <article class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-car-crash" aria-hidden="true"></i>
+                        <i class="fas fa-truck-pickup" aria-hidden="true"></i>
                     </div>
                     <h3>Breakdown Recovery</h3>
-                    <p>Vehicle broken down in Edinburgh? Our rapid response team will reach you quickly, recover your car, van, or 4x4, and transport it to your chosen garage or home address.</p>
+                    <p>Fast and reliable Edinburgh breakdown recovery for cars, vans, and 4x4s. We'll get you moving again quickly.</p>
                 </article>
                 <article class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-truck-pickup" aria-hidden="true"></i>
+                        <i class="fas fa-truck-loading" aria-hidden="true"></i>
                     </div>
                     <h3>Vehicle Towing Edinburgh</h3>
-                    <p>Professional towing service across Edinburgh and Scotland. We safely transport cars, vans, 4x4s, and light commercial vehicles to any destination you need.</p>
+                    <p>Safe vehicle towing across Edinburgh and surrounding areas to your garage, home, or destination of choice.</p>
                 </article>
                 <article class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-car-battery" aria-hidden="true"></i>
                     </div>
                     <h3>Jump Start Service</h3>
-                    <p>Flat battery in Edinburgh? Our mobile jump start service gets you back on the road fast. Available 24 hours a day, 7 days a week, including bank holidays.</p>
+                    <p>Dead battery? Our 24/7 Edinburgh jump start service will have you back on the road in no time.</p>
                 </article>
                 <article class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-car-side" aria-hidden="true"></i>
+                        <i class="fas fa-car-crash" aria-hidden="true"></i>
                     </div>
                     <h3>Accident Recovery</h3>
-                    <p>Been in an accident? We provide prompt accident recovery throughout Edinburgh. Our experienced team handles your vehicle with care during stressful situations.</p>
+                    <p>Prompt and professional accident recovery services in Edinburgh. Experienced team, sensitive approach.</p>
                 </article>
                 <article class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-gas-pump" aria-hidden="true"></i>
                     </div>
                     <h3>Wrong Fuel Recovery</h3>
-                    <p>Put petrol in your diesel or diesel in your petrol? We offer wrong fuel assistance and emergency fuel delivery across Edinburgh and surrounding areas.</p>
+                    <p>Put the wrong fuel in your vehicle? We provide fuel drainage and recovery throughout Edinburgh.</p>
                 </article>
                 <article class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-clock" aria-hidden="true"></i>
                     </div>
                     <h3>24 Hour Emergency</h3>
-                    <p>Day or night, weekday or weekend, Christmas or New Year—we answer every call. Edinburgh's reliable 24-hour emergency vehicle recovery service.</p>
+                    <p>Day or night, weekends and holidays - including Christmas and New Year. We're always here for Edinburgh drivers.</p>
                 </article>
             </div>
         </section>
 
+        <!-- Curved Divider - Light to Dark -->
         <div class="section-divider light-to-dark">
-            <svg viewBox="0 0 1440 120" preserveAspectRatio="none" fill="none" aria-hidden="true">
-                <path d="M0,0 C240,80 480,100 720,60 C960,20 1200,80 1440,40 L1440,120 L0,120 Z" fill="#0f172a"></path>
+            <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+                <path fill="#0f172a" d="M0,64 C480,150 960,-20 1440,64 L1440,120 L0,120 Z"></path>
             </svg>
         </div>
 
+        <!-- Stats Section - DARK -->
+        <section class="stats-section" id="stats">
+            <div class="stats-container">
+                <div class="stats-logo-wrapper">
+                    <div class="stats-logo-container">
+                        <div class="stats-accent-ring"></div>
+                        <div class="stats-accent-ring"></div>
+                        <div class="stats-accent-ring"></div>
+                        <div class="stats-logo-circle">
+                            <img src="images/logo.jpg" alt="Stevie Wood Recovery Logo" class="stats-logo-img">
+                        </div>
+                    </div>
+                </div>
+                <div class="stats-content">
+                    <div class="stats-text">
+                        <h2>Edinburgh's <span>Trusted</span> Recovery Service</h2>
+                        <p>Stranded in Edinburgh? Don't worry - our local breakdown recovery team responds fast, typically within 40 minutes. As a family-run business with deep roots in the community, we understand that vehicle breakdowns never happen at convenient times. That's why we provide professional towing and roadside assistance for cars, vans, and 4x4s across Edinburgh and the Lothians, 24 hours a day, 7 days a week. Whether it's the middle of the night, a holiday weekend, or rush hour traffic, we're just a phone call away.</p>
+                    </div>
+                    <div class="stats-numbers">
+                        <div class="stat-item">
+                            <div class="number">24/7</div>
+                            <div class="label">Always Available</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="number">65+</div>
+                            <div class="label">5-Star Reviews</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="number">40min</div>
+                            <div class="label">Avg Response</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Curved Divider - Dark to Light -->
+        <div class="section-divider dark-to-light">
+            <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+                <path fill="#1e293b" d="M0,64 C480,150 960,-20 1440,64 L1440,120 L0,120 Z"></path>
+            </svg>
+        </div>
+
+        <!-- About Section - LIGHT -->
         <section class="about" id="about">
             <div class="about-container">
                 <div class="about-content">
-                    <h2>Local Edinburgh <span>Recovery Experts</span></h2>
-                    <p>Stevie Wood Recovery has been helping Edinburgh drivers for years. As a local, family-run business based in Gilmerton, we understand how stressful breakdowns can be. That's why we focus on fast response times, fair pricing, and friendly service.</p>
-                    <p>Unlike national breakdown services, we're based right here in Edinburgh. This means we know the local roads, can reach you faster, and offer competitive rates without hidden fees or membership costs.</p>
+                    <span class="section-tag">About Us</span>
+                    <h2>Local <span>Edinburgh</span> Recovery Experts</h2>
+                    <p>Stevie Wood Recovery is a family-run vehicle recovery business based in Edinburgh. With years of experience serving the local community, we pride ourselves on providing fast, reliable, and affordable breakdown assistance.</p>
+                    <p>Our team knows Edinburgh inside and out - from the city centre streets to the rural roads of the Lothians. We cover Gilmerton, Liberton, Morningside, Leith, Portobello, Musselburgh, Dalkeith, Bonnyrigg, Loanhead, Penicuik, and everywhere in between.</p>
                     <div class="features-list">
                         <div class="feature-item">
                             <div class="feature-icon">
-                                <i class="fas fa-check" aria-hidden="true"></i>
+                                <i class="fas fa-bolt" aria-hidden="true"></i>
                             </div>
                             <div class="feature-text">
-                                <h4>Fast Edinburgh Response</h4>
-                                <p>Average 40-minute arrival time across the city</p>
+                                <h4>Rapid Response</h4>
+                                <p>Average arrival time of 40 minutes across Edinburgh</p>
                             </div>
                         </div>
                         <div class="feature-item">
                             <div class="feature-icon">
-                                <i class="fas fa-check" aria-hidden="true"></i>
+                                <i class="fas fa-pound-sign" aria-hidden="true"></i>
                             </div>
                             <div class="feature-text">
-                                <h4>No Hidden Fees</h4>
-                                <p>Transparent pricing quoted before we start</p>
+                                <h4>Competitive Pricing</h4>
+                                <p>Fair, transparent rates with no hidden charges</p>
                             </div>
                         </div>
                         <div class="feature-item">
                             <div class="feature-icon">
-                                <i class="fas fa-check" aria-hidden="true"></i>
+                                <i class="fas fa-shield-alt" aria-hidden="true"></i>
                             </div>
                             <div class="feature-text">
-                                <h4>Local Family Business</h4>
-                                <p>Edinburgh-based with local knowledge</p>
-                            </div>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">
-                                <i class="fas fa-check" aria-hidden="true"></i>
-                            </div>
-                            <div class="feature-text">
-                                <h4>All Vehicle Types</h4>
-                                <p>Cars, vans, 4x4s, motorcycles, and classics</p>
+                                <h4>Fully Insured</h4>
+                                <p>Complete peace of mind for your vehicle</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="about-image">
-                    <div class="about-map-wrapper">
-                        <div class="map-pin">
-                            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-                        </div>
-                        <div class="coverage-text">
-                            <h3>Areas We Cover in Edinburgh</h3>
-                            <p>Gilmerton, Liberton, Morningside, Leith, Portobello, Musselburgh, Dalkeith, Bonnyrigg, Loanhead, Penicuik, and all Edinburgh postcodes</p>
-                        </div>
+                <div class="about-map-wrapper">
+                    <div class="map-pin">
+                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                    </div>
+                    <div class="coverage-text">
+                        <h3>Coverage Area</h3>
+                        <p>Edinburgh City Centre, Leith, Portobello, Musselburgh, Dalkeith, Bonnyrigg, Loanhead, Penicuik, Gilmerton, Liberton, Morningside, and all surrounding areas within the Lothians.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <div class="section-divider dark-to-light">
-            <svg viewBox="0 0 1440 120" preserveAspectRatio="none" fill="none" aria-hidden="true">
-                <path d="M0,120 L0,80 Q240,20 480,60 T960,40 T1440,80 L1440,120 Z" fill="#1e293b"></path>
+        <!-- Curved Divider - Light to Dark -->
+        <div class="section-divider light-to-dark">
+            <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+                <path fill="#0f172a" d="M0,64 C480,150 960,-20 1440,64 L1440,120 L0,120 Z"></path>
             </svg>
         </div>
 
+        <!-- Reviews Section - DARK -->
         <section class="reviews" id="reviews">
             <div class="reviews-container">
                 <div class="section-header">
-                    <span class="section-tag">Customer Reviews</span>
+                    <span class="section-tag">Testimonials</span>
                     <h2>What Edinburgh Drivers Say</h2>
                 </div>
-                <p class="reviews-intro">With over 65 five-star Google reviews, Edinburgh drivers trust Stevie Wood Recovery for reliable breakdown assistance. Read what our customers say about our service.</p>
+                <p class="reviews-intro">Don't just take our word for it. Read what our customers have to say about our Edinburgh vehicle recovery services. We're proud of our 65+ five-star Google reviews.</p>
                 <div class="review-display">
-                    <div class="review-item active">
-                        <div class="review-stars" aria-label="5 out of 5 stars">
+                    <blockquote class="review-item active">
+                        <div class="review-stars">
                             <i class="fas fa-star" aria-hidden="true"></i>
                             <i class="fas fa-star" aria-hidden="true"></i>
                             <i class="fas fa-star" aria-hidden="true"></i>
                             <i class="fas fa-star" aria-hidden="true"></i>
                             <i class="fas fa-star" aria-hidden="true"></i>
                         </div>
-                        <blockquote class="review-text">"Absolutely brilliant service! My car broke down late at night and Stevie was there within 30 minutes. Professional, friendly, and got me home safely. Can't recommend highly enough!"</blockquote>
-                        <cite class="review-author">James Mitchell - Google Review</cite>
-                    </div>
-                    <div class="review-item">
-                        <div class="review-stars" aria-label="5 out of 5 stars">
+                        <p class="review-text">"Absolutely fantastic service! Broke down at 11pm and Stevie was there within 30 minutes. Professional, friendly, and reasonably priced. Highly recommend!"</p>
+                        <cite class="review-author">- James M., Edinburgh</cite>
+                    </blockquote>
+                    <blockquote class="review-item">
+                        <div class="review-stars">
                             <i class="fas fa-star" aria-hidden="true"></i>
                             <i class="fas fa-star" aria-hidden="true"></i>
                             <i class="fas fa-star" aria-hidden="true"></i>
                             <i class="fas fa-star" aria-hidden="true"></i>
                             <i class="fas fa-star" aria-hidden="true"></i>
                         </div>
-                        <blockquote class="review-text">"Great service, quick help, inexpensive repairs. We had an accident in Edinburgh and were helped immediately. Quick and cheap solutions were sought and the next day we were able to continue our road trip!"</blockquote>
-                        <cite class="review-author">Sarah Campbell - Google Review</cite>
-                    </div>
-                    <div class="review-item">
-                        <div class="review-stars" aria-label="5 out of 5 stars">
+                        <p class="review-text">"Called at 2am when my car wouldn't start. Stevie arrived quickly and got me sorted. Can't thank him enough for the brilliant service!"</p>
+                        <cite class="review-author">- Sarah K., Musselburgh</cite>
+                    </blockquote>
+                    <blockquote class="review-item">
+                        <div class="review-stars">
                             <i class="fas fa-star" aria-hidden="true"></i>
                             <i class="fas fa-star" aria-hidden="true"></i>
                             <i class="fas fa-star" aria-hidden="true"></i>
                             <i class="fas fa-star" aria-hidden="true"></i>
                             <i class="fas fa-star" aria-hidden="true"></i>
                         </div>
-                        <blockquote class="review-text">"Had a flat battery on Christmas Eve and Stevie came out within 40 minutes. Got me going again in no time. Friendly, efficient, and fairly priced. A lifesaver!"</blockquote>
-                        <cite class="review-author">David Thomson - Google Review</cite>
-                    </div>
-                    <div class="review-item">
-                        <div class="review-stars" aria-label="5 out of 5 stars">
+                        <p class="review-text">"Best recovery service in Edinburgh! Fast response, great communication, and very professional. Will definitely use again if needed."</p>
+                        <cite class="review-author">- David R., Dalkeith</cite>
+                    </blockquote>
+                    <blockquote class="review-item">
+                        <div class="review-stars">
                             <i class="fas fa-star" aria-hidden="true"></i>
                             <i class="fas fa-star" aria-hidden="true"></i>
                             <i class="fas fa-star" aria-hidden="true"></i>
                             <i class="fas fa-star" aria-hidden="true"></i>
                             <i class="fas fa-star" aria-hidden="true"></i>
                         </div>
-                        <blockquote class="review-text">"Fantastic recovery service in Edinburgh. My van broke down in Gilmerton and they were on scene incredibly fast. Very professional and took great care of my vehicle. Highly recommend!"</blockquote>
-                        <cite class="review-author">Robert Wilson - Google Review</cite>
-                    </div>
-                    <div class="review-item">
-                        <div class="review-stars" aria-label="5 out of 5 stars">
-                            <i class="fas fa-star" aria-hidden="true"></i>
-                            <i class="fas fa-star" aria-hidden="true"></i>
-                            <i class="fas fa-star" aria-hidden="true"></i>
-                            <i class="fas fa-star" aria-hidden="true"></i>
-                            <i class="fas fa-star" aria-hidden="true"></i>
-                        </div>
-                        <blockquote class="review-text">"Used Stevie Wood Recovery twice now and both times the service has been excellent. Fast, reliable, and very friendly. Wouldn't hesitate to recommend to anyone in Edinburgh."</blockquote>
-                        <cite class="review-author">Laura Henderson - Google Review</cite>
-                    </div>
-                    <div class="review-item">
-                        <div class="review-stars" aria-label="5 out of 5 stars">
-                            <i class="fas fa-star" aria-hidden="true"></i>
-                            <i class="fas fa-star" aria-hidden="true"></i>
-                            <i class="fas fa-star" aria-hidden="true"></i>
-                            <i class="fas fa-star" aria-hidden="true"></i>
-                            <i class="fas fa-star" aria-hidden="true"></i>
-                        </div>
-                        <blockquote class="review-text">"Best vehicle recovery company in Edinburgh! They recovered my classic car with great care. The driver was knowledgeable and took extra precautions. Excellent service all round."</blockquote>
-                        <cite class="review-author">Andrew MacLeod - Google Review</cite>
-                    </div>
+                        <p class="review-text">"Put diesel in my petrol car like an idiot. Stevie was understanding, arrived fast, and sorted it all out. Life saver!"</p>
+                        <cite class="review-author">- Emma T., Portobello</cite>
+                    </blockquote>
                 </div>
             </div>
         </section>
 
-        <div class="section-divider light-to-dark">
-            <svg viewBox="0 0 1440 120" preserveAspectRatio="none" fill="none" aria-hidden="true">
-                <path d="M0,0 Q360,100 720,50 T1440,80 L1440,120 L0,120 Z" fill="#0f172a"></path>
+        <!-- Curved Divider - Dark to Light -->
+        <div class="section-divider dark-to-light">
+            <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+                <path fill="#1e293b" d="M0,64 C480,150 960,-20 1440,64 L1440,120 L0,120 Z"></path>
             </svg>
         </div>
 
-        <section class="contact" id="contact">
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h2>Need Vehicle Recovery in Edinburgh?</h2>
-                    <p>Broken down? Don't panic. Call Edinburgh's trusted local recovery service now. We answer 24/7 and aim to reach you within 40 minutes anywhere in Edinburgh or the Lothians.</p>
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-phone" aria-hidden="true"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>Phone</h4>
-                                <a href="tel:07934015448">07934 015448</a>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope" aria-hidden="true"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>Email</h4>
-                                <a href="mailto:info@steviewoodrecovery.co.uk">info@steviewoodrecovery.co.uk</a>
+        <!-- Image Carousel Section - LIGHT -->
+        <section class="carousel-section" id="gallery">
+            <div class="carousel-container">
+                <div class="section-header">
+                    <span class="section-tag">Our Work</span>
+                    <h2>Recovery in Action</h2>
+                </div>
+                <div class="carousel-wrapper">
+                    <div class="carousel-track" id="carouselTrack">
+                        <div class="carousel-slide">
+                            <img src="https://placehold.co/1200x500/1e293b/6366f1?text=Recovery+Image+1" alt="Vehicle Recovery Edinburgh">
+                            <div class="carousel-caption">
+                                <h3>24/7 Breakdown Recovery</h3>
+                                <p>Our rapid response team is always ready to assist you, day or night. We pride ourselves on reaching stranded motorists within 40 minutes across Edinburgh.</p>
                             </div>
                         </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>Location</h4>
-                                <p>14 Hyvot Bank Ave, Edinburgh EH17 8NJ</p>
+                        <div class="carousel-slide">
+                            <img src="https://placehold.co/1200x500/1e293b/6366f1?text=Recovery+Image+2" alt="Towing Service Edinburgh">
+                            <div class="carousel-caption">
+                                <h3>Professional Towing</h3>
+                                <p>Safe and secure vehicle transportation to any destination. Our modern equipment ensures your vehicle is handled with the utmost care during transit.</p>
                             </div>
                         </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-clock" aria-hidden="true"></i>
+                        <div class="carousel-slide">
+                            <img src="https://placehold.co/1200x500/1e293b/6366f1?text=Recovery+Image+3" alt="Jump Start Service">
+                            <div class="carousel-caption">
+                                <h3>Battery & Jump Start</h3>
+                                <p>Flat battery got you stuck? Our technicians carry professional-grade equipment to get your engine running again in minutes.</p>
                             </div>
-                            <div class="contact-text">
-                                <h4>Hours</h4>
-                                <p>24 Hours, 7 Days a Week</p>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="https://placehold.co/1200x500/1e293b/6366f1?text=Recovery+Image+4" alt="Accident Recovery">
+                            <div class="carousel-caption">
+                                <h3>Accident Recovery</h3>
+                                <p>Compassionate and efficient accident recovery services. We work with insurance companies and handle your vehicle with sensitivity during difficult times.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="https://placehold.co/1200x500/1e293b/6366f1?text=Recovery+Image+5" alt="Wrong Fuel Recovery">
+                            <div class="carousel-caption">
+                                <h3>Wrong Fuel Assistance</h3>
+                                <p>Misfuelled your vehicle? Don't panic - our fuel drainage service will have you back on the road without any damage to your engine.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="https://placehold.co/1200x500/1e293b/6366f1?text=Recovery+Image+6" alt="Edinburgh Coverage">
+                            <div class="carousel-caption">
+                                <h3>Complete Edinburgh Coverage</h3>
+                                <p>From the city centre to the Lothians, we cover all of Edinburgh and surrounding areas. No location is too far for Stevie Wood Recovery.</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="contact-form-wrapper">
-                    <form class="contact-form" id="quote-form">
-                        <h3>Request a Free Quote</h3>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="name">Your Name</label>
-                                <input type="text" id="name" name="name" placeholder="John Smith" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="phone">Phone Number</label>
-                                <input type="tel" id="phone" name="phone" placeholder="07XXX XXXXXX" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" placeholder="john@example.com" required>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group autocomplete-container">
-                                <label for="location">Vehicle Location (Pickup)</label>
-                                <input type="text" id="location" name="location" placeholder="Start typing an address..." autocomplete="off" required>
-                                <div class="autocomplete-results" id="location-results"></div>
-                            </div>
-                            <div class="form-group autocomplete-container">
-                                <label for="destination">Destination (Drop-off)</label>
-                                <input type="text" id="destination" name="destination" placeholder="Start typing an address..." autocomplete="off">
-                                <div class="autocomplete-results" id="destination-results"></div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="vehicle">Vehicle Make and Model</label>
-                            <input type="text" id="vehicle" name="vehicle" placeholder="e.g. Ford Focus 2019">
-                        </div>
-                        <div class="form-group">
-                            <label for="service">Service Required</label>
-                            <select id="service" name="service">
-                                <option value="">Select a service</option>
-                                <option value="breakdown">Breakdown Recovery</option>
-                                <option value="towing">Vehicle Towing</option>
-                                <option value="jumpstart">Jump Start</option>
-                                <option value="accident">Accident Recovery</option>
-                                <option value="fuel">Wrong Fuel / Fuel Delivery</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Additional Information</label>
-                            <textarea id="message" name="message" placeholder="Tell us more about your situation..."></textarea>
-                        </div>
-                        <div class="form-group checkbox-group">
-                            <label class="checkbox-label">
-                                <input type="checkbox" id="hasWhatsapp" name="hasWhatsapp">
-                                <span class="checkbox-custom"></span>
-                                <span class="checkbox-text">Yes, I have WhatsApp <span class="checkbox-hint">(Get a faster response)</span></span>
-                            </label>
-                        </div>
-                        <button type="submit" class="submit-btn">
-                            <i class="fas fa-paper-plane" aria-hidden="true"></i> Send Request
-                        </button>
-                    </form>
+                <div class="carousel-dots" id="carouselDots">
+                    <button class="carousel-dot active" data-index="0" aria-label="Slide 1"></button>
+                    <button class="carousel-dot" data-index="1" aria-label="Slide 2"></button>
+                    <button class="carousel-dot" data-index="2" aria-label="Slide 3"></button>
+                    <button class="carousel-dot" data-index="3" aria-label="Slide 4"></button>
+                    <button class="carousel-dot" data-index="4" aria-label="Slide 5"></button>
+                    <button class="carousel-dot" data-index="5" aria-label="Slide 6"></button>
                 </div>
             </div>
         </section>
@@ -676,26 +906,75 @@
         </div>
     </footer>
 
-    <!-- Thank You Popup - Email Version -->
-    <div class="popup-overlay" id="thankYouPopupEmail">
-        <div class="popup-content">
-            <div class="popup-icon">
-                <i class="fas fa-envelope"></i>
-            </div>
-            <h3>Thank You!</h3>
-            <p>Your quote request has been successfully submitted. You will receive an email confirmation shortly. Our team will review your details and get back to you as soon as possible.</p>
-        </div>
-    </div>
+    <!-- WhatsApp Widget Overlay -->
+    <div class="widget-overlay" id="widgetOverlay"></div>
 
-    <!-- Thank You Popup - WhatsApp Version -->
-    <div class="popup-overlay" id="thankYouPopupWhatsApp">
-        <div class="popup-content">
-            <div class="popup-icon popup-icon-whatsapp">
-                <i class="fab fa-whatsapp"></i>
+    <!-- WhatsApp Widget Button -->
+    <button class="whatsapp-widget-btn" id="whatsappWidgetBtn" aria-label="Open WhatsApp chat">
+        <i class="fab fa-whatsapp"></i>
+    </button>
+
+    <!-- WhatsApp Widget Panel -->
+    <div class="whatsapp-widget-panel" id="whatsappWidgetPanel">
+        <button class="widget-close-btn" id="widgetCloseBtn" aria-label="Close widget">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="widget-header">
+            <div class="widget-header-logo">
+                <img src="images/logo.jpg" alt="Stevie Wood Recovery">
             </div>
-            <h3>Opening WhatsApp...</h3>
-            <p>Your quote request is ready to send via WhatsApp. Just tap <strong>Send</strong> in WhatsApp to complete your request. We'll respond as quickly as possible!</p>
+            <div class="widget-header-info">
+                <h4>Stevie Wood Recovery</h4>
+                <p>Typically replies instantly</p>
+            </div>
         </div>
+        <div class="widget-body">
+            <form id="widgetForm">
+                <div class="widget-form-group">
+                    <label for="widgetName">Your Name *</label>
+                    <input type="text" id="widgetName" placeholder="John Smith" required>
+                </div>
+                <div class="widget-form-group">
+                    <label for="widgetPhone">Phone Number *</label>
+                    <input type="tel" id="widgetPhone" placeholder="07XXX XXXXXX" required>
+                </div>
+                <div class="widget-form-group widget-autocomplete-container">
+                    <label for="widgetLocation">Vehicle Location *</label>
+                    <input type="text" id="widgetLocation" placeholder="Start typing address..." autocomplete="off" required>
+                    <div class="widget-autocomplete-results" id="widgetLocationResults"></div>
+                </div>
+                <div class="widget-form-group widget-autocomplete-container">
+                    <label for="widgetDestination">Destination (optional)</label>
+                    <input type="text" id="widgetDestination" placeholder="Start typing address..." autocomplete="off">
+                    <div class="widget-autocomplete-results" id="widgetDestinationResults"></div>
+                </div>
+                <div class="widget-form-group">
+                    <label for="widgetVehicle">Vehicle Make/Model</label>
+                    <input type="text" id="widgetVehicle" placeholder="e.g. Ford Focus 2019">
+                </div>
+                <div class="widget-form-group">
+                    <label for="widgetService">Service Required *</label>
+                    <select id="widgetService" required>
+                        <option value="">Select a service</option>
+                        <option value="Breakdown Recovery">Breakdown Recovery</option>
+                        <option value="Vehicle Towing">Vehicle Towing</option>
+                        <option value="Jump Start">Jump Start</option>
+                        <option value="Accident Recovery">Accident Recovery</option>
+                        <option value="Wrong Fuel">Wrong Fuel / Fuel Delivery</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="widget-form-group">
+                    <label for="widgetMessage">Additional Info</label>
+                    <textarea id="widgetMessage" placeholder="Any extra details..."></textarea>
+                </div>
+                <button type="submit" class="widget-submit-btn" id="widgetSubmitBtn" disabled>
+                    <i class="fab fa-whatsapp"></i>
+                    Send via WhatsApp
+                </button>
+            </form>
+        </div>
+        <div class="widget-tail"></div>
     </div>
 
     <script>
@@ -719,12 +998,10 @@
             mobileMenuBtn.addEventListener("click", openMobileMenu);
             mobileNavClose.addEventListener("click", closeMobileMenu);
             
-            // Close menu when clicking a link
             mobileNavLinks.forEach(function(link) {
                 link.addEventListener("click", closeMobileMenu);
             });
             
-            // Close menu on escape key
             document.addEventListener("keydown", function(e) {
                 if (e.key === "Escape" && mobileNav.classList.contains("active")) {
                     closeMobileMenu();
@@ -773,15 +1050,181 @@
             window.addEventListener("scroll", checkLaserVisibility);
             checkLaserVisibility();
             
-            // Address Autocomplete using Nominatim (OpenStreetMap) - Free, no API key needed
-            var locationInput = document.getElementById("location");
-            var destinationInput = document.getElementById("destination");
-            var locationResults = document.getElementById("location-results");
-            var destinationResults = document.getElementById("destination-results");
+            // Image Carousel
+            var carouselTrack = document.getElementById("carouselTrack");
+            var carouselDots = document.querySelectorAll(".carousel-dot");
+            var currentSlide = 0;
+            var totalSlides = 6;
+            var carouselInterval;
+            
+            function goToSlide(index) {
+                currentSlide = index;
+                carouselTrack.style.transform = "translateX(-" + (index * 100) + "%)";
+                
+                carouselDots.forEach(function(dot, i) {
+                    dot.classList.remove("active");
+                    if (i === index) {
+                        dot.classList.add("active");
+                    }
+                });
+            }
+            
+            function nextSlide() {
+                var next = (currentSlide + 1) % totalSlides;
+                goToSlide(next);
+            }
+            
+            function startCarousel() {
+                carouselInterval = setInterval(nextSlide, 4000);
+            }
+            
+            function stopCarousel() {
+                clearInterval(carouselInterval);
+            }
+            
+            carouselDots.forEach(function(dot) {
+                dot.addEventListener("click", function() {
+                    stopCarousel();
+                    goToSlide(parseInt(this.dataset.index));
+                    startCarousel();
+                });
+            });
+            
+            startCarousel();
+            
+            // WhatsApp Widget
+            var whatsappWidgetBtn = document.getElementById("whatsappWidgetBtn");
+            var whatsappWidgetPanel = document.getElementById("whatsappWidgetPanel");
+            var widgetCloseBtn = document.getElementById("widgetCloseBtn");
+            var widgetOverlay = document.getElementById("widgetOverlay");
+            var getQuoteBtn = document.getElementById("getQuoteBtn");
+            var heroSection = document.getElementById("hero");
+            var servicesSection = document.getElementById("services");
+            
+            var WHATSAPP_NUMBER = "447934015448";
+            
+            // Show/hide widget button based on scroll
+            function checkWidgetVisibility() {
+                var heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+                if (window.scrollY > heroBottom - 100) {
+                    whatsappWidgetBtn.classList.add("visible");
+                } else {
+                    whatsappWidgetBtn.classList.remove("visible");
+                }
+            }
+            
+            window.addEventListener("scroll", checkWidgetVisibility);
+            checkWidgetVisibility();
+            
+            // Open widget
+            function openWidget() {
+                whatsappWidgetPanel.classList.add("active");
+                widgetOverlay.classList.add("active");
+                whatsappWidgetBtn.style.opacity = "0";
+                whatsappWidgetBtn.style.visibility = "hidden";
+                document.body.classList.add("widget-open");
+            }
+            
+            // Close widget
+            function closeWidget() {
+                whatsappWidgetPanel.classList.remove("active");
+                widgetOverlay.classList.remove("active");
+                whatsappWidgetBtn.style.opacity = "";
+                whatsappWidgetBtn.style.visibility = "";
+                document.body.classList.remove("widget-open");
+            }
+            
+            whatsappWidgetBtn.addEventListener("click", openWidget);
+            widgetCloseBtn.addEventListener("click", closeWidget);
+            widgetOverlay.addEventListener("click", closeWidget);
+            
+            // Get Quote button - scroll and open widget
+            getQuoteBtn.addEventListener("click", function() {
+                servicesSection.scrollIntoView({ behavior: "smooth" });
+                setTimeout(function() {
+                    openWidget();
+                }, 600);
+            });
+            
+            // Escape key to close widget
+            document.addEventListener("keydown", function(e) {
+                if (e.key === "Escape" && whatsappWidgetPanel.classList.contains("active")) {
+                    closeWidget();
+                }
+            });
+            
+            // Widget form validation
+            var widgetForm = document.getElementById("widgetForm");
+            var widgetSubmitBtn = document.getElementById("widgetSubmitBtn");
+            var widgetName = document.getElementById("widgetName");
+            var widgetPhone = document.getElementById("widgetPhone");
+            var widgetLocation = document.getElementById("widgetLocation");
+            var widgetService = document.getElementById("widgetService");
+            
+            function checkFormValidity() {
+                var isValid = widgetName.value.trim() !== "" &&
+                              widgetPhone.value.trim() !== "" &&
+                              widgetLocation.value.trim() !== "" &&
+                              widgetService.value !== "";
+                
+                if (isValid) {
+                    widgetSubmitBtn.classList.add("ready");
+                    widgetSubmitBtn.disabled = false;
+                } else {
+                    widgetSubmitBtn.classList.remove("ready");
+                    widgetSubmitBtn.disabled = true;
+                }
+            }
+            
+            widgetName.addEventListener("input", checkFormValidity);
+            widgetPhone.addEventListener("input", checkFormValidity);
+            widgetLocation.addEventListener("input", checkFormValidity);
+            widgetService.addEventListener("change", checkFormValidity);
+            
+            // Widget form submission - open WhatsApp
+            widgetForm.addEventListener("submit", function(e) {
+                e.preventDefault();
+                
+                var message = "🚗 *QUOTE REQUEST*\n\n";
+                message += "👤 *Name:* " + widgetName.value + "\n";
+                message += "📞 *Phone:* " + widgetPhone.value + "\n";
+                message += "📍 *Location:* " + widgetLocation.value + "\n";
+                
+                var destination = document.getElementById("widgetDestination").value;
+                if (destination) {
+                    message += "🏁 *Destination:* " + destination + "\n";
+                }
+                
+                var vehicle = document.getElementById("widgetVehicle").value;
+                if (vehicle) {
+                    message += "🚙 *Vehicle:* " + vehicle + "\n";
+                }
+                
+                message += "🔧 *Service:* " + widgetService.value + "\n";
+                
+                var additionalMessage = document.getElementById("widgetMessage").value;
+                if (additionalMessage) {
+                    message += "💬 *Message:* " + additionalMessage + "\n";
+                }
+                
+                var whatsappUrl = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message);
+                window.open(whatsappUrl, "_blank");
+                
+                // Close widget and reset form
+                closeWidget();
+                widgetForm.reset();
+                checkFormValidity();
+            });
+            
+            // Widget autocomplete
+            var widgetLocationInput = document.getElementById("widgetLocation");
+            var widgetDestinationInput = document.getElementById("widgetDestination");
+            var widgetLocationResults = document.getElementById("widgetLocationResults");
+            var widgetDestinationResults = document.getElementById("widgetDestinationResults");
             
             var debounceTimer;
             
-            function setupAutocomplete(input, resultsContainer) {
+            function setupWidgetAutocomplete(input, resultsContainer) {
                 input.addEventListener("input", function() {
                     clearTimeout(debounceTimer);
                     var query = input.value.trim();
@@ -792,7 +1235,6 @@
                     }
                     
                     debounceTimer = setTimeout(function() {
-                        // Use Nominatim API (OpenStreetMap) - free and no API key required
                         var url = "https://nominatim.openstreetmap.org/search?format=json&q=" + encodeURIComponent(query + ", Edinburgh, UK") + "&limit=5&addressdetails=1";
                         
                         fetch(url, {
@@ -809,11 +1251,12 @@
                             if (data.length > 0) {
                                 data.forEach(function(place) {
                                     var item = document.createElement("div");
-                                    item.className = "autocomplete-item";
+                                    item.className = "widget-autocomplete-item";
                                     item.innerHTML = '<i class="fas fa-map-marker-alt"></i>' + place.display_name;
                                     item.addEventListener("click", function() {
                                         input.value = place.display_name;
                                         resultsContainer.classList.remove("active");
+                                        checkFormValidity();
                                     });
                                     resultsContainer.appendChild(item);
                                 });
@@ -829,7 +1272,6 @@
                     }, 300);
                 });
                 
-                // Close results when clicking outside
                 document.addEventListener("click", function(e) {
                     if (!input.contains(e.target) && !resultsContainer.contains(e.target)) {
                         resultsContainer.classList.remove("active");
@@ -837,179 +1279,8 @@
                 });
             }
             
-            setupAutocomplete(locationInput, locationResults);
-            setupAutocomplete(destinationInput, destinationResults);
-            
-            // Form submission to Make.com webhook with WhatsApp integration
-            var quoteForm = document.getElementById("quote-form");
-            var submitBtn = quoteForm.querySelector(".submit-btn");
-            var thankYouPopupEmail = document.getElementById("thankYouPopupEmail");
-            var thankYouPopupWhatsApp = document.getElementById("thankYouPopupWhatsApp");
-            var hasWhatsappCheckbox = document.getElementById("hasWhatsapp");
-            
-            // ============================================================
-            // IMPORTANT: Replace this URL with your Make.com webhook URL
-            // ============================================================
-            var MAKE_WEBHOOK_URL = "https://hook.eu1.make.com/f3flvtuc6g6w5snlf6gn8dgk7d9vwtve";
-            // ============================================================
-            
-            // Stevie's WhatsApp number (international format without +)
-            var WHATSAPP_NUMBER = "447934015448";
-            
-            // Get service label from value
-            function getServiceLabel(value) {
-                var labels = {
-                    "breakdown": "Breakdown Recovery",
-                    "towing": "Vehicle Towing",
-                    "jumpstart": "Jump Start",
-                    "accident": "Accident Recovery",
-                    "fuel": "Wrong Fuel / Fuel Delivery",
-                    "other": "Other"
-                };
-                return labels[value] || value;
-            }
-            
-            // Build WhatsApp message
-            function buildWhatsAppMessage(data) {
-                var message = "🚗 *NEW QUOTE REQUEST*\n\n";
-                message += "👤 *Name:* " + data.name + "\n";
-                message += "📞 *Phone:* " + data.phone + "\n";
-                message += "📧 *Email:* " + data.email + "\n";
-                message += "📍 *Pickup:* " + data.location + "\n";
-                if (data.destination) {
-                    message += "🏁 *Destination:* " + data.destination + "\n";
-                }
-                if (data.vehicle) {
-                    message += "🚙 *Vehicle:* " + data.vehicle + "\n";
-                }
-                if (data.service) {
-                    message += "🔧 *Service:* " + getServiceLabel(data.service) + "\n";
-                }
-                if (data.message) {
-                    message += "💬 *Message:* " + data.message + "\n";
-                }
-                return message;
-            }
-            
-            // Open WhatsApp with pre-filled message
-            function openWhatsApp(data) {
-                var message = buildWhatsAppMessage(data);
-                var encodedMessage = encodeURIComponent(message);
-                var whatsappUrl = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodedMessage;
-                
-                // Try to open WhatsApp
-                var newWindow = window.open(whatsappUrl, "_blank");
-                
-                // Check if window opened (fallback detection)
-                return new Promise(function(resolve) {
-                    // Give it a moment to open
-                    setTimeout(function() {
-                        // If window is null or was blocked, return false
-                        if (!newWindow || newWindow.closed || typeof newWindow.closed === "undefined") {
-                            resolve(false);
-                        } else {
-                            resolve(true);
-                        }
-                    }, 1000);
-                });
-            }
-            
-            // Show popup for specified duration
-            function showPopup(popup, duration) {
-                popup.classList.add("active");
-                setTimeout(function() {
-                    popup.classList.remove("active");
-                }, duration);
-            }
-            
-            // Send data to Make.com webhook
-            function sendToWebhook(formData) {
-                return fetch(MAKE_WEBHOOK_URL, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(formData)
-                })
-                .then(function(response) {
-                    return response.json();
-                });
-            }
-            
-            quoteForm.addEventListener("submit", function(e) {
-                e.preventDefault();
-                
-                // Show loading state
-                var originalBtnText = submitBtn.innerHTML;
-                submitBtn.innerHTML = '<span class="spinner"></span> Sending...';
-                submitBtn.disabled = true;
-                
-                // Collect form data
-                var formData = {
-                    name: document.getElementById("name").value,
-                    phone: document.getElementById("phone").value,
-                    email: document.getElementById("email").value,
-                    location: document.getElementById("location").value,
-                    destination: document.getElementById("destination").value,
-                    vehicle: document.getElementById("vehicle").value,
-                    service: document.getElementById("service").value,
-                    message: document.getElementById("message").value,
-                    hasWhatsapp: hasWhatsappCheckbox.checked,
-                    timestamp: new Date().toISOString()
-                };
-                
-                // Check if user has WhatsApp
-                if (hasWhatsappCheckbox.checked) {
-                    // User has WhatsApp - try to open it and send webhook
-                    openWhatsApp(formData).then(function(whatsappOpened) {
-                        // Always send to webhook regardless of WhatsApp opening
-                        sendToWebhook(formData)
-                            .then(function(data) {
-                                if (whatsappOpened) {
-                                    // WhatsApp opened successfully
-                                    showPopup(thankYouPopupWhatsApp, 3000);
-                                } else {
-                                    // WhatsApp didn't open - fallback to email confirmation
-                                    showPopup(thankYouPopupEmail, 3000);
-                                }
-                                quoteForm.reset();
-                            })
-                            .catch(function(error) {
-                                console.log("Webhook error:", error);
-                                if (whatsappOpened) {
-                                    // WhatsApp opened but webhook failed - still show WhatsApp popup
-                                    showPopup(thankYouPopupWhatsApp, 3000);
-                                    quoteForm.reset();
-                                } else {
-                                    alert("There was an error sending your request. Please try calling us directly on 07934 015448.");
-                                }
-                            })
-                            .finally(function() {
-                                submitBtn.innerHTML = originalBtnText;
-                                submitBtn.disabled = false;
-                            });
-                    });
-                } else {
-                    // User doesn't have WhatsApp - just send webhook for email
-                    sendToWebhook(formData)
-                        .then(function(data) {
-                            if (data.success) {
-                                showPopup(thankYouPopupEmail, 3000);
-                                quoteForm.reset();
-                            } else {
-                                throw new Error("Server did not confirm receipt");
-                            }
-                        })
-                        .catch(function(error) {
-                            console.log("Form submission error:", error);
-                            alert("There was an error sending your request. Please try calling us directly on 07934 015448.");
-                        })
-                        .finally(function() {
-                            submitBtn.innerHTML = originalBtnText;
-                            submitBtn.disabled = false;
-                        });
-                }
-            });
+            setupWidgetAutocomplete(widgetLocationInput, widgetLocationResults);
+            setupWidgetAutocomplete(widgetDestinationInput, widgetDestinationResults);
         });
     </script>
 </body>
