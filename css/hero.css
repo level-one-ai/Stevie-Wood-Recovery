@@ -1,16 +1,20 @@
 /* Stevie Wood Recovery - Hero Section Styles */
 
 .hero {
-    min-height: 100vh;
+    height: 85vh;
+    min-height: 600px;
+    max-height: 900px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     position: relative;
-    background-image: url('https://lh3.googleusercontent.com/p/AF1QipPS9zJenIU2g4OlLVFBQ37PKAba1cAbZcjnNI-w=s680-w680-h510-rw');
+    background-image: url('https://github.com/level-one-ai/Stevie-Wood-Recovery/blob/main/images/b0gd6vme9drmy0cw14w8eqw7t8_result_0.jpg?raw=true');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-attachment: fixed;
     padding: 120px 40px 80px;
+    overflow: hidden;
 }
 
 .hero-overlay {
@@ -29,6 +33,10 @@
     display: flex;
     justify-content: center;
     margin-top: 20px;
+    opacity: 0;
+    transform: translateY(-30px);
+    animation: fadeSlideDown 0.8s ease forwards;
+    animation-delay: 0.2s;
 }
 
 .hero-bubble {
@@ -74,6 +82,10 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
     filter: drop-shadow(2px 4px 20px rgba(0, 0, 0, 0.5));
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeSlideUp 0.8s ease forwards;
+    animation-delay: 0.4s;
 }
 
 .hero-buttons {
@@ -81,4 +93,22 @@
     gap: 20px;
     justify-content: center;
     flex-wrap: wrap;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeSlideUp 0.8s ease forwards;
+    animation-delay: 0.6s;
+}
+
+@keyframes fadeSlideDown {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeSlideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
