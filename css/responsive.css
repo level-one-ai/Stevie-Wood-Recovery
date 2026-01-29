@@ -81,7 +81,7 @@
     }
     
     .hero-content-centered h1 {
-        font-size: 52px;
+        font-size: 56px;
     }
 }
 
@@ -118,8 +118,9 @@
     }
     
     .hero-content-centered h1 {
-        font-size: 44px;
+        font-size: 42px;
         white-space: normal;
+        letter-spacing: 1px;
     }
 }
 
@@ -129,12 +130,13 @@
     }
 
     .hero {
-        padding: 120px 20px 80px;
+        padding: 120px 20px 60px;
     }
 
     .hero-content-centered h1 {
-        font-size: 36px;
-        margin-bottom: 40px;
+        font-size: 32px;
+        margin-bottom: 30px;
+        letter-spacing: 1px;
     }
 
     .services,
@@ -282,7 +284,8 @@
     }
 
     .hero-content-centered h1 {
-        font-size: 28px;
+        font-size: 24px;
+        letter-spacing: 0.5px;
     }
 
     .section-header h2,
@@ -357,11 +360,12 @@
     }
 
     .hero {
-        padding: 100px 12px 60px;
+        padding: 100px 12px 50px;
     }
 
     .hero-content-centered h1 {
-        font-size: 22px;
+        font-size: 20px;
+        letter-spacing: 0;
     }
 
     .services,
@@ -591,7 +595,7 @@
     }
 
     .hero-content-centered h1 {
-        font-size: 18px;
+        font-size: 16px;
     }
 
     .section-header h2,
