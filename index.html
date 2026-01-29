@@ -347,7 +347,7 @@
             color: #25d366;
         }
         
-        /* Image Gallery Styles */
+        /* Image Gallery Carousel Styles */
         .gallery-section {
             padding: 80px 40px;
             background: #1e293b;
@@ -356,37 +356,47 @@
             max-width: 1400px;
             margin: 0 auto;
         }
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 50px;
+        .gallery-carousel {
             margin-top: 50px;
         }
-        .gallery-item {
-            text-align: center;
+        .gallery-carousel-track {
+            position: relative;
+            min-height: 650px;
+        }
+        .gallery-carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
             cursor: pointer;
-            transition: transform 0.3s;
         }
-        .gallery-item:hover {
-            transform: translateY(-10px);
+        .gallery-carousel-slide.active {
+            opacity: 1;
+            visibility: visible;
         }
-        .gallery-item:hover .gallery-accent-ring {
-            border-color: #22d3ee;
+        .gallery-carousel-slide.fade-out {
+            opacity: 0;
         }
         .gallery-image-container {
             position: relative;
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 20px;
+            width: 450px;
+            height: 450px;
+            margin: 0 auto 30px;
         }
         .gallery-accent-ring {
             position: absolute;
-            width: 220px;
-            height: 220px;
+            width: 480px;
+            height: 480px;
             border: 2px solid #6366f1;
             border-radius: 50%;
-            top: -10px;
-            left: -10px;
+            top: -15px;
+            left: -15px;
             animation: ringPulse 3s ease-in-out infinite;
             transition: border-color 0.3s;
         }
@@ -397,16 +407,16 @@
             animation-delay: 2s;
         }
         .gallery-image-circle {
-            width: 200px;
-            height: 200px;
+            width: 450px;
+            height: 450px;
             border-radius: 50%;
             overflow: hidden;
             position: relative;
-            box-shadow: 0 20px 50px rgba(99, 102, 241, 0.3);
+            box-shadow: 0 30px 70px rgba(99, 102, 241, 0.4);
         }
         .gallery-image-circle img {
-            width: 280px;
-            height: 280px;
+            width: 600px;
+            height: 600px;
             object-fit: cover;
             object-position: center;
             position: absolute;
@@ -414,11 +424,43 @@
             left: 50%;
             transform: translate(-50%, -50%);
         }
-        .gallery-item h3 {
-            font-size: 18px;
-            font-weight: 600;
+        .gallery-caption {
+            text-align: center;
+            max-width: 600px;
+        }
+        .gallery-caption h3 {
+            font-size: 28px;
+            font-weight: 700;
             color: #f1f5f9;
+            margin: 0 0 15px;
+        }
+        .gallery-caption p {
+            font-size: 16px;
+            color: #94a3b8;
+            line-height: 1.7;
             margin: 0;
+        }
+        .gallery-carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 30px;
+        }
+        .gallery-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #475569;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .gallery-dot.active {
+            background: #6366f1;
+            transform: scale(1.2);
+        }
+        .gallery-dot:hover {
+            background: #6366f1;
         }
         
         /* Image Popup */
@@ -887,79 +929,107 @@
             </svg>
         </div>
 
-        <!-- Image Gallery Section - LIGHT -->
+        <!-- Image Carousel Section - LIGHT -->
         <section class="gallery-section" id="gallery">
             <div class="gallery-container">
                 <div class="section-header">
                     <span class="section-tag">Our Work</span>
                     <h2>Recovery in Action</h2>
                 </div>
-                <div class="gallery-grid">
-                    <div class="gallery-item" data-image="https://github.com/level-one-ai/Stevie-Wood-Recovery/blob/main/images/recovery-image-1.webp?raw=true" data-title="24/7 Breakdown Recovery" data-desc="Our rapid response team is always ready to assist you, day or night.">
-                        <div class="gallery-image-container">
-                            <div class="gallery-accent-ring"></div>
-                            <div class="gallery-accent-ring"></div>
-                            <div class="gallery-accent-ring"></div>
-                            <div class="gallery-image-circle">
-                                <img src="https://github.com/level-one-ai/Stevie-Wood-Recovery/blob/main/images/recovery-image-1.webp?raw=true" alt="24/7 Breakdown Recovery">
+                <div class="gallery-carousel">
+                    <div class="gallery-carousel-track" id="galleryCarouselTrack">
+                        <div class="gallery-carousel-slide active" data-image="https://github.com/level-one-ai/Stevie-Wood-Recovery/blob/main/images/recovery-image-1.webp?raw=true">
+                            <div class="gallery-image-container">
+                                <div class="gallery-accent-ring"></div>
+                                <div class="gallery-accent-ring"></div>
+                                <div class="gallery-accent-ring"></div>
+                                <div class="gallery-image-circle">
+                                    <img src="https://github.com/level-one-ai/Stevie-Wood-Recovery/blob/main/images/recovery-image-1.webp?raw=true" alt="24/7 Breakdown Recovery">
+                                </div>
+                            </div>
+                            <div class="gallery-caption">
+                                <h3>24/7 Breakdown Recovery</h3>
+                                <p>Our rapid response team is always ready to assist you, day or night. We pride ourselves on reaching stranded motorists within 40 minutes across Edinburgh.</p>
                             </div>
                         </div>
-                        <h3>Breakdown Recovery</h3>
+                        <div class="gallery-carousel-slide" data-image="https://github.com/level-one-ai/Stevie-Wood-Recovery/blob/main/images/recovery-image-2.webp?raw=true">
+                            <div class="gallery-image-container">
+                                <div class="gallery-accent-ring"></div>
+                                <div class="gallery-accent-ring"></div>
+                                <div class="gallery-accent-ring"></div>
+                                <div class="gallery-image-circle">
+                                    <img src="https://github.com/level-one-ai/Stevie-Wood-Recovery/blob/main/images/recovery-image-2.webp?raw=true" alt="Professional Towing">
+                                </div>
+                            </div>
+                            <div class="gallery-caption">
+                                <h3>Professional Towing</h3>
+                                <p>Safe and secure vehicle transportation to any destination. Our modern equipment ensures your vehicle is handled with the utmost care during transit.</p>
+                            </div>
+                        </div>
+                        <div class="gallery-carousel-slide" data-image="https://github.com/level-one-ai/Stevie-Wood-Recovery/blob/main/images/recovery-image-3.webp?raw=true">
+                            <div class="gallery-image-container">
+                                <div class="gallery-accent-ring"></div>
+                                <div class="gallery-accent-ring"></div>
+                                <div class="gallery-accent-ring"></div>
+                                <div class="gallery-image-circle">
+                                    <img src="https://github.com/level-one-ai/Stevie-Wood-Recovery/blob/main/images/recovery-image-3.webp?raw=true" alt="Battery & Jump Start">
+                                </div>
+                            </div>
+                            <div class="gallery-caption">
+                                <h3>Battery & Jump Start</h3>
+                                <p>Flat battery got you stuck? Our technicians carry professional-grade equipment to get your engine running again in minutes.</p>
+                            </div>
+                        </div>
+                        <div class="gallery-carousel-slide" data-image="https://github.com/level-one-ai/Stevie-Wood-Recovery/blob/main/images/recovery-image-4.webp?raw=true">
+                            <div class="gallery-image-container">
+                                <div class="gallery-accent-ring"></div>
+                                <div class="gallery-accent-ring"></div>
+                                <div class="gallery-accent-ring"></div>
+                                <div class="gallery-image-circle">
+                                    <img src="https://github.com/level-one-ai/Stevie-Wood-Recovery/blob/main/images/recovery-image-4.webp?raw=true" alt="Accident Recovery">
+                                </div>
+                            </div>
+                            <div class="gallery-caption">
+                                <h3>Accident Recovery</h3>
+                                <p>Compassionate and efficient accident recovery services. We work with insurance companies and handle your vehicle with sensitivity during difficult times.</p>
+                            </div>
+                        </div>
+                        <div class="gallery-carousel-slide" data-image="https://github.com/level-one-ai/Stevie-Wood-Recovery/blob/main/images/recovery-image-5.webp?raw=true">
+                            <div class="gallery-image-container">
+                                <div class="gallery-accent-ring"></div>
+                                <div class="gallery-accent-ring"></div>
+                                <div class="gallery-accent-ring"></div>
+                                <div class="gallery-image-circle">
+                                    <img src="https://github.com/level-one-ai/Stevie-Wood-Recovery/blob/main/images/recovery-image-5.webp?raw=true" alt="Wrong Fuel Assistance">
+                                </div>
+                            </div>
+                            <div class="gallery-caption">
+                                <h3>Wrong Fuel Assistance</h3>
+                                <p>Misfuelled your vehicle? Don't panic - our fuel drainage service will have you back on the road without any damage to your engine.</p>
+                            </div>
+                        </div>
+                        <div class="gallery-carousel-slide" data-image="https://github.com/level-one-ai/Stevie-Wood-Recovery/blob/main/images/recovery-image-6.webp?raw=true">
+                            <div class="gallery-image-container">
+                                <div class="gallery-accent-ring"></div>
+                                <div class="gallery-accent-ring"></div>
+                                <div class="gallery-accent-ring"></div>
+                                <div class="gallery-image-circle">
+                                    <img src="https://github.com/level-one-ai/Stevie-Wood-Recovery/blob/main/images/recovery-image-6.webp?raw=true" alt="Edinburgh Coverage">
+                                </div>
+                            </div>
+                            <div class="gallery-caption">
+                                <h3>Complete Edinburgh Coverage</h3>
+                                <p>From the city centre to the Lothians, we cover all of Edinburgh and surrounding areas. No location is too far for Stevie Wood Recovery.</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="gallery-item" data-image="https://github.com/level-one-ai/Stevie-Wood-Recovery/blob/main/images/recovery-image-2.webp?raw=true" data-title="Professional Towing" data-desc="Safe and secure vehicle transportation to any destination.">
-                        <div class="gallery-image-container">
-                            <div class="gallery-accent-ring"></div>
-                            <div class="gallery-accent-ring"></div>
-                            <div class="gallery-accent-ring"></div>
-                            <div class="gallery-image-circle">
-                                <img src="https://github.com/level-one-ai/Stevie-Wood-Recovery/blob/main/images/recovery-image-2.webp?raw=true" alt="Professional Towing">
-                            </div>
-                        </div>
-                        <h3>Professional Towing</h3>
-                    </div>
-                    <div class="gallery-item" data-image="https://github.com/level-one-ai/Stevie-Wood-Recovery/blob/main/images/recovery-image-3.webp?raw=true" data-title="Battery & Jump Start" data-desc="Professional-grade equipment to get your engine running again.">
-                        <div class="gallery-image-container">
-                            <div class="gallery-accent-ring"></div>
-                            <div class="gallery-accent-ring"></div>
-                            <div class="gallery-accent-ring"></div>
-                            <div class="gallery-image-circle">
-                                <img src="https://github.com/level-one-ai/Stevie-Wood-Recovery/blob/main/images/recovery-image-3.webp?raw=true" alt="Battery & Jump Start">
-                            </div>
-                        </div>
-                        <h3>Jump Start Service</h3>
-                    </div>
-                    <div class="gallery-item" data-image="https://github.com/level-one-ai/Stevie-Wood-Recovery/blob/main/images/recovery-image-4.webp?raw=true" data-title="Accident Recovery" data-desc="Compassionate and efficient accident recovery services.">
-                        <div class="gallery-image-container">
-                            <div class="gallery-accent-ring"></div>
-                            <div class="gallery-accent-ring"></div>
-                            <div class="gallery-accent-ring"></div>
-                            <div class="gallery-image-circle">
-                                <img src="https://github.com/level-one-ai/Stevie-Wood-Recovery/blob/main/images/recovery-image-4.webp?raw=true" alt="Accident Recovery">
-                            </div>
-                        </div>
-                        <h3>Accident Recovery</h3>
-                    </div>
-                    <div class="gallery-item" data-image="https://github.com/level-one-ai/Stevie-Wood-Recovery/blob/main/images/recovery-image-5.webp?raw=true" data-title="Wrong Fuel Assistance" data-desc="Fuel drainage service to get you back on the road safely.">
-                        <div class="gallery-image-container">
-                            <div class="gallery-accent-ring"></div>
-                            <div class="gallery-accent-ring"></div>
-                            <div class="gallery-accent-ring"></div>
-                            <div class="gallery-image-circle">
-                                <img src="https://github.com/level-one-ai/Stevie-Wood-Recovery/blob/main/images/recovery-image-5.webp?raw=true" alt="Wrong Fuel Assistance">
-                            </div>
-                        </div>
-                        <h3>Wrong Fuel Recovery</h3>
-                    </div>
-                    <div class="gallery-item" data-image="https://github.com/level-one-ai/Stevie-Wood-Recovery/blob/main/images/recovery-image-6.webp?raw=true" data-title="Edinburgh Coverage" data-desc="Complete coverage across Edinburgh and the Lothians.">
-                        <div class="gallery-image-container">
-                            <div class="gallery-accent-ring"></div>
-                            <div class="gallery-accent-ring"></div>
-                            <div class="gallery-accent-ring"></div>
-                            <div class="gallery-image-circle">
-                                <img src="https://github.com/level-one-ai/Stevie-Wood-Recovery/blob/main/images/recovery-image-6.webp?raw=true" alt="Edinburgh Coverage">
-                            </div>
-                        </div>
-                        <h3>Full Coverage Area</h3>
+                    <div class="gallery-carousel-dots" id="galleryCarouselDots">
+                        <button class="gallery-dot active" data-index="0" aria-label="Slide 1"></button>
+                        <button class="gallery-dot" data-index="1" aria-label="Slide 2"></button>
+                        <button class="gallery-dot" data-index="2" aria-label="Slide 3"></button>
+                        <button class="gallery-dot" data-index="3" aria-label="Slide 4"></button>
+                        <button class="gallery-dot" data-index="4" aria-label="Slide 5"></button>
+                        <button class="gallery-dot" data-index="5" aria-label="Slide 6"></button>
                     </div>
                 </div>
             </div>
@@ -1171,8 +1241,58 @@
             window.addEventListener("scroll", checkLaserVisibility);
             checkLaserVisibility();
             
-            // Image Gallery Popup
-            var galleryItems = document.querySelectorAll(".gallery-item");
+            // Gallery Carousel
+            var gallerySlides = document.querySelectorAll(".gallery-carousel-slide");
+            var galleryDots = document.querySelectorAll(".gallery-dot");
+            var currentGallerySlide = 0;
+            var totalGallerySlides = 6;
+            var galleryInterval;
+            
+            function showGallerySlide(index) {
+                gallerySlides.forEach(function(slide, i) {
+                    slide.classList.remove("active");
+                    slide.classList.remove("fade-out");
+                    if (i === index) {
+                        slide.classList.add("active");
+                    }
+                });
+                
+                galleryDots.forEach(function(dot, i) {
+                    dot.classList.remove("active");
+                    if (i === index) {
+                        dot.classList.add("active");
+                    }
+                });
+            }
+            
+            function fadeToNextGallerySlide() {
+                gallerySlides[currentGallerySlide].classList.add("fade-out");
+                setTimeout(function() {
+                    currentGallerySlide = (currentGallerySlide + 1) % totalGallerySlides;
+                    showGallerySlide(currentGallerySlide);
+                }, 500);
+            }
+            
+            function startGalleryCarousel() {
+                galleryInterval = setInterval(fadeToNextGallerySlide, 4000);
+            }
+            
+            function stopGalleryCarousel() {
+                clearInterval(galleryInterval);
+            }
+            
+            galleryDots.forEach(function(dot) {
+                dot.addEventListener("click", function() {
+                    stopGalleryCarousel();
+                    currentGallerySlide = parseInt(this.dataset.index);
+                    showGallerySlide(currentGallerySlide);
+                    startGalleryCarousel();
+                });
+            });
+            
+            startGalleryCarousel();
+            
+            // Image Popup (click on carousel slide)
             var imagePopup = document.getElementById("imagePopup");
             var imagePopupClose = document.getElementById("imagePopupClose");
             var popupImage = document.getElementById("popupImage");
@@ -1186,18 +1306,20 @@
                 popupDesc.textContent = desc;
                 imagePopup.classList.add("active");
                 document.body.style.overflow = "hidden";
+                stopGalleryCarousel();
             }
             
             function closeImagePopup() {
                 imagePopup.classList.remove("active");
                 document.body.style.overflow = "";
+                startGalleryCarousel();
             }
             
-            galleryItems.forEach(function(item) {
-                item.addEventListener("click", function() {
+            gallerySlides.forEach(function(slide) {
+                slide.addEventListener("click", function() {
                     var imageSrc = this.dataset.image;
-                    var title = this.dataset.title;
-                    var desc = this.dataset.desc;
+                    var title = this.querySelector(".gallery-caption h3").textContent;
+                    var desc = this.querySelector(".gallery-caption p").textContent;
                     openImagePopup(imageSrc, title, desc);
                 });
             });
