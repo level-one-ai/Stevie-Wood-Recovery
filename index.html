@@ -164,25 +164,25 @@
         /* Widget Close Button */
         .widget-close-btn {
             position: absolute;
-            top: -15px;
-            right: -15px;
-            width: 36px;
-            height: 36px;
-            background: #1e293b;
-            border: 2px solid #25d366;
+            top: -20px;
+            left: -20px;
+            width: 40px;
+            height: 40px;
+            background: transparent;
+            border: none;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            color: #f1f5f9;
-            font-size: 16px;
+            color: rgba(241, 245, 249, 0.5);
+            font-size: 24px;
             transition: all 0.3s;
             z-index: 10000;
         }
         .widget-close-btn:hover {
-            background: #25d366;
-            color: #ffffff;
+            color: rgba(241, 245, 249, 0.9);
+            transform: scale(1.1);
         }
         
         /* Widget Body */
@@ -979,6 +979,22 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
+            // Header scroll effect
+            var header = document.querySelector("header");
+            var heroSection = document.getElementById("hero");
+            
+            function checkHeaderScroll() {
+                var heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+                if (window.scrollY > heroBottom - 100) {
+                    header.classList.add("scrolled");
+                } else {
+                    header.classList.remove("scrolled");
+                }
+            }
+            
+            window.addEventListener("scroll", checkHeaderScroll);
+            checkHeaderScroll();
+            
             // Mobile Menu
             var mobileMenuBtn = document.querySelector(".mobile-menu-btn");
             var mobileNav = document.getElementById("mobileNav");
