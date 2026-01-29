@@ -117,6 +117,11 @@
         justify-content: center;
     }
     
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+    }
+    
     .hero-content-centered h1 {
         font-size: 52px;
         letter-spacing: 2px;
@@ -134,16 +139,16 @@
     }
 
     .hero {
-        padding: 90px 20px 30px;
-        height: 88vh;
-        min-height: 600px;
+        padding: 90px 20px 15px;
+        height: 85vh;
+        min-height: 580px;
         background-attachment: scroll;
     }
 
     .hero-content-centered h1 {
         font-size: 40px;
         letter-spacing: 2px;
-        padding: 16px 30px;
+        -webkit-text-stroke: 1.5px #ffffff;
     }
     
     .hero-bubble {
@@ -156,7 +161,7 @@
     }
     
     .hero-buttons {
-        bottom: 25px;
+        bottom: 15px;
         gap: 15px;
     }
 
@@ -164,7 +169,7 @@
     .about,
     .reviews,
     .stats-section,
-    .carousel-section {
+    .gallery-section {
         padding: 60px 20px;
     }
 
@@ -205,6 +210,34 @@
     
     .stat-item .number {
         font-size: 36px;
+    }
+    
+    .gallery-grid {
+        gap: 30px;
+    }
+    
+    .gallery-image-container {
+        width: 160px;
+        height: 160px;
+    }
+    
+    .gallery-image-circle {
+        width: 160px;
+        height: 160px;
+    }
+    
+    .gallery-image-circle img {
+        width: 220px;
+        height: 220px;
+    }
+    
+    .gallery-accent-ring {
+        width: 180px;
+        height: 180px;
+    }
+    
+    .gallery-item h3 {
+        font-size: 16px;
     }
 
     .footer-top,
@@ -281,6 +314,49 @@
         flex-direction: column;
         gap: 25px;
     }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .gallery-image-container {
+        width: 130px;
+        height: 130px;
+    }
+    
+    .gallery-image-circle {
+        width: 130px;
+        height: 130px;
+    }
+    
+    .gallery-image-circle img {
+        width: 180px;
+        height: 180px;
+    }
+    
+    .gallery-accent-ring {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .gallery-item h3 {
+        font-size: 13px;
+    }
+    
+    .image-popup-caption h3 {
+        font-size: 20px;
+    }
+    
+    .image-popup-caption p {
+        font-size: 14px;
+    }
+    
+    .image-popup-close {
+        top: 20px;
+        right: 20px;
+        font-size: 28px;
+    }
 
     .hero-buttons {
         flex-direction: column;
@@ -305,9 +381,10 @@
     }
 
     .hero-content-centered h1 {
-        font-size: 32px;
+        font-size: 28px;
         letter-spacing: 1px;
-        padding: 14px 24px;
+        -webkit-text-stroke: 1px #ffffff;
+        white-space: nowrap;
     }
     
     .hero-bubble {
@@ -320,7 +397,7 @@
     }
     
     .hero-buttons {
-        bottom: 20px;
+        bottom: 12px;
         flex-direction: column;
         align-items: center;
         gap: 12px;
@@ -399,15 +476,15 @@
     }
 
     .hero {
-        padding: 80px 12px 25px;
-        height: 85vh;
-        min-height: 550px;
+        padding: 80px 12px 12px;
+        height: 82vh;
+        min-height: 520px;
     }
 
     .hero-content-centered h1 {
-        font-size: 24px;
+        font-size: 20px;
         letter-spacing: 0.5px;
-        padding: 12px 20px;
+        -webkit-text-stroke: 1px #ffffff;
     }
     
     .hero-bubble {
@@ -424,14 +501,14 @@
     }
     
     .hero-buttons {
-        bottom: 15px;
+        bottom: 10px;
     }
 
     .services,
     .about,
     .reviews,
     .stats-section,
-    .carousel-section {
+    .gallery-section {
         padding: 50px 12px;
     }
 
@@ -654,8 +731,8 @@
     }
 
     .hero-content-centered h1 {
-        font-size: 20px;
-        padding: 10px 16px;
+        font-size: 16px;
+        -webkit-text-stroke: 1px #ffffff;
     }
     
     .hero-bubble span {
