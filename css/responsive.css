@@ -1,11 +1,12 @@
 /* Stevie Wood Recovery - Responsive Styles */
 
+/* Mobile Menu */
 .mobile-menu-btn {
     display: none;
     background: none;
     border: none;
     color: #f1f5f9;
-    font-size: 24px;
+    font-size: 26px;
     cursor: pointer;
     padding: 8px;
     z-index: 1001;
@@ -19,11 +20,11 @@
     right: 0;
     bottom: 0;
     background: rgba(15, 23, 42, 0.98);
-    z-index: 999;
+    z-index: 9999;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 30px;
+    gap: 25px;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -37,9 +38,9 @@
 .mobile-nav a {
     color: #f1f5f9;
     text-decoration: none;
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 600;
-    padding: 15px 30px;
+    padding: 12px 24px;
     transition: color 0.3s;
 }
 
@@ -64,13 +65,14 @@
     align-items: center;
     gap: 10px;
     background: linear-gradient(135deg, #6366f1, #4f46e5);
-    padding: 16px 32px;
+    padding: 14px 28px;
     border-radius: 50px;
     color: #ffffff;
-    font-size: 18px;
-    margin-top: 20px;
+    font-size: 16px;
+    margin-top: 15px;
 }
 
+/* Desktop/Large Tablets */
 @media (max-width: 1200px) {
     .services-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -85,6 +87,7 @@
     }
 }
 
+/* Tablets */
 @media (max-width: 992px) {
     nav {
         display: none;
@@ -150,8 +153,27 @@
         font-size: 12px;
         letter-spacing: 2px;
     }
+    
+    .header-logo-container {
+        width: 55px;
+        height: 55px;
+    }
+    
+    .header-logo-img {
+        width: 73px;
+        height: 73px;
+    }
+    
+    .logo-text .primary {
+        font-size: 20px;
+    }
+    
+    .logo-text .secondary {
+        font-size: 11px;
+    }
 }
 
+/* Small Tablets / Large Phones */
 @media (max-width: 768px) {
     .header-container {
         padding: 0 20px;
@@ -165,9 +187,8 @@
     }
 
     .hero-content-centered h1 {
-        font-size: 40px;
+        font-size: 36px;
         letter-spacing: 2px;
-        -webkit-text-stroke: 1.5px #ffffff;
     }
     
     .hero-bubble {
@@ -195,7 +216,7 @@
     .section-header h2,
     .about-content h2,
     .stats-text h2 {
-        font-size: 32px;
+        font-size: 28px;
     }
 
     .services-grid {
@@ -232,35 +253,36 @@
     }
     
     .gallery-image-container {
-        width: 320px;
-        height: 320px;
+        width: 300px;
+        height: 300px;
     }
     
     .gallery-image-circle {
-        width: 320px;
-        height: 320px;
+        width: 300px;
+        height: 300px;
     }
     
     .gallery-image-circle img {
-        width: 420px;
-        height: 420px;
+        width: 400px;
+        height: 400px;
     }
     
     .gallery-accent-ring {
-        width: 350px;
-        height: 350px;
+        width: 330px;
+        height: 330px;
     }
     
     .gallery-carousel-track {
-        min-height: 520px;
+        min-height: 500px;
     }
     
     .gallery-caption h3 {
-        font-size: 24px;
+        font-size: 22px;
     }
     
     .gallery-caption p {
         font-size: 14px;
+        padding: 0 15px;
     }
 
     .footer-top,
@@ -300,18 +322,6 @@
         font-size: 32px;
     }
     
-    .carousel-slide img {
-        height: 350px;
-    }
-    
-    .carousel-caption h3 {
-        font-size: 20px;
-    }
-    
-    .carousel-caption p {
-        font-size: 14px;
-    }
-    
     /* Widget responsive */
     .whatsapp-widget-panel {
         width: calc(100% - 30px);
@@ -330,8 +340,42 @@
     .whatsapp-widget-btn i {
         font-size: 28px;
     }
+    
+    .header-logo-container {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .header-logo-img {
+        width: 66px;
+        height: 66px;
+    }
+    
+    .logo-text .primary {
+        font-size: 18px;
+        letter-spacing: 1px;
+    }
+    
+    .logo-text .secondary {
+        font-size: 10px;
+        letter-spacing: 2px;
+    }
+    
+    .legal-popup-content {
+        max-height: 85vh;
+    }
+    
+    .legal-popup-content h2 {
+        font-size: 24px;
+        padding: 25px 25px 15px;
+    }
+    
+    .legal-popup-body {
+        padding: 15px 25px 25px;
+    }
 }
 
+/* Mobile Phones */
 @media (max-width: 480px) {
     .stats-numbers {
         flex-direction: column;
@@ -339,27 +383,27 @@
     }
     
     .gallery-image-container {
-        width: 260px;
-        height: 260px;
+        width: 250px;
+        height: 250px;
     }
     
     .gallery-image-circle {
-        width: 260px;
-        height: 260px;
+        width: 250px;
+        height: 250px;
     }
     
     .gallery-image-circle img {
-        width: 340px;
-        height: 340px;
+        width: 330px;
+        height: 330px;
     }
     
     .gallery-accent-ring {
-        width: 290px;
-        height: 290px;
+        width: 280px;
+        height: 280px;
     }
     
     .gallery-carousel-track {
-        min-height: 480px;
+        min-height: 450px;
     }
     
     .gallery-caption h3 {
@@ -386,9 +430,11 @@
     }
 
     .hero-buttons {
+        bottom: 12px;
         flex-direction: column;
         align-items: center;
-        gap: 15px;
+        gap: 10px;
+        width: calc(100% - 40px);
     }
 
     .btn-primary,
@@ -396,10 +442,8 @@
         width: 100%;
         max-width: 280px;
         justify-content: center;
-    }
-
-    .cta-phone {
-        display: none;
+        padding: 14px 24px;
+        font-size: 14px;
     }
 
     .feature-item {
@@ -410,31 +454,12 @@
     .hero-content-centered h1 {
         font-size: 28px;
         letter-spacing: 1px;
-        -webkit-text-stroke: 1px #ffffff;
-        white-space: nowrap;
-    }
-    
-    .hero-bubble {
-        padding: 8px 20px;
-    }
-    
-    .hero-bubble span {
-        font-size: 10px;
-        letter-spacing: 1px;
-    }
-    
-    .hero-buttons {
-        bottom: 12px;
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
-        width: calc(100% - 40px);
     }
 
     .section-header h2,
     .about-content h2,
     .stats-text h2 {
-        font-size: 26px;
+        font-size: 24px;
     }
 
     .stat-item .number {
@@ -443,84 +468,71 @@
 
     .mobile-nav a {
         font-size: 20px;
-        padding: 12px 24px;
+        padding: 10px 20px;
     }
 
     .mobile-nav-phone {
+        font-size: 15px;
+        padding: 12px 24px;
+    }
+    
+    .header-logo-container {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .header-logo-img {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .logo-text .primary {
         font-size: 16px;
-        padding: 14px 28px;
     }
     
-    .carousel-slide img {
-        height: 280px;
+    .logo-text .secondary {
+        font-size: 9px;
     }
     
-    .carousel-caption {
-        padding: 20px 15px;
+    .legal-popup-content h2 {
+        font-size: 22px;
+        padding: 20px 20px 15px;
     }
     
-    .carousel-caption h3 {
-        font-size: 18px;
-    }
-    
-    .carousel-caption p {
+    .legal-popup-body {
+        padding: 15px 20px 20px;
         font-size: 13px;
     }
     
-    .carousel-dots {
-        gap: 8px;
-    }
-    
-    .carousel-dot {
-        width: 10px;
-        height: 10px;
+    .legal-popup-body h3 {
+        font-size: 16px;
     }
 }
 
-@media (max-width: 320px) {
+/* Small Mobile Phones (360px and below) */
+@media (max-width: 360px) {
     .header-container {
-        padding: 0 12px;
-    }
-
-    .logo-text .primary {
-        font-size: 14px;
-        letter-spacing: 1px;
-    }
-
-    .logo-text .secondary {
-        font-size: 9px;
-        letter-spacing: 2px;
-    }
-
-    .header-logo-container {
-        width: 40px;
-        height: 40px;
-    }
-
-    .header-logo-img {
-        width: 53px;
-        height: 53px;
+        padding: 0 15px;
     }
 
     .hero {
-        padding: 80px 12px 12px;
-        height: 82vh;
-        min-height: 520px;
+        padding: 85px 15px 12px;
+        height: 85vh;
+        min-height: 550px;
     }
 
     .hero-content-centered h1 {
-        font-size: 20px;
+        font-size: 24px;
         letter-spacing: 0.5px;
-        -webkit-text-stroke: 1px #ffffff;
     }
     
     .hero-bubble {
-        padding: 6px 16px;
+        padding: 8px 18px;
     }
     
     .hero-bubble span {
         font-size: 9px;
-        letter-spacing: 0.5px;
+        letter-spacing: 1px;
     }
     
     .hero-top-bubble {
@@ -536,7 +548,7 @@
     .reviews,
     .stats-section,
     .gallery-section {
-        padding: 50px 12px;
+        padding: 50px 15px;
     }
 
     .section-header h2,
@@ -645,11 +657,37 @@
     .stat-item .label {
         font-size: 12px;
     }
-
-    .btn-primary,
-    .btn-secondary {
-        padding: 14px 20px;
-        font-size: 14px;
+    
+    .gallery-image-container {
+        width: 220px;
+        height: 220px;
+    }
+    
+    .gallery-image-circle {
+        width: 220px;
+        height: 220px;
+    }
+    
+    .gallery-image-circle img {
+        width: 290px;
+        height: 290px;
+    }
+    
+    .gallery-accent-ring {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .gallery-carousel-track {
+        min-height: 400px;
+    }
+    
+    .gallery-caption h3 {
+        font-size: 18px;
+    }
+    
+    .gallery-caption p {
+        font-size: 12px;
     }
 
     .footer-logo-icon {
@@ -710,8 +748,24 @@
         height: 30px;
     }
     
-    .carousel-slide img {
-        height: 220px;
+    .header-logo-container {
+        width: 42px;
+        height: 42px;
+    }
+    
+    .header-logo-img {
+        width: 56px;
+        height: 56px;
+    }
+    
+    .logo-text .primary {
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+    
+    .logo-text .secondary {
+        font-size: 8px;
+        letter-spacing: 2px;
     }
     
     /* Widget on small screens */
@@ -744,26 +798,30 @@
     }
 }
 
-@media (max-width: 290px) {
-    .logo-section {
-        gap: 10px;
+/* Samsung Galaxy Fold (280px - 320px) */
+@media (max-width: 320px) {
+    .header-container {
+        padding: 0 12px;
     }
-
-    .logo-text .primary {
-        font-size: 12px;
-    }
-
-    .logo-text .secondary {
-        display: none;
+    
+    .hero {
+        padding: 80px 12px 10px;
+        height: 90vh;
+        min-height: 580px;
     }
 
     .hero-content-centered h1 {
-        font-size: 16px;
-        -webkit-text-stroke: 1px #ffffff;
+        font-size: 20px;
+        letter-spacing: 0;
+    }
+    
+    .hero-bubble {
+        padding: 6px 14px;
     }
     
     .hero-bubble span {
         font-size: 8px;
+        letter-spacing: 0.5px;
     }
 
     .section-header h2,
@@ -772,7 +830,257 @@
         font-size: 20px;
     }
     
+    .services,
+    .about,
+    .reviews,
+    .stats-section,
+    .gallery-section {
+        padding: 45px 12px;
+    }
+    
+    .service-card {
+        padding: 25px 15px;
+    }
+    
+    .service-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+    
+    .service-card h3 {
+        font-size: 16px;
+    }
+    
+    .gallery-image-container {
+        width: 180px;
+        height: 180px;
+    }
+    
+    .gallery-image-circle {
+        width: 180px;
+        height: 180px;
+    }
+    
+    .gallery-image-circle img {
+        width: 240px;
+        height: 240px;
+    }
+    
+    .gallery-accent-ring {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .gallery-carousel-track {
+        min-height: 350px;
+    }
+    
+    .gallery-caption h3 {
+        font-size: 16px;
+    }
+    
+    .gallery-caption p {
+        font-size: 11px;
+    }
+    
+    .stats-logo-container {
+        width: 130px;
+        height: 130px;
+    }
+    
+    .stats-logo-circle {
+        width: 130px;
+        height: 130px;
+    }
+    
+    .stats-logo-img {
+        width: 172px;
+        height: 172px;
+    }
+    
+    .stats-accent-ring {
+        width: 150px;
+        height: 150px;
+    }
+    
     .stat-item .number {
         font-size: 24px;
+    }
+    
+    .btn-primary,
+    .btn-secondary {
+        padding: 12px 20px;
+        font-size: 13px;
+    }
+    
+    .header-logo-container {
+        width: 38px;
+        height: 38px;
+    }
+    
+    .header-logo-img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .logo-text .primary {
+        font-size: 12px;
+        letter-spacing: 0.5px;
+    }
+
+    .logo-text .secondary {
+        font-size: 7px;
+        letter-spacing: 1px;
+    }
+    
+    .mobile-nav {
+        gap: 20px;
+    }
+
+    .mobile-nav a {
+        font-size: 16px;
+        padding: 8px 16px;
+    }
+
+    .mobile-nav-phone {
+        font-size: 13px;
+        padding: 10px 20px;
+    }
+    
+    .review-display {
+        min-height: 200px;
+    }
+    
+    .review-text {
+        font-size: 13px;
+    }
+    
+    .review-author {
+        font-size: 13px;
+    }
+    
+    .legal-popup-content {
+        border-radius: 16px;
+    }
+    
+    .legal-popup-content h2 {
+        font-size: 20px;
+        padding: 18px 18px 12px;
+    }
+    
+    .legal-popup-body {
+        padding: 12px 18px 18px;
+        font-size: 12px;
+    }
+    
+    .legal-popup-body h3 {
+        font-size: 14px;
+    }
+    
+    .legal-popup-close {
+        top: 15px;
+        right: 15px;
+        font-size: 20px;
+    }
+}
+
+/* Galaxy Fold Closed (280px) */
+@media (max-width: 290px) {
+    .logo-section {
+        gap: 10px;
+    }
+
+    .logo-text .primary {
+        font-size: 11px;
+    }
+
+    .logo-text .secondary {
+        display: none;
+    }
+    
+    .header-logo-container {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .header-logo-img {
+        width: 46px;
+        height: 46px;
+    }
+
+    .hero-content-centered h1 {
+        font-size: 18px;
+    }
+    
+    .hero-bubble span {
+        font-size: 7px;
+    }
+    
+    .hero {
+        height: 95vh;
+        min-height: 550px;
+    }
+
+    .section-header h2,
+    .about-content h2,
+    .stats-text h2 {
+        font-size: 18px;
+    }
+    
+    .gallery-image-container {
+        width: 160px;
+        height: 160px;
+    }
+    
+    .gallery-image-circle {
+        width: 160px;
+        height: 160px;
+    }
+    
+    .gallery-image-circle img {
+        width: 210px;
+        height: 210px;
+    }
+    
+    .gallery-accent-ring {
+        width: 180px;
+        height: 180px;
+    }
+    
+    .gallery-carousel-track {
+        min-height: 320px;
+    }
+    
+    .gallery-caption h3 {
+        font-size: 14px;
+    }
+    
+    .gallery-caption p {
+        font-size: 10px;
+    }
+    
+    .stat-item .number {
+        font-size: 22px;
+    }
+    
+    .stat-item .label {
+        font-size: 10px;
+    }
+    
+    .btn-primary,
+    .btn-secondary {
+        padding: 10px 16px;
+        font-size: 12px;
+    }
+    
+    .mobile-nav a {
+        font-size: 15px;
+        padding: 8px 14px;
+    }
+    
+    .mobile-nav-phone {
+        font-size: 12px;
+        padding: 10px 18px;
     }
 }
