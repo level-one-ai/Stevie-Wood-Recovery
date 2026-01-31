@@ -9,7 +9,7 @@ header {
     background: rgba(15, 23, 42, 0);
     backdrop-filter: blur(0px);
     border-bottom: 1px solid rgba(99, 102, 241, 0);
-    padding: 12px 0;
+    padding: 15px 0;
     transition: background 0.3s ease, backdrop-filter 0.3s ease, border-color 0.3s ease;
 }
 
@@ -42,20 +42,20 @@ header.scrolled nav {
 .logo-section {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 18px;
 }
 
 .header-logo-container {
     position: relative;
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     overflow: hidden;
 }
 
 .header-logo-img {
-    width: 66px;
-    height: 66px;
+    width: 80px;
+    height: 80px;
     object-fit: cover;
     object-position: center;
     position: absolute;
@@ -70,7 +70,7 @@ header.scrolled nav {
 }
 
 .logo-text .primary {
-    font-size: 18px;
+    font-size: 22px;
     font-weight: 700;
     color: #f1f5f9;
     letter-spacing: 2px;
@@ -78,7 +78,7 @@ header.scrolled nav {
 }
 
 .logo-text .secondary {
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 300;
     color: #64748b;
     letter-spacing: 4px;
@@ -88,13 +88,14 @@ header.scrolled nav {
 nav {
     display: flex;
     align-items: center;
-    gap: 40px;
+    gap: 50px;
+    margin-left: auto;
 }
 
 nav a {
     color: #94a3b8;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 500;
     transition: color 0.3s;
 }
@@ -103,30 +104,11 @@ nav a:hover {
     color: #ffffff;
 }
 
-.cta-phone {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background: linear-gradient(135deg, #6366f1, #4f46e5);
-    padding: 12px 24px;
-    border-radius: 50px;
-    color: #ffffff;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 14px;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.cta-phone:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
-}
-
 .mobile-menu-btn {
     display: none;
     background: none;
     border: none;
     color: #f1f5f9;
-    font-size: 24px;
+    font-size: 26px;
     cursor: pointer;
 }
