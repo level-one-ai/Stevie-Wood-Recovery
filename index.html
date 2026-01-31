@@ -631,6 +631,95 @@
             letter-spacing: 1px;
             margin-top: 5px;
         }
+        
+        /* Legal Popup Styles */
+        .legal-popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(15, 23, 42, 0.95);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+            padding: 20px;
+        }
+        .legal-popup-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .legal-popup-content {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 20px;
+            max-width: 700px;
+            width: 100%;
+            max-height: 80vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.3s;
+        }
+        .legal-popup-overlay.active .legal-popup-content {
+            transform: scale(1);
+        }
+        .legal-popup-content h2 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #f1f5f9;
+            padding: 30px 30px 20px;
+            margin: 0;
+            border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+        }
+        .legal-popup-body {
+            padding: 20px 30px 30px;
+            overflow-y: auto;
+            color: #94a3b8;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+        .legal-popup-body h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #f1f5f9;
+            margin: 25px 0 10px;
+        }
+        .legal-popup-body h3:first-of-type {
+            margin-top: 10px;
+        }
+        .legal-popup-body p {
+            margin: 0 0 15px;
+        }
+        .legal-popup-body ul {
+            margin: 0 0 15px;
+            padding-left: 20px;
+        }
+        .legal-popup-body li {
+            margin-bottom: 8px;
+        }
+        .legal-popup-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: transparent;
+            border: none;
+            color: rgba(241, 245, 249, 0.6);
+            font-size: 24px;
+            cursor: pointer;
+            transition: color 0.3s, transform 0.3s;
+            z-index: 1;
+        }
+        .legal-popup-close:hover {
+            color: #f1f5f9;
+            transform: scale(1.1);
+        }
     </style>
 </head>
 <body>
@@ -651,10 +740,6 @@
                 <a href="#reviews">Reviews</a>
                 <a href="#gallery">Gallery</a>
             </nav>
-            <a href="tel:07934015448" class="cta-phone">
-                <i class="fas fa-phone"></i>
-                Call Now
-            </a>
             <button class="mobile-menu-btn" aria-label="Open mobile menu">
                 <i class="fas fa-bars"></i>
             </button>
@@ -690,7 +775,7 @@
                 <div class="hero-buttons">
                     <a href="tel:07934015448" class="btn-primary">
                         <i class="fas fa-phone"></i>
-                        Call 07934 015448
+                        Call Now
                     </a>
                     <button class="btn-secondary" id="getQuoteBtn">
                         <i class="fas fa-comment-dots"></i>
@@ -1071,8 +1156,8 @@
             <div class="footer-bottom">
                 <p>&copy; 2024 Stevie Wood Recovery. All rights reserved. Vehicle Recovery Edinburgh.</p>
                 <div class="footer-links">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
+                    <a href="#" id="privacyPolicyLink">Privacy Policy</a>
+                    <a href="#" id="termsOfServiceLink">Terms of Service</a>
                 </div>
             </div>
             <div class="footer-watermark">
@@ -1080,6 +1165,129 @@
             </div>
         </div>
     </footer>
+
+    <!-- Privacy Policy Popup -->
+    <div class="legal-popup-overlay" id="privacyPopup">
+        <div class="legal-popup-content">
+            <button class="legal-popup-close" id="privacyPopupClose" aria-label="Close">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2>Privacy Policy</h2>
+            <div class="legal-popup-body">
+                <p><strong>Last updated:</strong> January 2024</p>
+                
+                <h3>1. Information We Collect</h3>
+                <p>When you use our vehicle recovery services or contact us through our website, we may collect the following information:</p>
+                <ul>
+                    <li>Your name and contact details (phone number, email address)</li>
+                    <li>Vehicle information (make, model, registration)</li>
+                    <li>Location data for recovery services</li>
+                    <li>Payment information for services rendered</li>
+                </ul>
+                
+                <h3>2. How We Use Your Information</h3>
+                <p>We use your personal information to:</p>
+                <ul>
+                    <li>Provide vehicle recovery and roadside assistance services</li>
+                    <li>Contact you regarding your service request</li>
+                    <li>Process payments for our services</li>
+                    <li>Improve our services and customer experience</li>
+                    <li>Comply with legal obligations</li>
+                </ul>
+                
+                <h3>3. Information Sharing</h3>
+                <p>We do not sell or rent your personal information to third parties. We may share your information with:</p>
+                <ul>
+                    <li>Insurance companies (with your consent)</li>
+                    <li>Law enforcement agencies when required by law</li>
+                    <li>Service providers who assist in our operations</li>
+                </ul>
+                
+                <h3>4. Data Security</h3>
+                <p>We implement appropriate security measures to protect your personal information against unauthorised access, alteration, disclosure, or destruction.</p>
+                
+                <h3>5. Your Rights</h3>
+                <p>You have the right to:</p>
+                <ul>
+                    <li>Access the personal information we hold about you</li>
+                    <li>Request correction of inaccurate information</li>
+                    <li>Request deletion of your information</li>
+                    <li>Withdraw consent for marketing communications</li>
+                </ul>
+                
+                <h3>6. Contact Us</h3>
+                <p>If you have any questions about this Privacy Policy, please contact us at:</p>
+                <p>Stevie Wood Recovery<br>
+                14 Hyvot Bank Ave, Edinburgh EH17 8NJ<br>
+                Phone: 07934 015448<br>
+                Email: info@steviewoodrecovery.co.uk</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terms of Service Popup -->
+    <div class="legal-popup-overlay" id="termsPopup">
+        <div class="legal-popup-content">
+            <button class="legal-popup-close" id="termsPopupClose" aria-label="Close">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2>Terms of Service</h2>
+            <div class="legal-popup-body">
+                <p><strong>Last updated:</strong> January 2024</p>
+                
+                <h3>1. Services</h3>
+                <p>Stevie Wood Recovery provides vehicle recovery, towing, and roadside assistance services in Edinburgh and the surrounding areas. Our services are available 24 hours a day, 7 days a week.</p>
+                
+                <h3>2. Service Requests</h3>
+                <p>By requesting our services, you agree to:</p>
+                <ul>
+                    <li>Provide accurate information about your vehicle and location</li>
+                    <li>Ensure you have the legal right to request recovery of the vehicle</li>
+                    <li>Be present or have an authorised representative present during the service</li>
+                    <li>Pay for services rendered at the agreed rates</li>
+                </ul>
+                
+                <h3>3. Pricing and Payment</h3>
+                <p>Prices for our services will be quoted before work commences where possible. Additional charges may apply for:</p>
+                <ul>
+                    <li>Out-of-hours callouts</li>
+                    <li>Extended distances</li>
+                    <li>Specialist equipment requirements</li>
+                    <li>Waiting time beyond 15 minutes</li>
+                </ul>
+                <p>Payment is due upon completion of the service unless otherwise agreed.</p>
+                
+                <h3>4. Liability</h3>
+                <p>While we take every care when handling your vehicle, Stevie Wood Recovery shall not be liable for:</p>
+                <ul>
+                    <li>Pre-existing damage to vehicles</li>
+                    <li>Loss of personal items left in vehicles</li>
+                    <li>Consequential losses arising from vehicle breakdown</li>
+                    <li>Delays caused by circumstances beyond our control</li>
+                </ul>
+                
+                <h3>5. Cancellations</h3>
+                <p>If you need to cancel a service request:</p>
+                <ul>
+                    <li>Cancellations before dispatch: No charge</li>
+                    <li>Cancellations after dispatch: Callout fee may apply</li>
+                </ul>
+                
+                <h3>6. Insurance</h3>
+                <p>We are fully insured for vehicle recovery operations. Customers are advised to maintain their own vehicle insurance for comprehensive coverage.</p>
+                
+                <h3>7. Governing Law</h3>
+                <p>These terms are governed by Scottish law, and any disputes will be subject to the jurisdiction of the Scottish courts.</p>
+                
+                <h3>8. Contact</h3>
+                <p>For any questions regarding these terms, please contact us:</p>
+                <p>Stevie Wood Recovery<br>
+                14 Hyvot Bank Ave, Edinburgh EH17 8NJ<br>
+                Phone: 07934 015448<br>
+                Email: info@steviewoodrecovery.co.uk</p>
+            </div>
+        </div>
+    </div>
 
     <!-- WhatsApp Widget Overlay -->
     <div class="widget-overlay" id="widgetOverlay"></div>
@@ -1527,6 +1735,63 @@
             
             setupWidgetAutocomplete(widgetLocationInput, widgetLocationResults);
             setupWidgetAutocomplete(widgetDestinationInput, widgetDestinationResults);
+            
+            // Legal Popups
+            var privacyPopup = document.getElementById("privacyPopup");
+            var termsPopup = document.getElementById("termsPopup");
+            var privacyPolicyLink = document.getElementById("privacyPolicyLink");
+            var termsOfServiceLink = document.getElementById("termsOfServiceLink");
+            var privacyPopupClose = document.getElementById("privacyPopupClose");
+            var termsPopupClose = document.getElementById("termsPopupClose");
+            
+            privacyPolicyLink.addEventListener("click", function(e) {
+                e.preventDefault();
+                privacyPopup.classList.add("active");
+                document.body.style.overflow = "hidden";
+            });
+            
+            termsOfServiceLink.addEventListener("click", function(e) {
+                e.preventDefault();
+                termsPopup.classList.add("active");
+                document.body.style.overflow = "hidden";
+            });
+            
+            privacyPopupClose.addEventListener("click", function() {
+                privacyPopup.classList.remove("active");
+                document.body.style.overflow = "";
+            });
+            
+            termsPopupClose.addEventListener("click", function() {
+                termsPopup.classList.remove("active");
+                document.body.style.overflow = "";
+            });
+            
+            privacyPopup.addEventListener("click", function(e) {
+                if (e.target === privacyPopup) {
+                    privacyPopup.classList.remove("active");
+                    document.body.style.overflow = "";
+                }
+            });
+            
+            termsPopup.addEventListener("click", function(e) {
+                if (e.target === termsPopup) {
+                    termsPopup.classList.remove("active");
+                    document.body.style.overflow = "";
+                }
+            });
+            
+            document.addEventListener("keydown", function(e) {
+                if (e.key === "Escape") {
+                    if (privacyPopup.classList.contains("active")) {
+                        privacyPopup.classList.remove("active");
+                        document.body.style.overflow = "";
+                    }
+                    if (termsPopup.classList.contains("active")) {
+                        termsPopup.classList.remove("active");
+                        document.body.style.overflow = "";
+                    }
+                }
+            });
         });
     </script>
 </body>
