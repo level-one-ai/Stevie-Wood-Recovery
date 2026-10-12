@@ -226,9 +226,8 @@
     // ---- Reviews -----------------------------------------------------------
     onEnter("#reviews", function(tl) {
         headIn(tl, document.getElementById("reviews"));
-        tl.from(".review-main", { y: 40, autoAlpha: 0, duration: 1, ease: EASE_IN }, 0.2)
-          .from(mask(document.querySelector(".review-main p")), { yPercent: 40, autoAlpha: 0, duration: 1.1, ease: EASE_IN }, 0.35)
-          .from(".review:not(.review-main)", { y: 36, autoAlpha: 0, duration: 0.9, stagger: 0.1, ease: EASE_IN }, 0.5);
+        tl.from(".reviews-stage", { y: 40, autoAlpha: 0, duration: 1, ease: EASE_IN }, 0.3)
+          .from(".reviews-dots", { y: 16, autoAlpha: 0, duration: 0.7, ease: EASE_IN }, 0.5);
     });
 
     // ---- Areas -------------------------------------------------------------

@@ -21,7 +21,8 @@
     transform: translateY(-3px);
 }
 
-.service-card i {
+.service-card > i,
+.service-card-body > i {
     font-size: 1.75rem;
     color: var(--primary);
     margin-bottom: 16px;
@@ -85,7 +86,7 @@
     border-color: var(--primary);
 }
 
-.service-emergency i {
+.service-emergency > i {
     color: var(--white);
     font-size: 2.5rem;
     margin: 0;
@@ -104,8 +105,11 @@
 .service-emergency .btn {
     margin-top: auto;
     width: 100%;
-    padding: 0 12px;
-    font-size: 1rem;
+    padding: 0 8px;
+    gap: 8px;
+    justify-content: center;
+    text-align: center;
+    font-size: clamp(0.9375rem, 1.1vw, 1.0625rem);
     white-space: nowrap;
 }
 
@@ -279,11 +283,20 @@
     box-shadow: var(--shadow-dark);
 }
 
-/* Reviews: one large quote, three smaller */
+/* Reviews: one at a time, centred, fading from one to the next.
+   No boxes, just the words. */
+.reviews-head {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
 .reviews-rating {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 12px;
+    justify-content: center;
+    gap: 4px 12px;
     font-size: 1.125rem;
     color: var(--muted);
 }
@@ -292,42 +305,88 @@
     font-size: 1.25rem;
 }
 
-.reviews-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+.reviews-stage {
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
 }
 
 .review {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 28px;
+    background: none;
+    border: 0;
+    padding: 0;
+    margin: 0 0 40px;
+}
+
+.review .stars {
+    font-size: 1.25rem;
 }
 
 .review p {
-    font-size: 1.0625rem;
-    margin: 8px 0 12px;
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 2.8vw, 2.25rem);
+    font-weight: 600;
+    line-height: 1.25;
+    margin: 16px 0 20px;
 }
 
 .review cite {
     font-style: normal;
     color: var(--muted);
-    font-size: 0.9375rem;
+    font-size: 1.0625rem;
 }
 
-.review-main {
-    grid-column: 1 / -1;
-    padding: clamp(24px, 3.5vw, 40px);
+/* With JavaScript the reviews sit on top of each other and cross-fade */
+.js .reviews-stage {
+    display: grid;
 }
 
-.review-main p {
-    font-family: var(--font-display);
-    font-size: clamp(1.375rem, 2.2vw, 1.875rem);
-    font-weight: 600;
-    line-height: 1.25;
-    margin: 10px 0 12px;
-    max-width: 60ch;
+.js .review {
+    grid-area: 1 / 1;
+    margin: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease, visibility 0s linear 0.8s;
+}
+
+.js .review.is-active {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.8s ease, visibility 0s;
+}
+
+.reviews-dots {
+    display: none;
+}
+
+.js .reviews-dots {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    margin-top: clamp(20px, 4vh, 36px);
+}
+
+.reviews-dot {
+    width: 28px;
+    height: 28px;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    position: relative;
+}
+
+.reviews-dot::before {
+    content: "";
+    position: absolute;
+    inset: 9px;
+    border-radius: 50%;
+    background: var(--border);
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.reviews-dot.is-active::before {
+    background: var(--primary);
+    transform: scale(1.25);
 }
 
 /* Areas */
@@ -477,14 +536,22 @@
 }
 
 .cta-logo {
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
     flex-shrink: 0;
-    box-shadow: 0 16px 40px -12px rgba(13, 10, 20, 0.6);
-    border: 4px solid rgba(244, 242, 248, 0.25);
+    filter: drop-shadow(0 14px 24px rgba(13, 10, 20, 0.45));
 }
 
 .cta-text {
     flex: 1;
+}
+
+/* Icons inside buttons and links keep the text's own size and colour */
+.service-card .btn i,
+.service-card .service-link i {
+    font-size: 1em;
+    color: inherit;
+    margin: 0;
+    float: none;
 }

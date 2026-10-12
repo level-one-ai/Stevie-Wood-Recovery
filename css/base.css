@@ -238,3 +238,7 @@ main,
     overflow-x: hidden; /* older browsers */
     overflow-x: clip;
 }
+
+.nowrap {
+    white-space: nowrap;
+}

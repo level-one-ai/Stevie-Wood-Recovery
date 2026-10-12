@@ -43,8 +43,8 @@
     }
 
     .brand img {
-        width: 52px;
-        height: 52px;
+        width: 60px;
+        height: 60px;
     }
 
     .proof-strip {
@@ -74,6 +74,7 @@
     .service-emergency .btn {
         margin: 0 0 0 auto;
         width: auto;
+        padding: 0 24px;
         flex-shrink: 0;
     }
 
@@ -126,21 +127,16 @@
     }
 
     .cta-logo {
-        width: 140px;
-        height: 140px;
+        width: 160px;
+        height: 160px;
     }
 }
 
 /* Phones and portrait tablets: single column */
 @media (max-width: 768px) {
     .about-grid,
-    .areas-grid,
-    .reviews-grid {
+    .areas-grid {
         grid-template-columns: 1fr;
-    }
-
-    .review-main {
-        grid-column: auto;
     }
 
     .about-photo {
@@ -157,8 +153,8 @@
     }
 
     .cta-logo {
-        width: 120px;
-        height: 120px;
+        width: 136px;
+        height: 136px;
     }
 }
 
@@ -432,7 +428,8 @@
         padding: 16px 20px;
     }
 
-    .service-card i {
+    .service-card > i,
+    .service-card-body > i {
         font-size: 1.375rem;
         margin-bottom: 8px;
     }
@@ -502,21 +499,8 @@
         height: min(62vh, 520px);
     }
 
-    .reviews-grid {
-        gap: 14px;
-    }
-
-    .review {
-        padding: 16px 20px;
-    }
-
     .review p {
-        font-size: 0.9375rem;
-        margin: 4px 0 6px;
-    }
-
-    .review-main p {
-        font-size: clamp(1.25rem, 3.6vh, 1.75rem);
+        font-size: clamp(1.375rem, 4.4vh, 2rem);
     }
 
     .area-list {
@@ -526,8 +510,8 @@
     }
 
     .cta-logo {
-        width: min(180px, 24vh);
-        height: min(180px, 24vh);
+        width: min(200px, 26vh);
+        height: min(200px, 26vh);
     }
 }
 
@@ -538,8 +522,8 @@
     }
 
     .brand img {
-        width: 52px;
-        height: 52px;
+        width: 60px;
+        height: 60px;
     }
 
     .hero-title {
@@ -584,8 +568,8 @@
     }
 
     .brand img {
-        width: 44px;
-        height: 44px;
+        width: 50px;
+        height: 50px;
     }
 
     .mobile-menu-btn,
@@ -622,7 +606,6 @@
     }
 
     .service-card,
-    .review,
     .base-card {
         padding: 20px 16px;
     }
@@ -671,7 +654,8 @@
     }
 
     /* Icon sits beside the title instead of above it */
-    .service-card:not(.service-emergency) i {
+    .service-card:not(.service-emergency) > i,
+    .service-card-body > i {
         float: left;
         margin: 2px 10px 0 0;
         font-size: 1.25rem;

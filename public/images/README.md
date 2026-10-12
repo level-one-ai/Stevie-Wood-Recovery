@@ -4,7 +4,7 @@ All the photos the website uses live in this folder.
 
 | Folder | What goes in it | Used where |
 |---|---|---|
-| `brand/` | The logo (`logo.jpg`) | Header, footer, WhatsApp form |
+| `brand/` | The logo (`logo.png`, see-through background) | Header, footer, call-to-action box, WhatsApp form |
 | `hero/` | The big photo at the top of the page | Top of the homepage |
 | `gallery/` | Photos of real jobs | "Recent jobs", Services and About |
 | `uploads/` | Anything new you want on the site | Nowhere yet. Drop files here and ask for them to be added |
