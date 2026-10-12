@@ -5,9 +5,9 @@
     --surface: #17121f;
     --surface-2: #201a2b;
     --border: #2e2640;
-    --primary: #8049ec;
-    --primary-hover: #6d38d6;
-    --primary-tint: #a98af5;
+    --primary: #5854e8; /* the logo's purple */
+    --primary-hover: #4743d1;
+    --primary-tint: #8f8cf2;
     --text: #f4f2f8;
     --muted: #a59fb3;
     --white: #f4f2f8;
@@ -17,7 +17,7 @@
 
     --radius: 16px;
     --radius-lg: 24px;
-    --shadow: 0 12px 32px -8px rgba(128, 73, 236, 0.35);
+    --shadow: 0 12px 32px -8px rgba(88, 84, 232, 0.35);
     --shadow-dark: 0 20px 40px -16px rgba(0, 0, 0, 0.6);
 
     --container: 1240px;
@@ -235,5 +235,6 @@ h3 {
 /* Items that slide in from the side never widen the page */
 main,
 .site-footer {
+    overflow-x: hidden; /* older browsers */
     overflow-x: clip;
 }

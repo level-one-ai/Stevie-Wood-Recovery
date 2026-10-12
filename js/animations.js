@@ -93,9 +93,12 @@
         }));
     });
 
-    // The authored moment: scroll down, the job photos travel sideways
-    mm.add("(min-width: 1101px) and (hover: hover)", function() {
-        if (lite) return;
+    // The authored moment: scroll down, the job photos travel sideways.
+    // Runs on every device, touch screens included.
+    ScrollTrigger.config({ ignoreMobileResize: true });
+    var header = document.querySelector(".site-header");
+
+    mm.add("all", function() {
         var section = document.getElementById("gallery");
         var track = document.getElementById("galleryTrack");
         section.classList.add("is-flight");
@@ -109,7 +112,11 @@
             ease: "none",
             scrollTrigger: {
                 trigger: section,
-                start: "top top",
+                // On phones the section is shorter than the screen, so it
+                // pins just under the header instead of at the very top
+                start: function() {
+                    return window.innerWidth < 769 ? "top " + header.offsetHeight + "px" : "top top";
+                },
                 end: function() { return "+=" + distance(); },
                 scrub: 1,
                 pin: true,
@@ -118,48 +125,94 @@
             }
         });
 
-        return function() { section.classList.remove("is-flight"); };
+        return function() {
+            section.classList.remove("is-flight");
+            gsap.set(track, { clearProps: "transform" });
+        };
     });
 
-    // ---- Services ----------------------------------------------------------
+    // ---- Services: every card, purple one included, rises together --------
     onEnter("#services", function(tl) {
         headIn(tl, document.getElementById("services"));
-        tl.from(".service-card-main", { y: 48, autoAlpha: 0, duration: 1, ease: EASE_IN }, 0.2)
-          .from(".service-card:not(.service-card-main):not(.service-emergency)", { y: 40, autoAlpha: 0, duration: 0.9, stagger: 0.08, ease: EASE_IN }, 0.3)
-          .from(".service-emergency", { x: 60, autoAlpha: 0, duration: 1, ease: EASE_IN }, 0.55);
+        tl.from(".service-card", { y: 40, autoAlpha: 0, duration: 0.9, stagger: 0.07, ease: EASE_IN }, 0.2);
     });
 
     // ---- Gallery heading and first cards ----------------------------------
     onEnter("#gallery", function(tl) {
         headIn(tl, document.getElementById("gallery"));
-        tl.from(".gallery-card", { x: 80, autoAlpha: 0, duration: 1, stagger: 0.08, ease: EASE_IN }, 0.2);
+        tl.from(".gallery-card", { y: 40, autoAlpha: 0, duration: 1, stagger: 0.08, ease: EASE_IN }, 0.2);
     });
 
-    // ---- How it works: a line draws through the three steps ---------------
+    // ---- How it works: each circle fills left to right as you scroll ------
     var steps = document.querySelector(".steps");
     var fill = document.createElement("span");
+    var stepsTrack = document.createElement("span");
+    stepsTrack.className = "steps-track";
+    stepsTrack.setAttribute("aria-hidden", "true");
+    steps.appendChild(stepsTrack);
     fill.className = "steps-fill";
     fill.setAttribute("aria-hidden", "true");
     steps.appendChild(fill);
     var stepItems = gsap.utils.toArray(".step");
+    steps.classList.add("is-scrubbed");
 
     onEnter("#how-it-works", function(tl) {
         headIn(tl, document.getElementById("how-it-works"));
-        tl.from(stepItems, { y: 36, autoAlpha: 0, duration: 0.9, stagger: 0.12, ease: EASE_IN }, 0.2);
+        // Circles stay solid while they rise (a see-through circle would show
+        // the line behind it); only the words fade, then the line appears
+        tl.from(stepItems, { y: 36, duration: 0.9, stagger: 0.12, ease: EASE_IN, clearProps: "transform" }, 0.2)
+          .from(".step h3, .step p", { autoAlpha: 0, duration: 0.8, stagger: 0.06, ease: EASE_IN }, 0.25)
+          .from([stepsTrack, fill], { autoAlpha: 0, duration: 0.6, ease: "power1.out" }, 0.7);
     });
 
+    // Where each circle sits inside .steps (circles are each step's ::before)
+    // (layout positions, so the entrance animation never knocks the line out)
+    function circleBoxes() {
+        return stepItems.map(function(step) {
+            var size = parseFloat(getComputedStyle(step, "::before").width) || 64;
+            return { x: step.offsetLeft, y: step.offsetTop, size: size };
+        });
+    }
+
+    function drawSteps(p) {
+        var boxes = circleBoxes();
+        var first = boxes[0];
+        var last = boxes[boxes.length - 1];
+        var vertical = last.y > first.y + first.size; // phones: steps stacked
+        var start = vertical ? first.y : first.x;
+        var end = vertical ? last.y + last.size : last.x + last.size;
+        var front = start + p * (end - start);
+
+        // The grey track and violet line run behind the circles, from the
+        // first circle to the last, so they only show between circles
+        var box = vertical
+            ? { left: first.x + first.size / 2 - 1, top: start, width: 2, height: end - start }
+            : { left: start, top: first.y + first.size / 2 - 1, width: end - start, height: 2 };
+        [stepsTrack, fill].forEach(function(line) {
+            line.style.left = box.left + "px";
+            line.style.top = box.top + "px";
+            line.style.width = box.width + "px";
+            line.style.height = box.height + "px";
+        });
+        fill.style.transformOrigin = vertical ? "50% 0" : "0 50%";
+        fill.style.transform = vertical ? "scaleY(" + p + ")" : "scaleX(" + p + ")";
+
+        boxes.forEach(function(box, i) {
+            var from = vertical ? box.y : box.x;
+            var c = Math.min(1, Math.max(0, (front - from) / box.size));
+            stepItems[i].style.setProperty("--c", (c * 100).toFixed(1) + "%");
+            stepItems[i].classList.toggle("is-lit", c > 0.5);
+        });
+    }
+
+    drawSteps(0);
     ScrollTrigger.create({
         trigger: steps,
         start: "top 75%",
         end: "bottom 55%",
         scrub: 0.6,
-        onUpdate: function(self) {
-            var p = self.progress;
-            fill.style.setProperty("--fill", p.toFixed(3));
-            stepItems.forEach(function(step, i) {
-                step.classList.toggle("is-lit", p >= i / (stepItems.length - 1) - 0.02);
-            });
-        }
+        onUpdate: function(self) { drawSteps(self.progress); },
+        onRefresh: function(self) { drawSteps(self.progress); }
     });
 
     // ---- About: the photo is wiped into view ------------------------------
@@ -181,7 +234,7 @@
     // ---- Areas -------------------------------------------------------------
     onEnter("#areas", function(tl) {
         headIn(tl, document.getElementById("areas"));
-        tl.from(".area-list li", { x: -20, autoAlpha: 0, duration: 0.6, stagger: 0.035, ease: EASE_IN }, 0.25)
+        tl.from(".area-list li", { y: 14, autoAlpha: 0, duration: 0.6, stagger: 0.035, ease: EASE_IN }, 0.25)
           .from(".base-card", { y: 40, autoAlpha: 0, duration: 0.9, ease: EASE_IN }, 0.35);
     });
 
