@@ -85,6 +85,17 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
+    // FAQ: only one answer open at a time
+    var faqItems = document.querySelectorAll(".faq-item");
+    faqItems.forEach(function(item) {
+        item.addEventListener("toggle", function() {
+            if (!item.open) return;
+            faqItems.forEach(function(other) {
+                if (other !== item) other.open = false;
+            });
+        });
+    });
+
     // Gallery: arrow buttons scroll the row
     var galleryTrack = document.getElementById("galleryTrack");
     document.querySelectorAll(".gallery-btn").forEach(function(btn) {

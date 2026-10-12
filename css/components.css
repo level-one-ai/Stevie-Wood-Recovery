@@ -370,7 +370,7 @@ body.widget-open {
 }
 .legal-popup-content {
     background: linear-gradient(135deg, var(--surface), var(--bg));
-    border: 1px solid rgba(128, 73, 236, 0.3);
+    border: 1px solid rgba(88, 84, 232, 0.3);
     border-radius: 20px;
     max-width: 700px;
     width: 100%;
@@ -391,7 +391,7 @@ body.widget-open {
     color: var(--text);
     padding: 30px 30px 20px;
     margin: 0;
-    border-bottom: 1px solid rgba(128, 73, 236, 0.2);
+    border-bottom: 1px solid rgba(88, 84, 232, 0.2);
 }
 .legal-popup-body {
     padding: 20px 30px 30px;
@@ -532,50 +532,46 @@ h2.mask {
 #gallery.is-flight .gallery-track {
     overflow: visible;
     scroll-snap-type: none;
+    touch-action: pan-y; /* the page scroll drives the row, not a sideways swipe */
 }
 
 #gallery.is-flight .gallery-controls {
     visibility: hidden;
 }
 
-/* How it works: violet line that fills as you scroll, numbers light up */
+/* How it works: each circle fills with colour from left to right as the
+   page scrolls (js/animations.js sets --c per step). Without JavaScript or
+   with reduced motion the circles simply show filled. */
+.step {
+    z-index: 1; /* circles always sit above the connecting line */
+    --c: 100%;
+}
+
+.step::before {
+    background: linear-gradient(90deg, var(--primary) var(--c), var(--bg) var(--c));
+    color: var(--white);
+    transition: color 0.3s;
+}
+
+.steps.is-scrubbed .step:not(.is-lit)::before {
+    color: var(--primary-tint);
+}
+
+.steps.is-scrubbed::before {
+    display: none;
+}
+
+.steps-track,
 .steps-fill {
     position: absolute;
-    top: 32px;
-    left: 32px;
-    right: 32px;
-    height: 2px;
-    background: var(--primary);
-    transform: scaleX(var(--fill, 0));
-    transform-origin: 0 50%;
     z-index: 0;
     pointer-events: none;
 }
 
-.step::before {
-    transition: background-color 0.4s, color 0.4s, border-color 0.4s;
+.steps-track {
+    background: var(--border);
 }
 
-.step.is-lit::before {
+.steps-fill {
     background: var(--primary);
-    color: var(--white);
-}
-
-@media (max-width: 768px) {
-    .steps-fill {
-        top: 32px;
-        bottom: 32px;
-        left: 31px;
-        right: auto;
-        width: 2px;
-        height: auto;
-        transform: scaleY(var(--fill, 0));
-        transform-origin: 50% 0;
-    }
-}
-
-@media (min-width: 769px) and (max-height: 680px) {
-    .steps-fill {
-        top: 26px;
-    }
 }
