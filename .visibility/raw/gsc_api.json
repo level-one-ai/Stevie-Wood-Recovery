@@ -1,0 +1,63 @@
+{
+ "queries": {
+  "responseAggregationType": "byProperty"
+ },
+ "pages": {
+  "responseAggregationType": "byPage"
+ },
+ "dates": {
+  "responseAggregationType": "byProperty"
+ },
+ "sitemaps": {},
+ "inspect https://steviewoodrecovery.com/": {
+  "inspectionResult": {
+   "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://steviewoodrecovery.com/&id=EH5Iu_nazearL1i1pawz6w&utm_medium=link&utm_source=api",
+   "indexStatusResult": {
+    "verdict": "PASS",
+    "coverageState": "Submitted and indexed",
+    "robotsTxtState": "ALLOWED",
+    "indexingState": "INDEXING_ALLOWED",
+    "lastCrawlTime": "2026-10-11T18:49:29Z",
+    "pageFetchState": "SUCCESSFUL",
+    "googleCanonical": "https://steviewoodrecovery.com/",
+    "userCanonical": "https://steviewoodrecovery.com/",
+    "crawledAs": "MOBILE"
+   },
+   "mobileUsabilityResult": {
+    "verdict": "VERDICT_UNSPECIFIED"
+   },
+   "richResultsResult": {
+    "verdict": "PASS",
+    "detectedItems": [
+     {
+      "richResultType": "Review snippets",
+      "items": [
+       {
+        "name": "Stevie Wood Recovery"
+       }
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "inspect https://steviewoodrecovery.com/index.html": {
+  "inspectionResult": {
+   "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://steviewoodrecovery.com/&id=1YmoEsTWV-kyIFz0XGMkAQ&utm_medium=link&utm_source=api",
+   "indexStatusResult": {
+    "verdict": "NEUTRAL",
+    "coverageState": "URL is unknown to Google",
+    "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+    "indexingState": "INDEXING_STATE_UNSPECIFIED",
+    "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED"
+   },
+   "mobileUsabilityResult": {
+    "verdict": "VERDICT_UNSPECIFIED"
+   }
+  }
+ },
+ "inspect https://www.steviewoodrecovery.com/": {
+  "_error": 403,
+  "_body": "{\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"You do not own this site, or the inspected URL is not part of this property.\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
+ }
+}

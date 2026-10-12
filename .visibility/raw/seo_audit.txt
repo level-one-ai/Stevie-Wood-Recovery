@@ -1,0 +1,25 @@
+=== SEO Audit: https://steviewoodrecovery.com ===
+
+## Meta Tags
+title: 24/7 Vehicle Recovery Edinburgh | Breakdown Recovery & Towin...
+title_length: 84 chars
+description: Fast 24/7 breakdown recovery in Edinburgh. Local vehicle recovery, towing, jump ...
+description_length: 158 chars
+og_tags: yes
+h1: Stevie Wood Recovery
+
+## Schema Markup
+json_ld_blocks: 1
+
+## Performance
+load_time: 0.63s
+status: good
+
+## robots.txt
+exists: no
+ai_bots_mentioned: none
+
+## Sitemap
+sitemap_xml: no
+
+=== Audit Complete ===
