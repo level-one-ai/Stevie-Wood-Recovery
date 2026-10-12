@@ -25,7 +25,7 @@ public/images/          All photos - see public/images/README.md
 CNAME                   Custom domain for GitHub Pages
 robots.txt, sitemap.xml For search engines
 llms.txt                Plain-text summary for answer engines
-favicon.ico, apple-touch-icon.png, site.webmanifest   Browser tab and phone home-screen icons
+favicon.ico, favicon-48/96/192.png, apple-touch-icon.png, site.webmanifest   Browser tab, Google results and phone icons
 ```
 
 ## Changing things
