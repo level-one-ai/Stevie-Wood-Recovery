@@ -23,6 +23,9 @@ public/images/          All photos - see public/images/README.md
   brand/  hero/  gallery/  uploads/
 .visibility/            SEO audit report (not part of the site)
 CNAME                   Custom domain for GitHub Pages
+robots.txt, sitemap.xml For search engines
+llms.txt                Plain-text summary for answer engines
+favicon.ico, apple-touch-icon.png, site.webmanifest   Browser tab and phone home-screen icons
 ```
 
 ## Changing things

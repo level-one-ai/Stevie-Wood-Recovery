@@ -1,0 +1,10 @@
+{
+    "name": "Stevie Wood Recovery",
+    "short_name": "Stevie Wood",
+    "icons": [
+        { "src": "/public/images/brand/favicon-192.png", "sizes": "192x192", "type": "image/png" }
+    ],
+    "theme_color": "#5854e8",
+    "background_color": "#0d0a14",
+    "display": "browser"
+}
