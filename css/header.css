@@ -5,9 +5,7 @@
     inset: 0 0 auto 0;
     z-index: 1000;
     height: var(--header-h);
-    background: rgba(13, 10, 20, 0.55);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: rgba(13, 10, 20, 0.82);
     border-bottom: 1px solid transparent;
     transition: background-color 0.3s, border-color 0.3s;
 }
@@ -187,4 +185,17 @@
     color: var(--text);
     font-size: 1.25rem;
     cursor: pointer;
+}
+
+/* Frosted header only on desktops, where it costs nothing */
+@media (hover: hover) and (min-width: 1101px) {
+    .site-header {
+        background: rgba(13, 10, 20, 0.55);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+    }
+
+    .site-header.scrolled {
+        background: rgba(13, 10, 20, 0.94);
+    }
 }

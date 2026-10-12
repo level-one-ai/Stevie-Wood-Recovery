@@ -8,17 +8,31 @@ document.addEventListener("DOMContentLoaded", function() {
     var stickyCall = document.getElementById("stickyCall");
     var whatsappWidgetBtn = document.getElementById("whatsappWidgetBtn");
 
-    // Header background, floating WhatsApp button and sticky call bar on scroll
-    function onScroll() {
-        var heroBottom = hero.offsetTop + hero.offsetHeight;
-        header.classList.toggle("scrolled", window.scrollY > 40);
-        whatsappWidgetBtn.classList.toggle("visible", window.scrollY > heroBottom - 100);
-        var buttonsGone = heroButtons.getBoundingClientRect().bottom < 0;
-        stickyCall.classList.toggle("visible", buttonsGone);
-    }
+    // Header background, floating WhatsApp button and sticky call bar,
+    // driven by IntersectionObserver instead of a scroll listener
+    if ("IntersectionObserver" in window) {
+        // A 1px marker 40px down the page: once it leaves the screen, darken the header
+        var topMarker = document.createElement("div");
+        topMarker.setAttribute("aria-hidden", "true");
+        topMarker.style.cssText = "position:absolute;top:40px;left:0;width:1px;height:1px;pointer-events:none;";
+        document.body.appendChild(topMarker);
+        new IntersectionObserver(function(entries) {
+            header.classList.toggle("scrolled", !entries[0].isIntersecting);
+        }).observe(topMarker);
 
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
+        new IntersectionObserver(function(entries) {
+            whatsappWidgetBtn.classList.toggle("visible", !entries[0].isIntersecting);
+        }).observe(hero);
+
+        new IntersectionObserver(function(entries) {
+            var gone = !entries[0].isIntersecting && entries[0].boundingClientRect.top < 0;
+            stickyCall.classList.toggle("visible", gone);
+        }).observe(heroButtons);
+    } else {
+        header.classList.add("scrolled");
+        whatsappWidgetBtn.classList.add("visible");
+        stickyCall.classList.add("visible");
+    }
 
     // Highlight the nav link for the section on screen
     var navLinks = document.querySelectorAll(".main-nav a");
