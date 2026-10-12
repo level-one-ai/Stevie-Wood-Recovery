@@ -1,124 +1,161 @@
-/* Stevie Wood Recovery - Hero Section Styles */
+/* Stevie Wood Recovery - Hero */
 
 .hero {
-    height: 88vh;
-    min-height: 650px;
-    max-height: 950px;
+    position: relative;
+    min-height: min(100dvh, 1000px);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    position: relative;
-    background-image: url('https://github.com/level-one-ai/Stevie-Wood-Recovery/blob/main/images/b0gd6vme9drmy0cw14w8eqw7t8_result_0.jpg?raw=true');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    padding: 100px 40px 15px;
+    justify-content: flex-end;
+    padding-top: calc(var(--header-h) + 48px);
+    padding-bottom: 40px;
     overflow: hidden;
+    isolation: isolate;
 }
 
-.hero-overlay {
+.hero-media {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(to bottom, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.5) 50%, rgba(15, 23, 42, 0.8) 100%);
-    z-index: 1;
+    inset: 0 0 0 8%;
+    z-index: -2;
+    /* Photo sits to the right so the headline stays clear of the truck */
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 22%);
+    mask-image: linear-gradient(90deg, transparent 0%, #000 22%);
 }
 
-.hero-top-bubble {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    justify-content: center;
-    margin-top: 0;
-    opacity: 0;
-    transform: translateY(-30px);
-    animation: fadeSlideDown 0.8s ease forwards;
-    animation-delay: 0.2s;
+.hero-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 0% center;
 }
 
-.hero-bubble {
-    background: rgba(99, 102, 241, 0.2);
-    border: 1px solid rgba(99, 102, 241, 0.4);
-    backdrop-filter: blur(10px);
-    padding: 12px 30px;
-    border-radius: 50px;
-    display: inline-block;
+/* Darkens the left side so the headline stays readable over the photo */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+        linear-gradient(90deg, rgba(13, 10, 20, 0.88) 0%, rgba(13, 10, 20, 0.6) 38%, rgba(13, 10, 20, 0) 62%),
+        linear-gradient(0deg, rgba(13, 10, 20, 0.9) 0%, rgba(13, 10, 20, 0) 32%);
 }
 
-.hero-bubble span {
-    font-size: 14px;
-    font-weight: 600;
-    color: #f1f5f9;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-}
-
-.hero-content-centered {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    padding: 40px;
-    max-width: 1200px;
-    margin: 0 auto;
+.hero-content {
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    max-width: 700px;
+    padding-bottom: 48px;
 }
 
-.hero-content-centered h1 {
-    font-size: 80px;
-    font-weight: 800;
-    margin-bottom: 0;
-    letter-spacing: 4px;
+.hero-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    background: linear-gradient(135deg, #ffffff 0%, #6366f1 50%, #22d3ee 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    filter: drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.8));
-    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeSlideUp 0.8s ease forwards;
-    animation-delay: 0.4s;
-    white-space: nowrap;
+    line-height: 1.3;
+    margin-bottom: 20px;
+}
+
+.hero-eyebrow::before {
+    content: "";
+    width: 36px;
+    height: 3px;
+    border-radius: 2px;
+    background: var(--primary);
+    flex-shrink: 0;
+}
+
+.hero-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(2.75rem, 5.4vw, 4.75rem);
+    line-height: 1.02;
+    letter-spacing: -0.015em;
+    margin-bottom: 24px;
+}
+
+.hero-title .line,
+.hero-title .accent {
+    display: block;
+}
+
+.hero-title .accent {
+    color: var(--primary);
+}
+
+.hero-sub {
+    font-size: clamp(1.125rem, 1.6vw, 1.375rem);
+    line-height: 1.5;
+    max-width: 34ch;
+    margin-bottom: 32px;
 }
 
 .hero-buttons {
-    position: absolute;
-    bottom: 15px;
-    left: 50%;
-    transform: translateX(-50%);
     display: flex;
-    gap: 20px;
-    justify-content: center;
     flex-wrap: wrap;
-    z-index: 2;
-    opacity: 0;
-    animation: fadeIn 0.8s ease forwards;
-    animation-delay: 0.6s;
+    gap: 20px;
 }
 
-@keyframes fadeSlideDown {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.hero-buttons .btn {
+    min-height: 64px;
+    padding: 0 32px;
+    font-size: 1.25rem;
 }
 
-@keyframes fadeSlideUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* Proof strip along the bottom of the hero */
+.proof-strip {
+    display: grid;
+    grid-template-columns: 1.35fr 1fr 1fr 1fr;
+    background: rgba(23, 18, 31, 0.9);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-dark);
+    list-style: none;
 }
 
-@keyframes fadeIn {
-    to {
-        opacity: 1;
-    }
+.proof-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 24px 28px;
+}
+
+.proof-item + .proof-item {
+    border-left: 1px solid var(--border);
+}
+
+.proof-item i {
+    font-size: 2rem;
+    color: var(--primary);
+    width: 40px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.proof-item strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    line-height: 1.15;
+}
+
+.proof-item span {
+    display: block;
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1.35;
+}
+
+.proof-item-main strong {
+    font-size: 1.75rem;
+}
+
+.proof-item-main .stars {
+    font-size: 1rem;
+    margin-bottom: 2px;
 }

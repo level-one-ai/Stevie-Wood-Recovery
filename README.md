@@ -1,76 +1,38 @@
 # Stevie Wood Recovery - Website
 
-A modern, responsive landing page for Stevie Wood Recovery, a 24/7 vehicle recovery service based in Edinburgh.
+One-page website for Stevie Wood Recovery, a family-run 24/7 car recovery and towing service in Edinburgh and the Lothians. Live at https://steviewoodrecovery.com (GitHub Pages).
 
-## 📁 Project Structure
+## Project structure
 
 ```
-stevie-wood-recovery/
-├── index.html          # Main HTML file
-├── css/
-│   ├── base.css        # Variables, reset, common styles
-│   ├── header.css      # Header and navigation
-│   ├── hero.css        # Hero section
-│   ├── sections.css    # Services, About, Reviews
-│   ├── contact-footer.css  # Contact form and footer
-│   └── responsive.css  # Media queries
-├── logo.svg            # SVG logo
-└── README.md           # This file
+index.html              The page (all sections)
+css/
+  base.css              Colours, fonts, buttons, shared styles
+  header.css            Top bar and menus
+  hero.css              Top section and the proof strip
+  sections.css          Services, gallery, steps, about, reviews, areas, FAQ, call to action
+  components.css        WhatsApp quote form, popups, phone call bar
+  footer.css            Footer
+  responsive.css        Tablet and phone layouts (must load last)
+js/
+  main.js               Menus, gallery, quote form, popups
+public/images/          All photos - see public/images/README.md
+  brand/  hero/  gallery/  uploads/
+.visibility/            SEO audit report (not part of the site)
+CNAME                   Custom domain for GitHub Pages
 ```
 
-## 🎨 Features
+## Changing things
 
-- **Modern Design**: Dark theme with gradient accents
-- **Responsive**: Fully responsive across all devices
-- **Animated Logo**: Pulsing ring animation effect
-- **Clean Dividers**: Elegant curved section dividers
-- **Review Carousel**: Auto-fading testimonials
-- **Contact Form**: Full quote request form
+- **Photos:** see `public/images/README.md`.
+- **Colours:** edit the variables at the top of `css/base.css` (`--primary` is the purple).
+- **Phone number:** search `index.html` and `js/main.js` for `07934015448` / `447934015448`.
 
-## 🚀 Getting Started
+There is no build step. Edit the files, commit and push.
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/stevie-wood-recovery.git
-   ```
+## Fonts and icons
 
-2. Open `index.html` in your browser or deploy to your hosting provider.
+- Barlow and Barlow Semi Condensed (Google Fonts)
+- Font Awesome 6.4.0 (cdnjs)
 
-## 🎨 Customisation
-
-### Colours
-Edit the CSS variables in `css/base.css`:
-
-```css
-:root {
-    --primary: #6366f1;
-    --primary-dark: #4f46e5;
-    --accent: #22d3ee;
-    --dark: #0f172a;
-    --dark-light: #1e293b;
-}
-```
-
-### Contact Information
-Update phone numbers, email, and address in `index.html`.
-
-## 📱 Sections
-
-1. **Header** - Fixed navigation with animated logo
-2. **Hero** - Main headline with stats and CTA buttons
-3. **Services** - 8 service cards in a grid
-4. **About** - Company information and coverage area
-5. **Reviews** - Auto-fading customer testimonials
-6. **Contact** - Contact details and quote form
-7. **Footer** - Links and social media
-
-## 🔧 Dependencies
-
-- [Google Fonts - Inter](https://fonts.google.com/specimen/Inter)
-- [Font Awesome 6.4.0](https://fontawesome.com/)
-
-Both are loaded via CDN in the HTML file.
-
-## 📄 License
-
-© 2024 Stevie Wood Recovery. All rights reserved.
+© 2026 Stevie Wood Recovery.
