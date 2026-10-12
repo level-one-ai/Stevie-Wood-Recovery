@@ -63,4 +63,5 @@ Branch: `claude/elegant-faraday-frljy0`. **The live site only changes once this 
 | L6 | README | Done |
 
 ## Extra (owner request)
-- Favicon from the logo: `favicon.ico`, `apple-touch-icon.png`, `public/images/brand/favicon-32.png` and `favicon-192.png`, plus `site.webmanifest`.
+- Favicon from the logo: `favicon.ico`, `favicon-48.png`, `favicon-96.png`, `favicon-192.png` (Google search results want sizes in multiples of 48), `apple-touch-icon.png`, `public/images/brand/favicon-32.png`, plus `site.webmanifest`.
+- Google Business Profile wording to match the site: `.visibility/GBP.md`.

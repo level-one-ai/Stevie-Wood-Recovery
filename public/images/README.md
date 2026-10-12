@@ -27,6 +27,6 @@ Put it in `uploads/` and ask for it to be added. A new photo also needs a captio
 
 ## Browser tab icon (favicon)
 
-The little logo in the browser tab comes from `favicon.ico` and `apple-touch-icon.png` in the main folder, plus `brand/favicon-32.png` and `brand/favicon-192.png`. If the logo changes, these need making again from the new logo.
+The little logo in the browser tab comes from `favicon.ico` and `apple-touch-icon.png` in the main folder, plus `favicon-48.png`, `favicon-96.png`, `favicon-192.png` and `brand/favicon-32.png`. If the logo changes, these need making again from the new logo.
 
 The picture used when the site is shared on WhatsApp or Facebook is `social/og-image-1200x630.jpg`.
