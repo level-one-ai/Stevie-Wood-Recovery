@@ -176,18 +176,6 @@ h3 {
     letter-spacing: 2px;
 }
 
-/* Scroll reveal (only when JS is running and motion is allowed) */
-.js .reveal {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.js .reveal.is-visible {
-    opacity: 1;
-    transform: none;
-}
-
 @media (prefers-reduced-motion: reduce) {
     html {
         scroll-behavior: auto;
@@ -198,11 +186,6 @@ h3 {
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
     }
-
-    .js .reveal {
-        opacity: 1;
-        transform: none;
-    }
 }
 
 .visually-hidden {
@@ -212,4 +195,45 @@ h3 {
     overflow: hidden;
     clip: rect(0 0 0 0);
     white-space: nowrap;
+}
+
+/* Full-screen sections on tablets and computers: each fills and fits one screen */
+@media (min-width: 769px) {
+    .screen {
+        min-height: 100vh;
+        min-height: 100svh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-top: calc(var(--header-h) + clamp(12px, 3.5vh, 40px));
+        padding-bottom: clamp(20px, 4vh, 56px);
+    }
+
+    .screen > .container {
+        width: 100%;
+    }
+
+    .screen .section-head {
+        margin-bottom: clamp(20px, 4vh, 48px);
+    }
+}
+
+/* Thin progress bar along the top of the page */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    z-index: 1200;
+    background: var(--primary);
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    pointer-events: none;
+}
+
+/* Items that slide in from the side never widen the page */
+main,
+.site-footer {
+    overflow-x: clip;
 }

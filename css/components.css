@@ -484,3 +484,98 @@ body.widget-open {
         padding-bottom: 72px;
     }
 }
+
+/* ---------------------------------------------------------------------
+   Scroll animation support (js/animations.js)
+   --------------------------------------------------------------------- */
+
+/* Smooth scrolling (Lenis) takes over from the browser's own smooth scroll */
+html.lenis,
+html.lenis body {
+    height: auto;
+}
+
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+    overflow: hidden;
+}
+
+/* Text that rises out of a mask. A little bottom padding keeps
+   letters like g and y from being clipped. */
+.mask {
+    display: block;
+    overflow: hidden;
+    padding-bottom: 0.12em;
+    margin-bottom: -0.12em;
+}
+
+.mask-inner {
+    display: block;
+}
+
+h2.mask {
+    margin-bottom: calc(16px - 0.12em);
+}
+
+/* Pinned gallery on desktop: the row slides sideways as you scroll */
+#gallery.is-flight {
+    overflow: hidden;
+}
+
+#gallery.is-flight .gallery-track {
+    overflow: visible;
+    scroll-snap-type: none;
+}
+
+#gallery.is-flight .gallery-controls {
+    visibility: hidden;
+}
+
+/* How it works: violet line that fills as you scroll, numbers light up */
+.steps-fill {
+    position: absolute;
+    top: 32px;
+    left: 32px;
+    right: 32px;
+    height: 2px;
+    background: var(--primary);
+    transform: scaleX(var(--fill, 0));
+    transform-origin: 0 50%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.step::before {
+    transition: background-color 0.4s, color 0.4s, border-color 0.4s;
+}
+
+.step.is-lit::before {
+    background: var(--primary);
+    color: var(--white);
+}
+
+@media (max-width: 768px) {
+    .steps-fill {
+        top: 32px;
+        bottom: 32px;
+        left: 31px;
+        right: auto;
+        width: 2px;
+        height: auto;
+        transform: scaleY(var(--fill, 0));
+        transform-origin: 50% 0;
+    }
+}
+
+@media (min-width: 769px) and (max-height: 680px) {
+    .steps-fill {
+        top: 26px;
+    }
+}
