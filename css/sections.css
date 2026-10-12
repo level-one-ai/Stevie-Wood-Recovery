@@ -3,7 +3,8 @@
 /* Services: one large tile, four small, one wide emergency row */
 .services-grid {
     display: grid;
-    grid-template-columns: 1.3fr 1fr 1fr;
+    grid-template-columns: 1.25fr 1fr 1fr 0.9fr;
+    grid-template-rows: auto auto;
     gap: 20px;
 }
 
@@ -11,7 +12,7 @@
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
-    padding: 28px;
+    padding: 24px;
     transition: border-color 0.25s, transform 0.25s;
 }
 
@@ -28,6 +29,7 @@
 
 .service-card p {
     color: var(--muted);
+    font-size: 1rem;
 }
 
 .service-card-main {
@@ -40,7 +42,7 @@
 
 .service-card-main img {
     width: 100%;
-    aspect-ratio: 4 / 3;
+    height: clamp(120px, 20vh, 240px);
     object-fit: cover;
 }
 
@@ -68,10 +70,12 @@
 }
 
 .service-emergency {
-    grid-column: 1 / -1;
+    grid-column: 4;
+    grid-row: 1 / span 2;
     display: flex;
-    align-items: center;
-    gap: 28px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
     background: var(--primary);
     border-color: var(--primary);
     color: var(--white);
@@ -88,7 +92,7 @@
 }
 
 .service-emergency h3 {
-    font-size: 1.875rem;
+    font-size: 1.625rem;
     margin-bottom: 4px;
 }
 
@@ -98,8 +102,11 @@
 }
 
 .service-emergency .btn {
-    margin-left: auto;
-    flex-shrink: 0;
+    margin-top: auto;
+    width: 100%;
+    padding: 0 12px;
+    font-size: 1rem;
+    white-space: nowrap;
 }
 
 /* Gallery: scroll-snap row of real job photos */
@@ -287,7 +294,7 @@
 
 .reviews-grid {
     display: grid;
-    grid-template-columns: 1.2fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
 }
 
@@ -310,19 +317,17 @@
 }
 
 .review-main {
-    grid-row: span 3;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: clamp(28px, 4vw, 48px);
+    grid-column: 1 / -1;
+    padding: clamp(24px, 3.5vw, 40px);
 }
 
 .review-main p {
     font-family: var(--font-display);
-    font-size: clamp(1.5rem, 2.6vw, 2.125rem);
+    font-size: clamp(1.375rem, 2.2vw, 1.875rem);
     font-weight: 600;
     line-height: 1.25;
-    margin: 16px 0 20px;
+    margin: 10px 0 12px;
+    max-width: 60ch;
 }
 
 /* Areas */
@@ -398,6 +403,7 @@
     font-size: 1.375rem;
     font-weight: 600;
     cursor: pointer;
+    padding-right: 6px;
 }
 
 .faq-item summary::-webkit-details-marker {
@@ -406,6 +412,10 @@
 
 .faq-item summary::after {
     content: "+";
+    flex-shrink: 0;
+    width: 28px;
+    text-align: center;
+    line-height: 1;
     font-family: var(--font-body);
     font-size: 1.75rem;
     font-weight: 400;
@@ -464,4 +474,17 @@
     color: var(--muted);
     font-size: 1.125rem;
     max-width: 60ch;
+}
+
+.cta-logo {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    box-shadow: 0 16px 40px -12px rgba(13, 10, 20, 0.6);
+    border: 4px solid rgba(244, 242, 248, 0.25);
+}
+
+.cta-text {
+    flex: 1;
 }

@@ -2,12 +2,14 @@
 
 .hero {
     position: relative;
-    min-height: min(100dvh, 1000px);
+    height: 100vh;
+    height: 100svh;
+    min-height: 560px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding-top: calc(var(--header-h) + 48px);
-    padding-bottom: 40px;
+    padding-top: calc(var(--header-h) + clamp(12px, 3vh, 48px));
+    padding-bottom: clamp(16px, 3.5vh, 40px);
     overflow: hidden;
     isolation: isolate;
 }
@@ -45,7 +47,7 @@
     flex-direction: column;
     justify-content: center;
     max-width: 700px;
-    padding-bottom: 48px;
+    padding-bottom: clamp(16px, 4vh, 48px);
 }
 
 .hero-eyebrow {
@@ -58,7 +60,7 @@
     letter-spacing: 0.12em;
     text-transform: uppercase;
     line-height: 1.3;
-    margin-bottom: 20px;
+    margin-bottom: clamp(10px, 2.2vh, 20px);
 }
 
 .hero-eyebrow::before {
@@ -73,10 +75,10 @@
 .hero-title {
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: clamp(2.75rem, 5.4vw, 4.75rem);
+    font-size: clamp(2.5rem, min(5.4vw, 8.4vh), 4.75rem);
     line-height: 1.02;
     letter-spacing: -0.015em;
-    margin-bottom: 24px;
+    margin-bottom: clamp(12px, 2.6vh, 24px);
 }
 
 .hero-title .line,
@@ -92,7 +94,7 @@
     font-size: clamp(1.125rem, 1.6vw, 1.375rem);
     line-height: 1.5;
     max-width: 34ch;
-    margin-bottom: 32px;
+    margin-bottom: clamp(16px, 3.4vh, 32px);
 }
 
 .hero-buttons {
@@ -102,7 +104,7 @@
 }
 
 .hero-buttons .btn {
-    min-height: 64px;
+    min-height: clamp(52px, 7.5vh, 64px);
     padding: 0 32px;
     font-size: 1.25rem;
 }
@@ -122,7 +124,7 @@
     display: flex;
     align-items: center;
     gap: 16px;
-    padding: 24px 28px;
+    padding: clamp(14px, 2.8vh, 24px) 28px;
 }
 
 .proof-item + .proof-item {
