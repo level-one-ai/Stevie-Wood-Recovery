@@ -85,6 +85,59 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
+    // Reviews: one at a time, fading to the next every 6 seconds.
+    // Pauses on hover or keyboard focus and while the section is off-screen.
+    var reviewItems = document.querySelectorAll("#reviewsStage .review");
+    var reviewDots = document.querySelectorAll(".reviews-dot");
+    var reviewIndex = 0;
+    var reviewTimer = null;
+    var reviewsOnScreen = false;
+    var reviewsHeld = false;
+    var calmMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    function showReviewAt(i) {
+        reviewIndex = (i + reviewItems.length) % reviewItems.length;
+        reviewItems.forEach(function(r, n) { r.classList.toggle("is-active", n === reviewIndex); });
+        reviewDots.forEach(function(d, n) {
+            d.classList.toggle("is-active", n === reviewIndex);
+            if (n === reviewIndex) d.setAttribute("aria-current", "true"); else d.removeAttribute("aria-current");
+        });
+    }
+
+    function syncReviewTimer() {
+        clearInterval(reviewTimer);
+        reviewTimer = null;
+        if (!calmMotion && reviewsOnScreen && !reviewsHeld) {
+            reviewTimer = setInterval(function() { showReviewAt(reviewIndex + 1); }, 6000);
+        }
+    }
+
+    reviewDots.forEach(function(dot, n) {
+        dot.addEventListener("click", function() {
+            showReviewAt(n);
+            syncReviewTimer();
+        });
+    });
+
+    var reviewsSection = document.getElementById("reviews");
+    // Only the review text itself pauses it, so it keeps moving while
+    // the mouse rests elsewhere on the screen
+    var reviewsStage = document.getElementById("reviewsStage");
+    reviewsStage.addEventListener("mouseenter", function() { reviewsHeld = true; syncReviewTimer(); });
+    reviewsStage.addEventListener("mouseleave", function() { reviewsHeld = false; syncReviewTimer(); });
+    reviewsSection.addEventListener("focusin", function() { reviewsHeld = true; syncReviewTimer(); });
+    reviewsSection.addEventListener("focusout", function() { reviewsHeld = false; syncReviewTimer(); });
+
+    if ("IntersectionObserver" in window) {
+        new IntersectionObserver(function(entries) {
+            reviewsOnScreen = entries[0].isIntersecting;
+            syncReviewTimer();
+        }, { threshold: 0.3 }).observe(reviewsSection);
+    } else {
+        reviewsOnScreen = true;
+        syncReviewTimer();
+    }
+
     // FAQ: only one answer open at a time
     var faqItems = document.querySelectorAll(".faq-item");
     faqItems.forEach(function(item) {
@@ -246,7 +299,9 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         var whatsappUrl = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message);
-        window.open(whatsappUrl, "_blank");
+        // Some phone browsers block new tabs; if so, open WhatsApp in this tab
+        var opened = window.open(whatsappUrl, "_blank");
+        if (!opened) window.location.href = whatsappUrl;
 
         closeWidget();
         widgetForm.reset();
