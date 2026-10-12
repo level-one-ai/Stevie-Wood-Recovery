@@ -1,0 +1,484 @@
+/* Stevie Wood Recovery - WhatsApp widget, popups, sticky call bar */
+
+/* WhatsApp Widget Styles */
+.whatsapp-widget-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: #25d366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    z-index: 9998;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: none;
+    opacity: 0;
+    visibility: hidden;
+}
+.whatsapp-widget-btn.visible {
+    opacity: 1;
+    visibility: visible;
+}
+.whatsapp-widget-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 30px rgba(37, 211, 102, 0.5);
+}
+.whatsapp-widget-btn i {
+    font-size: 32px;
+    color: var(--white);
+}
+.whatsapp-widget-btn.active {
+    border-radius: 50% 50% 50% 0;
+}
+
+/* Widget Panel */
+.whatsapp-widget-panel {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 380px;
+    max-height: 580px;
+    background: var(--bg);
+    border-radius: 20px 20px 20px 0;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    transform: scale(0);
+    transform-origin: bottom right;
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+    overflow: hidden;
+}
+.whatsapp-widget-panel.active {
+    transform: scale(1);
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Widget Header - WhatsApp Style */
+.widget-header {
+    background: linear-gradient(135deg, #25d366, #128c7e);
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.widget-header-logo {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid rgba(255,255,255,0.3);
+}
+.widget-header-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.widget-header-info h4 {
+    color: var(--white);
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+}
+.widget-header-info p {
+    color: rgba(255,255,255,0.8);
+    font-size: 12px;
+    margin: 2px 0 0;
+}
+
+/* Widget Close Button */
+.widget-close-btn {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: rgba(244, 242, 248, 0.5);
+    font-size: 24px;
+    transition: all 0.3s;
+    z-index: 10000;
+}
+.widget-close-btn:hover {
+    color: rgba(244, 242, 248, 0.9);
+    transform: scale(1.1);
+}
+
+/* Widget Body */
+.widget-body {
+    padding: 20px;
+    overflow-y: auto;
+    flex: 1;
+    background: var(--surface);
+}
+.widget-body::-webkit-scrollbar {
+    width: 6px;
+}
+.widget-body::-webkit-scrollbar-track {
+    background: var(--bg);
+}
+.widget-body::-webkit-scrollbar-thumb {
+    background: #25d366;
+    border-radius: 3px;
+}
+
+/* Widget Form */
+.widget-form-group {
+    margin-bottom: 16px;
+}
+.widget-form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--muted);
+    margin-bottom: 6px;
+}
+.widget-form-group input,
+.widget-form-group textarea,
+.widget-form-group select {
+    width: 100%;
+    padding: 12px 14px;
+    background: var(--bg);
+    border: 1px solid rgba(37, 211, 102, 0.2);
+    border-radius: 10px;
+    color: var(--text);
+    font-size: 14px;
+    font-family: inherit;
+    transition: border-color 0.3s;
+}
+.widget-form-group input:focus,
+.widget-form-group textarea:focus,
+.widget-form-group select:focus {
+    outline: none;
+    border-color: #25d366;
+}
+.widget-form-group textarea {
+    resize: none;
+    min-height: 70px;
+}
+.widget-form-group input::placeholder,
+.widget-form-group textarea::placeholder {
+    color: var(--muted);
+}
+
+/* Widget Submit Button */
+.widget-submit-btn {
+    width: 100%;
+    padding: 14px;
+    background: var(--surface-2);
+    border: none;
+    border-radius: 10px;
+    color: var(--muted);
+    font-size: 15px;
+    font-weight: 600;
+    cursor: not-allowed;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 10px;
+}
+.widget-submit-btn.ready {
+    background: #25d366;
+    color: var(--white);
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+    animation: glowPulse 2s ease-in-out infinite;
+}
+@keyframes glowPulse {
+    0%, 100% { box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); }
+    50% { box-shadow: 0 4px 25px rgba(37, 211, 102, 0.7); }
+}
+.widget-submit-btn.ready:hover {
+    transform: translateY(-2px);
+}
+
+/* Widget Speech Bubble Tail */
+.widget-tail {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-top: 20px solid var(--surface);
+}
+
+/* Body no-scroll when widget open */
+body.widget-open {
+    overflow: hidden;
+}
+
+/* Widget Overlay */
+.widget-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(13, 10, 20, 0.7);
+    z-index: 9997;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+.widget-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Autocomplete in Widget */
+.widget-autocomplete-container {
+    position: relative;
+}
+.widget-autocomplete-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--bg);
+    border: 1px solid rgba(37, 211, 102, 0.3);
+    border-radius: 8px;
+    max-height: 150px;
+    overflow-y: auto;
+    z-index: 10001;
+    display: none;
+}
+.widget-autocomplete-results.active {
+    display: block;
+}
+.widget-autocomplete-item {
+    padding: 10px 14px;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(37, 211, 102, 0.1);
+    color: var(--text);
+    font-size: 13px;
+}
+.widget-autocomplete-item:hover {
+    background: rgba(37, 211, 102, 0.2);
+}
+.widget-autocomplete-item:last-child {
+    border-bottom: none;
+}
+.widget-autocomplete-item i {
+    margin-right: 8px;
+    color: #25d366;
+}
+
+/* Image Popup */
+.image-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(13, 10, 20, 0.95);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+.image-popup-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+.image-popup-close {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 36px;
+    cursor: pointer;
+    transition: color 0.3s, transform 0.3s;
+    z-index: 10001;
+}
+.image-popup-close:hover {
+    color: var(--white);
+    transform: scale(1.1);
+}
+.image-popup-content {
+    max-width: 90%;
+    max-height: 90%;
+    text-align: center;
+    transform: scale(0.9);
+    transition: transform 0.3s;
+}
+.image-popup-overlay.active .image-popup-content {
+    transform: scale(1);
+}
+.image-popup-content img {
+    max-width: 100%;
+    max-height: 70vh;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+.image-popup-caption {
+    margin-top: 20px;
+}
+.image-popup-caption h3 {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0 0 10px;
+}
+.image-popup-caption p {
+    font-size: 16px;
+    color: var(--muted);
+    margin: 0;
+}
+
+/* Legal Popup Styles */
+.legal-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(13, 10, 20, 0.95);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    padding: 20px;
+}
+.legal-popup-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+.legal-popup-content {
+    background: linear-gradient(135deg, var(--surface), var(--bg));
+    border: 1px solid rgba(128, 73, 236, 0.3);
+    border-radius: 20px;
+    max-width: 700px;
+    width: 100%;
+    max-height: 80vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transform: scale(0.9);
+    transition: transform 0.3s;
+}
+.legal-popup-overlay.active .legal-popup-content {
+    transform: scale(1);
+}
+.legal-popup-content h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text);
+    padding: 30px 30px 20px;
+    margin: 0;
+    border-bottom: 1px solid rgba(128, 73, 236, 0.2);
+}
+.legal-popup-body {
+    padding: 20px 30px 30px;
+    overflow-y: auto;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.7;
+}
+.legal-popup-body h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text);
+    margin: 25px 0 10px;
+}
+.legal-popup-body h3:first-of-type {
+    margin-top: 10px;
+}
+.legal-popup-body p {
+    margin: 0 0 15px;
+}
+.legal-popup-body ul {
+    margin: 0 0 15px;
+    padding-left: 20px;
+}
+.legal-popup-body li {
+    margin-bottom: 8px;
+}
+.legal-popup-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    color: rgba(244, 242, 248, 0.6);
+    font-size: 24px;
+    cursor: pointer;
+    transition: color 0.3s, transform 0.3s;
+    z-index: 1;
+}
+.legal-popup-close:hover {
+    color: var(--text);
+    transform: scale(1.1);
+}
+
+/* Sticky call bar (phones only, shown once the hero buttons scroll away) */
+.sticky-call {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .sticky-call {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 990;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        padding: 8px 12px calc(8px + env(safe-area-inset-bottom));
+        background: rgba(13, 10, 20, 0.96);
+        border-top: 1px solid var(--border);
+        transform: translateY(110%);
+        transition: transform 0.3s ease;
+    }
+
+    .sticky-call.visible {
+        transform: none;
+    }
+
+    .sticky-call .btn {
+        min-height: 56px;
+        padding: 0 12px;
+        font-size: 1.0625rem;
+    }
+
+    .sticky-call .btn-whatsapp {
+        background: #25d366;
+        color: #0d0a14;
+    }
+
+    /* The bar replaces the floating WhatsApp button on phones */
+    .whatsapp-widget-btn {
+        display: none;
+    }
+
+    body {
+        padding-bottom: 72px;
+    }
+}
