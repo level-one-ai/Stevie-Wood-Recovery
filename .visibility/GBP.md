@@ -137,9 +137,9 @@ Use exactly the name, address, phone and website from section 1 on each of these
 - **Facebook page**: update the address, phone, website and hours to match. It currently mentions classic cars, which the website doesn't (★ confirm with Stevie)
 - **Whereee**, **Yell**, **FreeIndex**, **Thomson Local**, **Scoot**, **Checkatrade** (if he joins)
 
-## 11. Send these back to us
+## 11. Links (received and added to the website)
 
-The profile's **share link** and the **Facebook page link**. We'll add them to the website's hidden business details so Google links the website, the profile and Facebook together as one business.
+Business Profile: https://share.google/iwDQcSPa0maFSwda6 (Google ID /g/11btyjzvy8). Facebook: https://www.facebook.com/Steviewoodrecovery. Both are in the website's hidden business details (`sameAs`) and as icons in the footer.
 
 ## Still needed from Stevie ★
 

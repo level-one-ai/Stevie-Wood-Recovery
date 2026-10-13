@@ -96,3 +96,27 @@
 .footer-bottom a:hover {
     color: var(--primary-tint);
 }
+
+.footer-social {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.footer-social a {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    text-decoration: none;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.footer-social a:hover {
+    background: var(--primary);
+    border-color: var(--primary);
+}

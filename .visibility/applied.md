@@ -30,10 +30,10 @@ Branch: `claude/elegant-faraday-frljy0`. **The live site only changes once this 
 | H1 | `sitemap.xml` | Done | valid XML, 200 |
 | H2 | `robots.txt` | Done | 200 |
 | H3 | H1 with the main phrase | Done (redesign) | |
-| H4 | Schema: AutomotiveBusiness, @id, +44 phone, logo, image, areaServed list, service catalogue | Done. **`sameAs` / `hasMap` waiting on Stevie's profile links (Q4)** | JSON-LD parses |
+| H4 | Schema: AutomotiveBusiness, @id, +44 phone, logo, image, areaServed list, service catalogue | Done, including `sameAs` (Facebook, Google Business Profile, Google ID /g/11btyjzvy8) and `hasMap` | JSON-LD parses |
 | H5 | Self-made review stars removed | Done | no `aggregateRating` |
 | H6 | Are the 4 reviews real? | **Waiting on Stevie (Q6)**. Kept as they were | |
-| H7 | Dead social links | Done (redesign): removed until real links exist | |
+| H7 | Dead social links | Done: Facebook and Google profile icons in the footer | |
 | H8 | FAQ + FAQPage schema | Done: 6 questions, schema matches the page word for word | |
 | H9 | Render-blocking fonts/icons | Done: fonts preconnect, Font Awesome loads without blocking | icons still render |
 | H10 | Gallery paths, captions, lazy loading | Done (redesign) | |
